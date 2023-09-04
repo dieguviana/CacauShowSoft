@@ -23,3 +23,5 @@ C:\Users\2021102020049\Documents\GitHub\NewAppCacauShow\obj\Debug\NewAppCacauSho
 C:\Users\2021102020049\Documents\GitHub\NewAppCacauShow\obj\Debug\NewAppCacauShow_MarkupCompile.lref
 C:\Users\2021102020049\Documents\GitHub\NewAppCacauShow\obj\Debug\NewAppCacauShow.exe
 C:\Users\2021102020049\Documents\GitHub\NewAppCacauShow\obj\Debug\NewAppCacauShow.pdb
+C:\Users\2021102020049\Documents\GitHub\NewAppCacauShow\obj\Debug\Telas\Compra.baml
+C:\Users\2021102020049\Documents\GitHub\NewAppCacauShow\obj\Debug\Telas\Compra.g.cs
