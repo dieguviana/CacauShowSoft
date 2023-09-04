@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Telas\ConsultarVendas.xaml.cs">
+      <DependentUpon>ConsultarVendas.xaml</DependentUpon>
+    </Compile>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -66,6 +69,10 @@
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Page Include="Telas\ConsultarVendas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -94,7 +101,48 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Telas\" />
+    <Resource Include="Imagens\adicionar-produto.png" />
+    <Resource Include="Imagens\adicionar.png" />
+    <Resource Include="Imagens\blg.png" />
+    <Resource Include="Imagens\cancelar.png" />
+    <Resource Include="Imagens\cardapio.png" />
+    <Resource Include="Imagens\casa.png" />
+    <Resource Include="Imagens\cfunc.png" />
+    <Resource Include="Imagens\cliente.png" />
+    <Resource Include="Imagens\closeBtn_default.png" />
+    <Resource Include="Imagens\closeBtn_MouseOver.png" />
+    <Resource Include="Imagens\compra.png" />
+    <Resource Include="Imagens\dinheiro.png" />
+    <Resource Include="Imagens\dsimg.png" />
+    <Resource Include="Imagens\editar.png" />
+    <Resource Include="Imagens\entregador.png" />
+    <Resource Include="Imagens\estoque-pronto.png" />
+    <Resource Include="Imagens\excluir.png" />
+    <Resource Include="Imagens\fluxo-de-caixa.png" />
+    <Resource Include="Imagens\fornec.png" />
+    <Resource Include="Imagens\fornecedor.png" />
+    <Resource Include="Imagens\func.png" />
+    <Resource Include="Imagens\homeimg.png" />
+    <Resource Include="Imagens\img_background.png" />
+    <Resource Include="Imagens\img_contact.png" />
+    <Resource Include="Imagens\img_home.png" />
+    <Resource Include="Imagens\img_map.png" />
+    <Resource Include="Imagens\img_message.png" />
+    <Resource Include="Imagens\img_setting.png" />
+    <Resource Include="Imagens\img_signout.png" />
+    <Resource Include="Imagens\layout.png" />
+    <Resource Include="Imagens\list.png" />
+    <Resource Include="Imagens\logocacaus.png" />
+    <Resource Include="Imagens\logoCacauShow.png" />
+    <Resource Include="Imagens\lupa.png" />
+    <Resource Include="Imagens\orcamento.png" />
+    <Resource Include="Imagens\registro.png" />
+    <Resource Include="Imagens\sair.png" />
+    <Resource Include="Imagens\salvar.png" />
+    <Resource Include="Imagens\tgBtn_default.png" />
+    <Resource Include="Imagens\tgBtn_MouseOver.png" />
+    <Resource Include="Imagens\vendaimg.png" />
+    <Resource Include="Imagens\verificado.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
