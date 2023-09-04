@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NewAppCacauShow
+namespace NewAppCacauShow.Telas
 {
     /// <summary>
-    /// Interação lógica para MainWindow.xam
+    /// Lógica interna para Compra.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Compra : Window
     {
-        public MainWindow()
+        public Compra()
         {
             InitializeComponent();
         }
