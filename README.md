@@ -1,8 +1,11 @@
-Menu - Vendas, compras, produtos, clientes, funcionários, fornecedores;
+RESPONSABILIDADE DAS TELAS
 
-Vendas - Cadastrar, salvar, cancelar, listar, excluir, consultar e editar;
-Compras - Cadastrar, salvar, cancelar, listar, excluir, consultar e editar;
-Produtos - Cadastrar, salvar, cancelar, listar, excluir, consultar e editar;
-Clientes - Cadastrar, salvar, cancelar, listar, excluir, consultar e editar;
-Funcionários - Cadastrar, salvar, cancelar, login, listar, excluir, consultar e editar;
-Fornecedores - Cadastrar, salvar, cancelar, listar, excluir, consultar e editar.
+Menu: Diego
+Vendas: Diego
+Compras: Hilary 
+Produtos: Thauany
+Clientes: Jussara 
+Funcionários: Emily 
+Fornecedores: Niic
+
+1 - Cada tipo de cadastro tem o cadastrar e o listar, exceto o menu;
