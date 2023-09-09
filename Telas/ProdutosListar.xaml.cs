@@ -12,25 +12,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace NewAppCacauShow
+namespace NewAppCacauShow.Telas
 {
     /// <summary>
-    /// Lógica interna para Login.xaml
+    /// Lógica interna para ProdutosListar.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class ProdutosListar : Window
     {
-        public Login()
+        public ProdutosListar()
         {
             WindowState = WindowState.Maximized;
             WindowStyle = WindowStyle.SingleBorderWindow;
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            NewAppCacauShow.Telas.Menu menu = new NewAppCacauShow.Telas.Menu();
-            menu.Show();
-            this.Close();
         }
     }
 }

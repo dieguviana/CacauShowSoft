@@ -55,8 +55,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Telas\ConsultarVendas.xaml.cs">
-      <DependentUpon>ConsultarVendas.xaml</DependentUpon>
+    <Compile Include="Telas\ClientesListar.xaml.cs">
+      <DependentUpon>ClientesListar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\EstoqueListar.xaml.cs">
+      <DependentUpon>EstoqueListar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\FornecedoresListar.xaml.cs">
+      <DependentUpon>FornecedoresListar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\FuncionariosListar.xaml.cs">
+      <DependentUpon>FuncionariosListar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Menu.xaml.cs">
+      <DependentUpon>Menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\ProdutosListar.xaml.cs">
+      <DependentUpon>ProdutosListar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\VendasListar.xaml.cs">
+      <DependentUpon>VendasListar.xaml</DependentUpon>
     </Compile>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
@@ -69,7 +87,31 @@
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Page Include="Telas\ConsultarVendas.xaml">
+    <Page Include="Telas\ClientesListar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Telas\EstoqueListar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Telas\FornecedoresListar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Telas\FuncionariosListar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Telas\Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Telas\ProdutosListar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Telas\VendasListar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -101,48 +143,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Imagens\adicionar-produto.png" />
-    <Resource Include="Imagens\adicionar.png" />
-    <Resource Include="Imagens\blg.png" />
-    <Resource Include="Imagens\cancelar.png" />
-    <Resource Include="Imagens\cardapio.png" />
-    <Resource Include="Imagens\casa.png" />
-    <Resource Include="Imagens\cfunc.png" />
-    <Resource Include="Imagens\cliente.png" />
-    <Resource Include="Imagens\closeBtn_default.png" />
-    <Resource Include="Imagens\closeBtn_MouseOver.png" />
-    <Resource Include="Imagens\compra.png" />
-    <Resource Include="Imagens\dinheiro.png" />
-    <Resource Include="Imagens\dsimg.png" />
-    <Resource Include="Imagens\editar.png" />
-    <Resource Include="Imagens\entregador.png" />
-    <Resource Include="Imagens\estoque-pronto.png" />
-    <Resource Include="Imagens\excluir.png" />
-    <Resource Include="Imagens\fluxo-de-caixa.png" />
-    <Resource Include="Imagens\fornec.png" />
-    <Resource Include="Imagens\fornecedor.png" />
-    <Resource Include="Imagens\func.png" />
-    <Resource Include="Imagens\homeimg.png" />
-    <Resource Include="Imagens\img_background.png" />
-    <Resource Include="Imagens\img_contact.png" />
-    <Resource Include="Imagens\img_home.png" />
-    <Resource Include="Imagens\img_map.png" />
-    <Resource Include="Imagens\img_message.png" />
-    <Resource Include="Imagens\img_setting.png" />
-    <Resource Include="Imagens\img_signout.png" />
-    <Resource Include="Imagens\layout.png" />
-    <Resource Include="Imagens\list.png" />
-    <Resource Include="Imagens\logocacaus.png" />
-    <Resource Include="Imagens\logoCacauShow.png" />
-    <Resource Include="Imagens\lupa.png" />
-    <Resource Include="Imagens\orcamento.png" />
-    <Resource Include="Imagens\registro.png" />
-    <Resource Include="Imagens\sair.png" />
-    <Resource Include="Imagens\salvar.png" />
-    <Resource Include="Imagens\tgBtn_default.png" />
-    <Resource Include="Imagens\tgBtn_MouseOver.png" />
-    <Resource Include="Imagens\vendaimg.png" />
-    <Resource Include="Imagens\verificado.png" />
+    <Resource Include="Icons\estoque.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\vendas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\produtos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\clientes.png" />
+    <Resource Include="Icons\funcionarios.png" />
+    <Resource Include="Icons\fornecedores.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

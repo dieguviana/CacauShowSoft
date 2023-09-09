@@ -15,12 +15,14 @@ using System.Windows.Shapes;
 namespace NewAppCacauShow.Telas
 {
     /// <summary>
-    /// Lógica interna para ConsultarVendas.xaml
+    /// Lógica interna para ClientesListar.xaml
     /// </summary>
-    public partial class ConsultarVendas : Window
+    public partial class ClientesListar : Window
     {
-        public ConsultarVendas()
+        public ClientesListar()
         {
+            WindowState = WindowState.Maximized;
+            WindowStyle = WindowStyle.SingleBorderWindow;
             InitializeComponent();
         }
     }
