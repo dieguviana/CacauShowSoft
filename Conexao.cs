@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 using MySql.Data.MySqlClient;
 
 namespace NewAppCacauShow
@@ -21,7 +22,7 @@ namespace NewAppCacauShow
 
         private static MySqlConnection connection;
 
-        private static MySqlCommand commmand;
+        private static MySqlCommand command;
 
         public Conexao()
         {
@@ -33,6 +34,20 @@ namespace NewAppCacauShow
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        public MySqlCommand Query()
+        {
+            try
+            {
+                command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                return command;
+            }catch (Exception ex)
+            {
+                throw ex;
             }
         }
 

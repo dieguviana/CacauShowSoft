@@ -12,18 +12,19 @@
             <!-- Título da Tela -->
             <TextBlock Text="Lista de Vendas" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="36" FontWeight="Bold" Foreground="White"/>
 
-            <!-- Lista de Vendas -->
-            <ListView Name="ListViewVendas" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="ID" Width="100"/>
-                        <GridViewColumn Header="Data" Width="150"/>
-                        <GridViewColumn Header="Cliente" Width="250"/>
-                        <GridViewColumn Header="Total" Width="150"/>
-                        <GridViewColumn Header="Ações" Width="200"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+            <DataGrid Name="DataGridVendas" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Width="100" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Data" Width="150" Binding="{Binding Data}"/>
+                    <DataGridTextColumn Header="Desconto" Width="100" Binding="{Binding Desconto}"/>
+                    <DataGridTextColumn Header="Hora" Width="100" Binding="{Binding Hora}"/>
+                    <DataGridTextColumn Header="Valor" Width="100" Binding="{Binding Valor}"/>
+                    <DataGridTextColumn Header="Parcela" Width="100" Binding="{Binding Parcela}"/>
+                    <DataGridTextColumn Header="Forma de Pagamento" Width="200" Binding="{Binding FormaPagamento}"/>
+                    <DataGridTextColumn Header="Funcionário" Width="150" Binding="{Binding Funcionario}"/>
+                    <DataGridTextColumn Header="Cliente" Width="200" Binding="{Binding Cliente}"/>
+                </DataGrid.Columns>
+            </DataGrid>
 
             <!-- Botão Voltar -->
             <Button Content="Voltar ao Menu" Width="150" Height="40" Background="#2ECC71" Foreground="White" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20" Click="Voltar_Click"/>

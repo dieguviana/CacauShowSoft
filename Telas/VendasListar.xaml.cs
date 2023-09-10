@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using NewAppCacauShow.Classes;
 
 namespace NewAppCacauShow.Telas
 {
@@ -24,6 +25,26 @@ namespace NewAppCacauShow.Telas
             WindowState = WindowState.Maximized;
             WindowStyle = WindowStyle.SingleBorderWindow;
             InitializeComponent();
+            Loaded += VendasListar_Loaded;
+        }
+
+        private void VendasListar_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadDataGrid();
+        }
+
+        private void LoadDataGrid()
+        {
+            try
+            {
+                var dao = new VendasDAO();
+
+                DataGridVendas.ItemsSource = dao.List();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Exceção", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void Voltar_Click(object sender, RoutedEventArgs e)
