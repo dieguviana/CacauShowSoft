@@ -53,3 +53,10 @@ C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\obj\Debug\Telas\FornecedoresL
 C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\obj\Debug\Telas\FuncionariosListar.baml
 C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\obj\Debug\Telas\ProdutosListar.baml
 C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\obj\Debug\Telas\VendasListar.baml
+C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\bin\Debug\MySql.Data.dll
+C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\bin\Debug\System.Memory.dll
+C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\bin\Debug\System.Buffers.dll
+C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\bin\Debug\MySql.Data.xml
+C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\obj\Debug\NewAppCacauShow.csproj.CopyComplete

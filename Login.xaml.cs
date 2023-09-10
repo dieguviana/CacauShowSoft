@@ -31,6 +31,15 @@ namespace NewAppCacauShow
             NewAppCacauShow.Telas.Menu menu = new NewAppCacauShow.Telas.Menu();
             menu.Show();
             this.Close();
+
+            try
+            {
+                var conexao = new Conexao();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
