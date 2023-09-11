@@ -28,13 +28,13 @@ municipio_cli varchar(100)
 
 create table Funcionario(
 id_fun int primary key auto_increment,
-nome_fun varchar (100) not null,
-data_nasc_fun date  not null,
-rg_fun varchar(100)  not null,
-cpf_fun varchar(100)  not null,
-email_fun varchar(150)  not null,
-funcao_fun varchar(100)  not null,
-contato_fun varchar(100)  not null,
+nome_fun varchar (100),
+data_nasc_fun date,
+rg_fun varchar(100),
+cpf_fun varchar(100),
+email_fun varchar(150),
+funcao_fun varchar(100),
+contato_fun varchar(100),
 endereco_fun varchar(500),
 cep_fun varchar(100),
 uf_fun varchar(100),
@@ -143,13 +143,9 @@ id_ven_fk int,
 foreign key (id_ven_fk) references Venda (id_ven)
 );
 
+select * from cliente;
+insert into cliente values (null, 'diego', '2006-12-01', '000', '000', '000', '000', '000', '0000', '00', '999', '000');
+insert into funcionario values (null, 'Diego', '2011-02-20', '02932', '0201', 'udiegoviana', 'motorista', '6999832', 'diado', '010220', 'Rondonia', 'Parque', 'ji-paraná');
 
-insert into Produto (id_pro, nome_pro, codigo_pro, data_venc_pro, valor_unit_pro, descricao_pro) values (1, 'Susanne Hatto', '899889899', '2010-02-12', 676765554, '88989899889');
-INSERT INTO Fornecedor (id_for, nome_for, email_for, cnpj_for, telefone_for, endereco_for, cep_for, uf_for, bairro_for, municipio_for) VALUES (1, 'CacauShow','ccsw@gmail.com', '11.878.898/0001-11', '(69)98768-5544', 'Av. Mal. Rondon, 1845','76900', 'Rondonia','hjshdh','Municipio');
-INSERT INTO Funcionario (id_fun, nome_fun, data_nasc_fun, rg_fun, cpf_fun, email_fun, funcao_fun, contato_fun, endereco_fun, cep_fun, uf_fun, bairro_fun, municipio_fun) 
-VALUES (1, 'CacauShow','2005-09-12','893289892','7817389927','ccsw@gmail.com', 'vendedor', '(69)98768-5544', 'Av. Mal. Rondon, 1845','76900', 'Rondonia','hjshdh','Municipio');
-INSERT INTO Cliente (id_cli, nome_cli, data_nasc_cli, rg_cli, cpf_cli, email_cli, contato_cli, endereco_cli, cep_cli, uf_cli, bairro_cli, municipio_cli) VALUES (8, 'CacauShow','2005-09-12','893289892','7817389927','ccsw@gmail.com', '(69)98768-5544', 'Av. Mal. Rondon, 1845','76900', 'Rondonia','hjshdh','Municipio');
-
-
-select * from Cliente;
-
+insert into venda values (null, '2000-01-01', 111, '00:00:00', 2101, 1, 'Á vista', 1, 1);
+select * from venda;

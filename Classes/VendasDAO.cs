@@ -18,7 +18,26 @@ namespace NewAppCacauShow.Classes
 
         public void Delete(Vendas t)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var query = conn.Query();
+                query.CommandText = "DELETE FROM venda WHERE id_ven = @id";
+
+                query.Parameters.AddWithValue("@id", t.Id);
+
+                var result = query.ExecuteNonQuery();
+
+                if (result == 0)
+                    throw new Exception("O registro não foi removido da base de dados. Verifique e tente novamente.");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
         public Vendas GetById(int id)
@@ -38,7 +57,7 @@ namespace NewAppCacauShow.Classes
                 List<Vendas> list = new List<Vendas>();
 
                 var query = conn.Query();
-                query.CommandText = "Select * from Venda";
+                query.CommandText = "select * from Venda where (id_ven is not null)";
 
                 MySqlDataReader reader = query.ExecuteReader();
 

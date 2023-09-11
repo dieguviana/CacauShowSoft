@@ -14,15 +14,25 @@
 
             <DataGrid Name="DataGridVendas" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Width="100" Binding="{Binding Id}"/>
-                    <DataGridTextColumn Header="Data" Width="150" Binding="{Binding Data}"/>
-                    <DataGridTextColumn Header="Desconto" Width="100" Binding="{Binding Desconto}"/>
-                    <DataGridTextColumn Header="Hora" Width="100" Binding="{Binding Hora}"/>
-                    <DataGridTextColumn Header="Valor" Width="100" Binding="{Binding Valor}"/>
-                    <DataGridTextColumn Header="Parcela" Width="100" Binding="{Binding Parcela}"/>
-                    <DataGridTextColumn Header="Forma de Pagamento" Width="200" Binding="{Binding FormaPagamento}"/>
-                    <DataGridTextColumn Header="Funcionário" Width="150" Binding="{Binding Funcionario}"/>
-                    <DataGridTextColumn Header="Cliente" Width="200" Binding="{Binding Cliente}"/>
+                    <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Data" Width="Auto" Binding="{Binding Data}"/>
+                    <DataGridTextColumn Header="Desconto" Width="Auto" Binding="{Binding Desconto}"/>
+                    <DataGridTextColumn Header="Hora" Width="Auto" Binding="{Binding Hora}"/>
+                    <DataGridTextColumn Header="Valor" Width="Auto" Binding="{Binding Valor}"/>
+                    <DataGridTextColumn Header="Parcela" Width="Auto" Binding="{Binding Parcela}"/>
+                    <DataGridTextColumn Header="Forma de Pagamento" Width="Auto" Binding="{Binding FormaPagamento}"/>
+                    <DataGridTextColumn Header="Funcionário" Width="Auto" Binding="{Binding Funcionario}"/>
+                    <DataGridTextColumn Header="Cliente" Width="Auto" Binding="{Binding Cliente}"/>
+                    <DataGridTemplateColumn Width="Auto" Header="Ações">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Button Content="Editar" Width="80" Height="30" Background="Orange" Foreground="White" FontWeight="Bold" Click="Editar_Click"/>
+                                    <Button Content="Excluir" Width="80" Height="30" Background="Red" Foreground="White" FontWeight="Bold" Click="Excluir_Click"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
 

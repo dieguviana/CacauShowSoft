@@ -25,15 +25,10 @@ namespace NewAppCacauShow.Telas
             WindowState = WindowState.Maximized;
             WindowStyle = WindowStyle.SingleBorderWindow;
             InitializeComponent();
-            Loaded += VendasListar_Loaded;
+            Carregar();
         }
 
-        private void VendasListar_Loaded(object sender, RoutedEventArgs e)
-        {
-            LoadDataGrid();
-        }
-
-        private void LoadDataGrid()
+        private void Carregar()
         {
             try
             {
@@ -55,6 +50,18 @@ namespace NewAppCacauShow.Telas
         }
 
         private void Cadastrar_Click(object sender, RoutedEventArgs e)
+        {
+            Vendas venda = new Vendas();
+            venda.Show();
+            this.Close();
+        }
+
+        private void Excluir_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Editar_Click(object sender, RoutedEventArgs e)
         {
 
         }
