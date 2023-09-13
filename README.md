@@ -2,7 +2,7 @@ RESPONSABILIDADE DAS TELAS
 
 Menu: Diego
 
-Venda: Diego
+Venda e recebimento: Diego
 
 Compra e pagamento: Hilary
 
