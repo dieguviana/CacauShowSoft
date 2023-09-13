@@ -10,7 +10,7 @@ Produto: Thauany
 
 Cliente: Jussara
 
-Usuário: Emily
+Usuário e Login: Emily
 
 Fornecedore: Niic
 
