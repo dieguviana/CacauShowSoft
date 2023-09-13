@@ -2,9 +2,9 @@ RESPONSABILIDADE DAS TELAS
 
 Menu: Diego
 
-Venda e Recebimento: Diego
+Venda, Recebimento e Produto_Venda: Diego
 
-Compra e Pagamento: Hilary
+Compra, Pagamento e Produto_Compra: Hilary
 
 Produto: Thauany
 
@@ -13,5 +13,3 @@ Cliente: Jussara
 Usuário e Login: Emily
 
 Fornecedore: Niic
-
-Cada tipo de cadastro tem o cadastrar e o listar, exceto o menu
