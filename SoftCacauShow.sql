@@ -1,16 +1,6 @@
 create database Soft_CacauShow;
 use Soft_CacauShow;
 
-create table Caixa(
-id_cai int primary key auto_increment,
-data_cai date,
-saldo_cai double,
-hora_abertura_cai time,
-hora_fechamento_cai time,
-saldo_final_cai double,
-saldo_inicial_cai double
-);
-
 create table Cliente(
 id_cli int primary key auto_increment,
 nome_cli varchar (300),
@@ -26,20 +16,29 @@ bairro_cli varchar(100),
 municipio_cli varchar(100)
 );
 
-create table Funcionario(
-id_fun int primary key auto_increment,
-nome_fun varchar (100),
-data_nasc_fun date,
-rg_fun varchar(100),
-cpf_fun varchar(100),
-email_fun varchar(150),
-funcao_fun varchar(100),
-contato_fun varchar(100),
-endereco_fun varchar(500),
-cep_fun varchar(100),
-uf_fun varchar(100),
-bairro_fun varchar(100),
-municipio_fun varchar(100)
+create table Usuario(
+id_usu int primary key auto_increment,
+nome_usu varchar (100),
+data_nasc_usu date,
+rg_usu varchar(100),
+cpf_usu varchar(100),
+email_usu varchar(150),
+funcao_usu varchar(100),
+contato_usu varchar(100),
+endereco_usu varchar(500),
+cep_usu varchar(100),
+uf_usu varchar(100),
+bairro_usu varchar(100),
+municipio_usu varchar(100)
+);
+
+create table Login(
+id_log int primary key auto_increment,
+hora_log time,
+data_log date,
+hora_logout_log time,
+id_usu_fk int not null,
+foreign key (id_usu_fk) references usuario (id_usu)
 );
 
 create table Fornecedor(
@@ -64,27 +63,15 @@ valor_unit_pro float,
 descricao_pro varchar(100)
 );
 
-create table Pagamento(
-id_pag int primary key auto_increment, 
-vencimento_pag date,
-valor_pag double,
-parcela_pag int,
-id_for_fk int not null,
-id_cai_fk int not null,
-foreign key (id_for_fk) references fornecedor (id_for),
-foreign key (id_cai_fk) references caixa (id_cai)
-);
-
 create table Venda(
 id_ven int primary key auto_increment,
 data_ven date,
-desconto_ven float,
 hora_ven time,
-valor_ven float,
-parcela_ven double,
+desconto_ven float,
+parcelas_ven int,
 form_pag_ven varchar(300),
-id_fun_fk int,
-foreign key (id_fun_fk) references Funcionario (id_fun),
+id_usu_fk int,
+foreign key (id_usu_fk) references Usuario (id_usu),
 id_cli_fk int,
 foreign key (id_cli_fk) references Cliente (id_cli)
 );
@@ -93,20 +80,10 @@ create table Recebimento(
 id_rec int primary key auto_increment,
 vencimento_pag date,
 valor_pag double,
+valor_venda_pag double,
 parcela_pag int,
 id_ven_fk int not null,
-id_cai_fk int not null,
-foreign key (id_ven_fk) references venda (id_ven),
-foreign key (id_cai_fk) references caixa (id_cai)
-);
-
-create table Login(
-id_log int primary key auto_increment,
-hora_log time,
-data_log date,
-hora_logout_log time,
-id_fun_fk int not null,
-foreign key (id_fun_fk) references funcionario (id_fun)
+foreign key (id_ven_fk) references venda (id_ven)
 );
 
 create table Compra(
@@ -115,12 +92,30 @@ data_com date,
 forma_pag_com varchar(200),
 valor_total_com float,
 status_com varchar(200),
-id_fun_fk int,
-foreign key (id_fun_fk) references Funcionario(id_fun),
+id_usu_fk int,
+foreign key (id_usu_fk) references Usuario (id_usu),
 id_for_fk int,
 foreign key (id_for_fk) references Fornecedor(id_for),
 id_pro_fk int,
 foreign key (id_pro_fk) references Produto(id_pro)
+);
+
+create table Pagamento(
+id_pag int primary key auto_increment, 
+vencimento_pag date,
+valor_pag double,
+parcela_pag int,
+id_com_fk int not null,
+foreign key (id_com_fk) references compra (id_com)
+);
+
+create table Produto_Venda(
+id_pro_ven int primary key auto_increment,
+valor_pro_ven float,
+id_pro_fk int,
+foreign key (id_pro_fk) references Produto (id_pro),
+id_ven_fk int,
+foreign key (id_ven_fk) references Venda (id_ven)
 );
 
 create table Produto_Compra(
@@ -133,19 +128,16 @@ id_com_fk int,
 foreign key (id_com_fk) references Compra (id_com)
 );
 
-create table Produto_Venda(
-id_pro_ven int primary key auto_increment,
-valor_pro_ven float,
-quant_pro_ven int,
-id_pro_fk int,
-foreign key (id_pro_fk) references Produto (id_pro),
-id_ven_fk int,
-foreign key (id_ven_fk) references Venda (id_ven)
-);
+delimiter $$
+create procedure InserirVenda(dia date, hora time, desconto float, parcelas int, forma_pagamento varchar(100), funcionario_fk int, cliente_fk int)
+begin
+if (parcelas <> '' and forma_pagamento <> '') then
+	insert into Venda values (null, dia, hora, desconto, parcelas, forma_pagamento, funcionario_fk, cliente_fk);
+else
+	select 'O número de parcelas e a forma de pagamento são informações obrigatórias para cadastrar uma venda. Preencha essas informações e tente novamente';
+end if;
+end;
+$$ delimiter ;
 
-select * from cliente;
-insert into cliente values (null, 'diego', '2006-12-01', '000', '000', '000', '000', '000', '0000', '00', '999', '000');
-insert into funcionario values (null, 'Diego', '2011-02-20', '02932', '0201', 'udiegoviana', 'motorista', '6999832', 'diado', '010220', 'Rondonia', 'Parque', 'ji-paraná');
-
-insert into venda values (null, '2000-01-01', 111, '00:00:00', 2101, 1, 'Á vista', 1, 1);
-select * from venda;
+insert into Produto values (null, 'Chocolate', 1, '2024-09-14', 100, 'É de chocolate');
+call InserirVenda(curdate(), curtime(), 0, 1, 'Dinheiro', 1, 1);
