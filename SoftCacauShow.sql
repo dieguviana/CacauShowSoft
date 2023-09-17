@@ -1,21 +1,6 @@
 create database Soft_CacauShow;
 use Soft_CacauShow;
 
-create table Cliente(
-id_cli int primary key auto_increment,
-nome_cli varchar (300),
-data_nasc_cli date,
-cpf_cli varchar(200),
-rg_cli varchar(300),
-contato_cli varchar(300),
-email_cli varchar(100),
-endereco_cli varchar(500),
-cep_cli varchar(100),
-uf_cli varchar(100),
-bairro_cli varchar(100),
-municipio_cli varchar(100)
-);
-
 create table Usuario(
 id_usu int primary key auto_increment,
 nome_usu varchar (100),
@@ -59,31 +44,9 @@ id_pro int primary key auto_increment,
 nome_pro varchar(300),
 codigo_pro varchar(500),
 data_venc_pro date,
-valor_unit_pro float,
+valor_compra_pro double,
+valor_venda_pro double,
 descricao_pro varchar(100)
-);
-
-create table Venda(
-id_ven int primary key auto_increment,
-data_ven date,
-hora_ven time,
-desconto_ven float,
-parcelas_ven int,
-form_pag_ven varchar(300),
-id_usu_fk int,
-foreign key (id_usu_fk) references Usuario (id_usu),
-id_cli_fk int,
-foreign key (id_cli_fk) references Cliente (id_cli)
-);
-
-create table Recebimento(
-id_rec int primary key auto_increment,
-vencimento_pag date,
-valor_pag double,
-valor_venda_pag double,
-parcela_pag int,
-id_ven_fk int not null,
-foreign key (id_ven_fk) references venda (id_ven)
 );
 
 create table Compra(
@@ -109,15 +72,6 @@ id_com_fk int not null,
 foreign key (id_com_fk) references compra (id_com)
 );
 
-create table Produto_Venda(
-id_pro_ven int primary key auto_increment,
-valor_pro_ven float,
-id_pro_fk int,
-foreign key (id_pro_fk) references Produto (id_pro),
-id_ven_fk int,
-foreign key (id_ven_fk) references Venda (id_ven)
-);
-
 create table Produto_Compra(
 id_pro_com int primary key auto_increment,
 quant_pro_com int,
@@ -128,16 +82,122 @@ id_com_fk int,
 foreign key (id_com_fk) references Compra (id_com)
 );
 
+create table Cliente(
+id_cli int primary key auto_increment,
+nome_cli varchar (300),
+data_nasc_cli date,
+cpf_cli varchar(200),
+rg_cli varchar(300),
+contato_cli varchar(300),
+email_cli varchar(100),
+endereco_cli varchar(500),
+cep_cli varchar(100),
+uf_cli varchar(100),
+bairro_cli varchar(100),
+municipio_cli varchar(100)
+);
+
+create table Venda(
+id_ven int primary key auto_increment,
+data_hora_ven datetime,
+id_usu_fk int,
+foreign key (id_usu_fk) references Usuario (id_usu),
+id_cli_fk int,
+foreign key (id_cli_fk) references Cliente (id_cli)
+);
+
+create table Produto_Venda(
+id_pro_ven int primary key auto_increment,
+id_pro_fk int,
+foreign key (id_pro_fk) references Produto (id_pro),
+id_ven_fk int,
+foreign key (id_ven_fk) references Venda (id_ven)
+);
+
+create table Recebimento(
+id_rec int primary key auto_increment,
+valor_venda_rec double,
+desconto_rec double,
+valor_entrada_rec double,
+forma_pagamento_rec varchar(100),
+id_ven_fk int,
+foreign key (id_ven_fk) references venda (id_ven)
+);
+
+# Diego Viana
+
 delimiter $$
-create procedure InserirVenda(dia date, hora time, desconto float, parcelas int, forma_pagamento varchar(100), funcionario_fk int, cliente_fk int)
+create procedure InserirVenda(data_hora datetime, usuario_fk int, cliente_fk int)
 begin
-if (parcelas <> '' and forma_pagamento <> '') then
-	insert into Venda values (null, dia, hora, desconto, parcelas, forma_pagamento, funcionario_fk, cliente_fk);
-else
-	select 'O número de parcelas e a forma de pagamento são informações obrigatórias para cadastrar uma venda. Preencha essas informações e tente novamente';
-end if;
-end;
+declare teste varchar(100);
+set teste = (select id_cli from cliente where id_cli = cliente_fk);
+	if (cliente_fk is not null) then
+		if (teste <> null or teste <> 0) then
+			insert into venda values (null, data_hora, usuario_fk, cliente_fk);
+            select "Venda cadastrada com sucesso!" as 'Confirmação';
+		else
+			select "O cliente fornecido não existe no sistema. Realize o cadastro do cliente ou cadastre uma venda sem informar o cliente" as Erro;
+		end if;
+    else
+		insert into venda values (null, data_hora, usuario_fk, null);
+		select "Venda cadastrada com sucesso sem cliente!" as 'Atenção';
+    end if;
+end
 $$ delimiter ;
 
-insert into Produto values (null, 'Chocolate', 1, '2024-09-14', 100, 'É de chocolate');
-call InserirVenda(curdate(), curtime(), 0, 1, 'Dinheiro', 1, 1);
+delimiter $$
+create procedure InserirProdutoVenda(produto_fk int, venda_fk int)
+begin
+	if (produto_fk <> null or produto_fk <> 0) then
+		insert into Produto_Venda values (null, produto_fk, venda_fk);
+        select 'Produto inserido com sucesso!' as 'Confirmação';
+	else
+		select 'É obrigatório informar o produto que deseja cadastrar na compra!' as 'Erro';
+	end if;
+end
+$$ delimiter ;
+
+delimiter $$
+
+create procedure InserirRecebimento(valor_venda double, desconto double, valor_entrada double, forma_pagamento varchar(100), venda_fk int)
+begin
+	if (venda_fk <> 0) then
+		insert into Recebimento values (null, valor_venda, desconto, valor_entrada, forma_pagamento, venda_fk);
+        select 'Recebimento cadastrado com suceso!' as 'Confirmação';
+	else
+		insert into Recebimento values (null, valor_venda, desconto, valor_entrada, forma_pagamento, venda_fk);
+        select 'Recebimento cadastrado com sucesso sem informar de qual venda!' as 'Atenção';
+    end if;
+end
+$$ delimiter ;
+
+insert into Usuario values (null, 'Thauany', '2000-01-01', '1111111-11', '000.000.000-00', 'thauany@celestino.com', 'Gerente', '69984777384', 'Nova Londrina', '00', 'RO', 'Não informado', 'Ji-Paraná');
+insert into Usuario values (null, 'Niic', '2000-01-01', '1111111-11', '000.000.000-00', 'niic@celestino.com', 'Gerente', '69984777384', 'Jipa', '00', 'RO', 'Não informado', 'Ji-Paraná');
+insert into Usuario values (null, 'Jussara', '2000-01-01', '1111111-11', '000.000.000-00', 'jussara@celestino.com', 'Gerente', '69984777384', 'Jipa', '00', 'RO', 'Não informado', 'Ji-Paraná');
+insert into Produto values (null, 'Chocolate', '01010101', '2024-09-17', 1, 2.50, 'Barra de chocolate');
+insert into Produto values (null, 'Chocolate de Morango', '0202020202', '2024-09-17', 1, 2.50, 'Barra de morango');
+insert into Produto values (null, 'Chocolate de Maracujá', '030303033', '2024-09-17', 1, 2.50, 'Barra de maracujá');
+insert into Cliente values (null, 'Diego', '2000-01-01', '111.111.111-11', '01293-11', '69 9 8477-7384', 'diegu@gmail.com', 'Rua Dario', '919191', 'RO', 'Parque', 'Ji-Pa');
+insert into Cliente values (null, 'Hilary', '2000-01-01', '111.111.111-11', '01293-11', '69 9 8477-7384', 'hilary@gmail.com', 'Rua Dario', '919191', 'RO', 'Parque', 'Ji-Pa');
+insert into Cliente values (null, 'Emily', '2000-01-01', '111.111.111-11', '01293-11', '69 9 8477-7384', 'emily@gmail.com', 'Rua Dario', '919191', 'RO', 'Parque', 'Ji-Pa');
+
+call InserirVenda('2025-09-17 00:00:00', 1, 1);
+call InserirProdutoVenda(1,1);
+call InserirProdutoVenda(2,1);
+call InserirProdutoVenda(3,1);
+call InserirRecebimento(10, 0, 10, 'Cartão de débito', 1);
+call InserirVenda('2024-09-17 23:00:00', 2, 2);
+call InserirProdutoVenda(1,2);
+call InserirProdutoVenda(2,2);
+call InserirProdutoVenda(3,2);
+call InserirRecebimento(10, 0, 10, 'Cartão de crédito', 2);
+call InserirVenda('2022-09-17 21:30:10', 3, 4); #Cliente que não existe no sistema
+call InserirVenda('2022-09-17 21:30:10', 3, null); #Sem informar cliente
+call InserirProdutoVenda(1,3);
+call InserirProdutoVenda(2,3);
+call InserirProdutoVenda(null,3); #Sem informar produto
+call InserirRecebimento(10, 0, 10, 'Dinheiro', null); #Sem informar de qual venda
+
+select * from recebimento;
+select * from produto_venda;
+select * from venda;
