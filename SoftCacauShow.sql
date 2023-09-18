@@ -229,5 +229,3 @@ DELIMITER ;
 call InserirProduto('Trufa', '934794794279', '2030-09-08', '20.00', '40.00', 'recheio de maracujá');
 
 select * from produto;
-
-#alterei
