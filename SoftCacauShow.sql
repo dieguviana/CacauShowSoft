@@ -264,3 +264,36 @@ call InserirProduto('Trufa de Morango', '883283389238378', '2030-09-08', '20.00'
 call InserirProduto('Trufa de limão', '', '2030-09-08', '10.00', '30.00', 'recheio de maracujá');
 call InserirProduto('La creme', '883283389238378', '2030-09-08', '5.00', '10.00', 'recheio de maracujá');
 SELECT * FROM Produto;
+
+DELIMITER $$
+create procedure InserirFornecedor (
+  nome varchar(300), 
+  email varchar(300), 
+  cnpj varchar(100), 
+  telefone varchar(100), 
+  endereco varchar(500),
+  cep varchar(100),
+  uf varchar(100),
+  bairro varchar(100),
+  municipio varchar(100)
+)
+begin
+	declare teste_cnpj varchar (14);
+	set teste_cnpj = (select cnpj_for from Fornecedor where cnpj_for = cnpj);
+	
+			if (teste_cnpj = '') or (teste_cnpj is null) then    
+				insert into Fornecedor values (null, nome, email, cnpj, telefone, endereco, cep, uf, bairro, municipio);
+				select ('O Fornecedor foi salvo com sucesso!') as Confirmacao;
+			else
+				select 'O Fornecedor informado já está existe!' as Alerta;
+		end if;
+        
+end;
+$$
+DELIMITER ;
+
+call InserirFornecedor('J', 'fornecedorJ@email.com', '8928942883498934', '(11) 98765-4321', 'Rua A, 123', '01000-000', 'SP', 'Bairro A', 'Cidade A');
+call InserirFornecedor('H', 'fornecedorH@email.com', '98408938948798938', '(22) 98765-4321', 'Rua B, 456', '02000-000', 'SP', 'Bairro B', 'Cidade B');
+call InserirFornecedor('I', 'fornecedorI@email.com', '8928942883498934', '(33) 98765-4321', 'Rua C, 789', '03000-000', 'SP', 'Bairro C', 'Cidade C');
+
+SELECT * FROM Fornecedor;
