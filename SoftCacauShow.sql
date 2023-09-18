@@ -201,3 +201,31 @@ call InserirRecebimento(10, 0, 10, 'Dinheiro', null); #Sem informar de qual vend
 select * from recebimento;
 select * from produto_venda;
 select * from venda;
+
+
+# PRODUTO
+DELIMITER $$
+create procedure InserirProduto (
+  nome VARCHAR(200), 
+  codigo VARCHAR(200), 
+  data_venc DATE, 
+  valor_compra DOUBLE, 
+  valor_venda DOUBLE, 
+  descricao VARCHAR(200)
+)
+begin
+	declare teste_cod varchar (300);
+	set teste_cod = (select codigo_pro from produto where codigo_pro = codigo );
+		if (teste_cod = '') or (teste_cod is null) then    
+			insert into produto values (null, nome, codigo, data_venc, valor_compra, valor_venda, descricao);
+			select concat('O Produto ', nome, ' foi salvo com sucesso!') AS Confirmacao;
+		else
+			select 'O Produto informado já está cadastrado!' AS Alerta;
+  end if;
+end;
+$$
+DELIMITER ;
+
+call InserirProduto('Trufa', '934794794279', '2030-09-08', '20.00', '40.00', 'recheio de maracujá');
+
+select * from produto;
