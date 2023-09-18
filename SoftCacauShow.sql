@@ -203,7 +203,7 @@ select * from produto_venda;
 select * from venda;
 
 
-# PRODUTO
+#PRODUTO
 DELIMITER $$
 create procedure InserirProduto (
   nome VARCHAR(200), 
@@ -227,5 +227,40 @@ $$
 DELIMITER ;
 
 call InserirProduto('Trufa', '934794794279', '2030-09-08', '20.00', '40.00', 'recheio de maracujá');
+call InserirProduto('Bombom', '', '2030-09-08', '20.00', '40.00', 'recheio de maracujá');
+call InserirProduto('Barra de chocolate', '883283389238378', '2030-09-08', '20.00', '40.00', 'recheio de maracujá');
 
-select * from produto;
+
+
+#PRODUTO
+DELIMITER $$
+create procedure InserirProduto (
+  nome VARCHAR(200), 
+  codigo VARCHAR(200), 
+  data_venc DATE, 
+  valor_compra DOUBLE, 
+  valor_venda DOUBLE, 
+  descricao VARCHAR(200)
+)
+begin
+	declare teste_cod varchar (300);
+	set teste_cod = (select codigo_pro from produto where codigo_pro = codigo );
+  
+  if codigo <> '' then
+		if (teste_cod = '') or (teste_cod is null) then    
+			insert into produto values (null, nome, codigo, data_venc, valor_compra, valor_venda, descricao);
+			select concat('O Produto ', nome, ' foi salvo com sucesso!') AS Confirmacao;
+		else
+			select 'O Produto informado já está cadastrado!' AS Alerta;
+  end if;
+   else
+  select 'O campo codigo deve ser preenchido!' as Erro;
+  end if;
+end;
+$$
+DELIMITER ;
+
+call InserirProduto('Trufa de Morango', '883283389238378', '2030-09-08', '20.00', '40.00', 'recheio de morangp');
+call InserirProduto('Trufa de limão', '', '2030-09-08', '10.00', '30.00', 'recheio de maracujá');
+call InserirProduto('La creme', '883283389238378', '2030-09-08', '5.00', '10.00', 'recheio de maracujá');
+SELECT * FROM Produto;
