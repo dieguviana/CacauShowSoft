@@ -203,11 +203,33 @@ DELIMITER ;
 call InserirProduto('Trufa de Morango', '883283389238378', '2030-09-08', '2.00', '4.00', 'recheio de morango');  
 call InserirProduto('Trufa de limão', '', '2030-09-08', '10.00', '30.00', 'recheio de maracujá'); #Não vai ser inserido porque o campo está vazio.
 call InserirProduto('La creme', '883283389238378', '2030-09-08', '5.00', '10.00', 'recheio de maracujá'); #Não vai ser inserido porque o codigo informado já existe.
-
-
-
-
 SELECT * FROM Produto;
+
+#Hilary Souza de Oliveira 
+delimiter $$
+create procedure InserirCompra(
+data_com date,
+forma_pag varchar(100), 
+valor_total float,
+status_com varchar(100),
+id_usu_fk int,
+id_for_fk int,
+id_pro_fk int)
+begin
+	if(id_usu_fk <> null or id_usu_fk <> 0) then
+			insert into Compra values(null, data_com, forma_pag, valor_total,status_com, id_usu_fk, id_for_fk, id_pro_fk);
+		select 'Compra inserida com sucesso' as 'Confirmação';
+        else
+			select 'É obrigatório informar o Usuário, Fornecedor e Produto da Compra!' as 'Erro';
+		end if;
+	end;
+$$ delimiter ;
+
+call InserirCompra ('2025-09-20', 'cartão','100.00','pago','1','2','3');
+call InserirCompra ('2024-09-20', 'cartão','100.00','pago','1','2','3');
+call InserirCompra ('2023-09-20', 'cartão','100.00','pago','1','2','3');
+
+select * from Compra;
 
 #Diego Viana
 delimiter $$
@@ -229,11 +251,13 @@ set teste = (select id_cli from cliente where id_cli = cliente_fk);
 end;
 $$ delimiter ;
 
+
 call InserirVenda('2025-09-17 00:00:00', 1, 1);
 call InserirVenda('2024-09-17 23:00:00', 2, 2);
 call InserirVenda('2022-09-17 21:30:10', 3, 4); #Da erro pelo cliente não existir no sistema
 call InserirVenda('2022-09-17 21:30:10', 3, null); #Insere, mas da um 'Atenção'
 select * from Venda;
+
 
 #Diego Viana
 delimiter $$
