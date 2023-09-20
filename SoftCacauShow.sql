@@ -296,3 +296,30 @@ call InserirRecebimento(10, 0, 10, 'Cartão de débito', 1);
 call InserirRecebimento(10, 0, 10, 'Cartão de crédito', 2);
 call InserirRecebimento(10, 0, 10, 'Dinheiro', null); #Cadastra, mas da um 'Atenção' por não informar de qual venda é o recebimento
 select * from recebimento;
+
+
+
+#Emily
+delimiter $$
+create procedure cadastrar_usuario (nome varchar (100), data date, rg varchar(100), cpf varchar(100), email varchar(150), funcao varchar(100), contato varchar(100), endereco varchar(500), cep varchar(100), uf varchar(100), bairro varchar(100), municipio varchar(100))
+begin
+declare usar_cpf varchar (300);
+
+set usar_cpf = (select cpf_usu from usuario where (cpf_usu = cpf));
+
+if  (cpf <> '') then 
+	if (usar_cpf = '') or (usar_cpf is null) then         
+				insert into usuario values (null, nome, data, rg, cpf, email, funcao, contato, endereco, cep, uf, bairro, municipio);
+                select concat('O usuário ', nome, ' foi inserido com sucesso!') as Confirmacao;
+    else
+		select 'O CPF informado já esta cadastrado!' as Alerta;
+    end if;
+else
+	select 'O campo cpf é obrigatório!' as Alerta;
+end if;
+end;
+$$ delimiter ;
+
+call salvar_usuario ('emilinha linda', '12/04/2111', '455786544', '456.125.356-95',  'batatas.com', 'operador de caixa' , '69 9 54887965', 'cracola', '8555548', 'RO', 'jardim verde', 'bolinha');
+
+select * from usuario;
