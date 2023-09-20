@@ -132,6 +132,11 @@ insert into Cliente values (null, 'Diego', '2000-01-01', '111.111.111-11', '0129
 insert into Cliente values (null, 'Hilary', '2000-01-01', '111.111.111-11', '01293-11', '69 9 8477-7384', 'hilary@gmail.com', 'Rua Dario', '919191', 'RO', 'Parque', 'Ji-Pa');
 insert into Cliente values (null, 'Emily', '2000-01-01', '111.111.111-11', '01293-11', '69 9 8477-7384', 'emily@gmail.com', 'Rua Dario', '919191', 'RO', 'Parque', 'Ji-Pa');
 
+Insert into Produto values (null, 'Trufa de brigadeiro', '4357490475490', '2025-04-11', '4.00', '8.00', '200g');
+Insert into Produto values (null, 'Trufa de maracujá', '53454345345345', '2024-01-11', '4.00', '8.00', '200g');
+Insert into Produto values (null, 'Trufa de beijinho', '02344535245345', '2026-04-11', '4.00', '8.00', '200g');
+
+select * from Produto;
 #Niic Dias
 DELIMITER $$
 create procedure InserirFornecedor (
@@ -146,7 +151,7 @@ create procedure InserirFornecedor (
   municipio varchar(100)
 )
 begin
-	declare teste_cnpj varchar (14);
+	declare teste_cnpj varchar (100);
 	set teste_cnpj = (select cnpj_for from Fornecedor where cnpj_for = cnpj);
 	
 			if (teste_cnpj = '') or (teste_cnpj is null) then    
@@ -166,36 +171,7 @@ call InserirFornecedor('I', 'fornecedorI@email.com', '8928942883498934', '(33) 9
 
 SELECT * FROM Fornecedor;
 
-#Thauany da Silva
-#PRODUTO
-DELIMITER $$
-create procedure InserirProduto (
-  nome VARCHAR(200), 
-  codigo VARCHAR(200), 
-  data_venc DATE, 
-  valor_compra DOUBLE, 
-  valor_venda DOUBLE, 
-  descricao VARCHAR(200)
-)
-begin
-	declare teste_cod varchar (300);
-	set teste_cod = (select codigo_pro from produto where codigo_pro = codigo );
-		if (teste_cod = '') or (teste_cod is null) then    
-			insert into produto values (null, nome, codigo, data_venc, valor_compra, valor_venda, descricao);
-			select concat('O Produto ', nome, ' foi salvo com sucesso!') AS Confirmacao;
-		else
-			select 'O Produto informado já está cadastrado!' AS Alerta;
-  end if;
-end;
-$$
-DELIMITER ;
-
-call InserirProduto('Trufa', '934794794279', '2030-09-08', '20.00', '40.00', 'recheio de maracujá');
-call InserirProduto('Bombom', '', '2030-09-08', '20.00', '40.00', 'recheio de maracujá');
-call InserirProduto('Barra de chocolate', '883283389238378', '2030-09-08', '20.00', '40.00', 'recheio de maracujá');
-
-
-#Thauany da Silva
+#Thauany Celestino
 #PRODUTO
 DELIMITER $$
 create procedure InserirProduto (
@@ -224,9 +200,13 @@ end;
 $$
 DELIMITER ;
 
-call InserirProduto('Trufa de Morango', '883283389238378', '2030-09-08', '20.00', '40.00', 'recheio de morangp');
-call InserirProduto('Trufa de limão', '', '2030-09-08', '10.00', '30.00', 'recheio de maracujá');
-call InserirProduto('La creme', '883283389238378', '2030-09-08', '5.00', '10.00', 'recheio de maracujá');
+call InserirProduto('Trufa de Morango', '883283389238378', '2030-09-08', '2.00', '4.00', 'recheio de morango');  
+call InserirProduto('Trufa de limão', '', '2030-09-08', '10.00', '30.00', 'recheio de maracujá'); #Não vai ser inserido porque o campo está vazio.
+call InserirProduto('La creme', '883283389238378', '2030-09-08', '5.00', '10.00', 'recheio de maracujá'); #Não vai ser inserido porque o codigo informado já existe.
+
+
+
+
 SELECT * FROM Produto;
 
 #Diego Viana
