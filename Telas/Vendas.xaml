@@ -10,56 +10,10 @@
         <!-- Plano de fundo -->
         <Grid Background="#2E4053">
             <!-- Título da Tela -->
-            <TextBlock Text="Cadastrar Venda" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="48" FontWeight="Bold" Foreground="White"/>
+            <TextBlock Text="Cadastrar Venda" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="36" FontWeight="Bold" Foreground="White"/>
 
-            <!-- Formulário de Cadastro -->
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <!-- Coluna 1 -->
-                <StackPanel Grid.Column="0" Margin="10">
-                    <!-- Data -->
-                    <TextBlock Text="Data:" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,0,4"/>
-                    <DatePicker Name="DatePickerData" VerticalAlignment="Center" Margin="0"/>
-
-                    <!-- Desconto -->
-                    <TextBlock Text="Desconto:" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" Margin="0,20,0,10"/>
-                    <TextBox Name="TextBoxDesconto" VerticalAlignment="Center" Margin="0"/>
-
-                    <!-- Hora -->
-                    <TextBlock Text="Hora:" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" Margin="0,20,0,10"/>
-                    <TextBox Name="TextBoxHora" VerticalAlignment="Center" Margin="0"/>
-
-                    <!-- Valor -->
-                    <TextBlock Text="Valor:" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" Margin="0,20,0,10"/>
-                    <TextBox Name="TextBoxValor" VerticalAlignment="Center" Margin="0"/>
-                </StackPanel>
-
-                <!-- Coluna 2 -->
-                <StackPanel Grid.Column="1" Margin="10">
-                    <!-- Parcela -->
-                    <TextBlock Text="Parcela:" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,0,10"/>
-                    <TextBox Name="TextBoxParcela" VerticalAlignment="Center" Margin="0"/>
-
-                    <!-- Forma de Pagamento -->
-                    <TextBlock Text="Forma de Pagamento:" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" Margin="0,20,0,10"/>
-                    <TextBox Name="TextBoxFormaPagamento" VerticalAlignment="Center" Margin="0"/>
-
-                    <!-- Funcionário -->
-                    <TextBlock Text="Funcionário:" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" Margin="0,20,0,10"/>
-                    <TextBox Name="TextBoxFuncionario" VerticalAlignment="Center" Margin="0"/>
-
-                    <!-- Cliente -->
-                    <TextBlock Text="Cliente:" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" Margin="0,20,0,10"/>
-                    <TextBox x:Name="TextBoxCliente"/>
-                </StackPanel>
-            </Grid>
-
-            <!-- Botão Cadastrar -->
-            <Button Content="Cadastrar" Width="200" Height="50" Background="#2ECC71" Foreground="White" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center" Click="Cadastrar_Click" Margin="0,488,0,0"/>
+            <!-- Botão Voltar -->
+            <Button Content="Voltar ao Listar Vendas" Width="150" Height="40" Background="#2ECC71" Foreground="White" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20" Click="Voltar_Click"/>
         </Grid>
     </Grid>
 </Window>

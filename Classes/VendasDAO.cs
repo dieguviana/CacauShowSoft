@@ -57,7 +57,7 @@ namespace NewAppCacauShow.Classes
                 List<Vendas> list = new List<Vendas>();
 
                 var query = conn.Query();
-                query.CommandText = "select * from Venda where (id_ven is not null)";
+                query.CommandText = "select * from Venda";
 
                 MySqlDataReader reader = query.ExecuteReader();
 
@@ -66,13 +66,8 @@ namespace NewAppCacauShow.Classes
                     list.Add(new Vendas()
                     {
                         Id = reader.GetInt32("id_ven"),
-                        Data = reader.GetDateTime("data_ven"),
-                        Desconto = reader.GetFloat("desconto_ven"),
-                        Hora = reader.GetTimeSpan("hora_ven"),
-                        Valor = reader.GetFloat("valor_ven"),
-                        Parcela = reader.GetFloat("parcela_ven"),
-                        FormaPagamento = reader.GetString("form_pag_ven"),
-                        Funcionario = reader.GetInt32("id_fun_fk"),
+                        DataHora = reader.GetDateTime("data_hora_ven"),
+                        Usuario = reader.GetInt32("id_usu_fk"),
                         Cliente = reader.GetInt32("id_cli_fk")
                     });
                 }

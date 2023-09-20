@@ -15,13 +15,8 @@
             <DataGrid Name="DataGridVendas" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}"/>
-                    <DataGridTextColumn Header="Data" Width="Auto" Binding="{Binding Data}"/>
-                    <DataGridTextColumn Header="Desconto" Width="Auto" Binding="{Binding Desconto}"/>
-                    <DataGridTextColumn Header="Hora" Width="Auto" Binding="{Binding Hora}"/>
-                    <DataGridTextColumn Header="Valor" Width="Auto" Binding="{Binding Valor}"/>
-                    <DataGridTextColumn Header="Parcela" Width="Auto" Binding="{Binding Parcela}"/>
-                    <DataGridTextColumn Header="Forma de Pagamento" Width="Auto" Binding="{Binding FormaPagamento}"/>
-                    <DataGridTextColumn Header="Funcionário" Width="Auto" Binding="{Binding Funcionario}"/>
+                    <DataGridTextColumn Header="DataHora" Width="Auto" Binding="{Binding DataHora}"/>
+                    <DataGridTextColumn Header="Usuário" Width="Auto" Binding="{Binding Usuario}"/>
                     <DataGridTextColumn Header="Cliente" Width="Auto" Binding="{Binding Cliente}"/>
                     <DataGridTemplateColumn Width="Auto" Header="Ações">
                         <DataGridTemplateColumn.CellTemplate>

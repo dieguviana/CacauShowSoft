@@ -21,10 +21,24 @@ namespace NewAppCacauShow.Telas
     {
         public Vendas()
         {
+            WindowState = WindowState.Maximized;
+            WindowStyle = WindowStyle.SingleBorderWindow;
             InitializeComponent();
         }
 
-        private void Cadastrar_Click(object sender, RoutedEventArgs e)
+        private void Voltar_Click(object sender, RoutedEventArgs e)
+        {
+            VendasListar vendasListar = new VendasListar();
+            vendasListar.Show();
+            this.Close();
+        }
+
+        private void Excluir_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Editar_Click(object sender, RoutedEventArgs e)
         {
 
         }

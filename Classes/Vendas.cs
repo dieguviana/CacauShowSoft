@@ -10,19 +10,9 @@ namespace NewAppCacauShow.Classes
     {
         public int Id { get; set; }
 
-        public DateTime Data { get; set; }
-
-        public float Desconto { get; set; }
-
-        public TimeSpan Hora { get; set; }
-
-        public float Valor { get; set; }
-
-        public double Parcela { get; set; }
+        public DateTime DataHora { get; set; }
         
-        public string FormaPagamento { get; set; }
-        
-        public int Funcionario { get; set; }
+        public int Usuario { get; set; }
 
         public int Cliente { get; set; }
     }
