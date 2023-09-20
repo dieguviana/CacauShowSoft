@@ -14,10 +14,32 @@
 
             <DataGrid Name="DataGridVendas" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" AutoGenerateColumns="False">
                 <DataGrid.Columns>
+                    <!-- "Venda.id_ven as 'Código'," +
+                    "Venda.data_hora_ven as 'Data e hora'," +
+                    "Usuario.nome_usu as 'Usuario'," +
+                    "Cliente.nome_cli as 'Cliente'," +
+                    "Produto.nome_pro as 'Produto'," +
+                    "Produto.valor_venda_pro as 'Valor'," +
+                    "Recebimento.valor_venda_rec as 'Valor da venda'," +
+                    "Recebimento.desconto_rec as 'Desconto'," +
+                    "Recebimento.valor_entrada_rec as 'Valor pago'," +
+                    "Recebimento.forma_pagamento_rec" +
+                    "from" +
+                    "Venda, Usuario, Cliente, Produto, Recebimento, Produto_Venda" +
+                    "where" +
+                    "(Usuario.id_usu = Venda.id_usu_fk) and" +
+                    "(Cliente.id_cli = Venda.id_cli_fk) and" +
+                    "(Produto_Venda.id_pro_fk = Produto.id_pro) and" +
+                    "(Produto_Venda.id_ven_fk = Venda.id_ven) and" +
+                    "(Recebimento.id_ven_fk = Venda.id_ven)"; -->
                     <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}"/>
                     <DataGridTextColumn Header="DataHora" Width="Auto" Binding="{Binding DataHora}"/>
                     <DataGridTextColumn Header="Usuário" Width="Auto" Binding="{Binding Usuario}"/>
                     <DataGridTextColumn Header="Cliente" Width="Auto" Binding="{Binding Cliente}"/>
+                    <DataGridTextColumn Header="Valor Total" Width="Auto" Binding="{Binding ValorVenda}"/>
+                    <DataGridTextColumn Header="Desconto" Width="Auto" Binding="{Binding Desconto}"/>
+                    <DataGridTextColumn Header="Valor Pago" Width="Auto" Binding="{Binding ValorEntrada}"/>
+                    <DataGridTextColumn Header="Forma de pagamento" Width="Auto" Binding="{Binding ValorEntrada}"/>
                     <DataGridTemplateColumn Width="Auto" Header="Ações">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
