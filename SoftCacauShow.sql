@@ -124,85 +124,49 @@ id_ven_fk int,
 foreign key (id_ven_fk) references venda (id_ven)
 );
 
-# Diego Viana
-
-delimiter $$
-create procedure InserirVenda(data_hora datetime, usuario_fk int, cliente_fk int)
-begin
-declare teste varchar(100);
-set teste = (select id_cli from cliente where id_cli = cliente_fk);
-	if (cliente_fk is not null) then
-		if (teste <> null or teste <> 0) then
-			insert into venda values (null, data_hora, usuario_fk, cliente_fk);
-            select "Venda cadastrada com sucesso!" as 'Confirmação';
-		else
-			select "O cliente fornecido não existe no sistema. Realize o cadastro do cliente ou cadastre uma venda sem informar o cliente" as Erro;
-		end if;
-    else
-		insert into venda values (null, data_hora, usuario_fk, null);
-		select "Venda cadastrada com sucesso sem cliente!" as 'Atenção';
-    end if;
-end
-$$ delimiter ;
-
-delimiter $$
-create procedure InserirProdutoVenda(produto_fk int, venda_fk int)
-begin
-	if (produto_fk <> null or produto_fk <> 0) then
-		insert into Produto_Venda values (null, produto_fk, venda_fk);
-        select 'Produto inserido com sucesso!' as 'Confirmação';
-	else
-		select 'É obrigatório informar o produto que deseja cadastrar na compra!' as 'Erro';
-	end if;
-end
-$$ delimiter ;
-
-delimiter $$
-
-create procedure InserirRecebimento(valor_venda double, desconto double, valor_entrada double, forma_pagamento varchar(100), venda_fk int)
-begin
-	if (venda_fk <> 0) then
-		insert into Recebimento values (null, valor_venda, desconto, valor_entrada, forma_pagamento, venda_fk);
-        select 'Recebimento cadastrado com suceso!' as 'Confirmação';
-	else
-		insert into Recebimento values (null, valor_venda, desconto, valor_entrada, forma_pagamento, venda_fk);
-        select 'Recebimento cadastrado com sucesso sem informar de qual venda!' as 'Atenção';
-    end if;
-end
-$$ delimiter ;
-
+#Para os testes funcionarem, em razão das chaves estrangeiras
 insert into Usuario values (null, 'Thauany', '2000-01-01', '1111111-11', '000.000.000-00', 'thauany@celestino.com', 'Gerente', '69984777384', 'Nova Londrina', '00', 'RO', 'Não informado', 'Ji-Paraná');
 insert into Usuario values (null, 'Niic', '2000-01-01', '1111111-11', '000.000.000-00', 'niic@celestino.com', 'Gerente', '69984777384', 'Jipa', '00', 'RO', 'Não informado', 'Ji-Paraná');
 insert into Usuario values (null, 'Jussara', '2000-01-01', '1111111-11', '000.000.000-00', 'jussara@celestino.com', 'Gerente', '69984777384', 'Jipa', '00', 'RO', 'Não informado', 'Ji-Paraná');
-insert into Produto values (null, 'Chocolate', '01010101', '2024-09-17', 1, 2.50, 'Barra de chocolate');
-insert into Produto values (null, 'Chocolate de Morango', '0202020202', '2024-09-17', 1, 2.50, 'Barra de morango');
-insert into Produto values (null, 'Chocolate de Maracujá', '030303033', '2024-09-17', 1, 2.50, 'Barra de maracujá');
 insert into Cliente values (null, 'Diego', '2000-01-01', '111.111.111-11', '01293-11', '69 9 8477-7384', 'diegu@gmail.com', 'Rua Dario', '919191', 'RO', 'Parque', 'Ji-Pa');
 insert into Cliente values (null, 'Hilary', '2000-01-01', '111.111.111-11', '01293-11', '69 9 8477-7384', 'hilary@gmail.com', 'Rua Dario', '919191', 'RO', 'Parque', 'Ji-Pa');
 insert into Cliente values (null, 'Emily', '2000-01-01', '111.111.111-11', '01293-11', '69 9 8477-7384', 'emily@gmail.com', 'Rua Dario', '919191', 'RO', 'Parque', 'Ji-Pa');
 
-call InserirVenda('2025-09-17 00:00:00', 1, 1);
-call InserirProdutoVenda(1,1);
-call InserirProdutoVenda(2,1);
-call InserirProdutoVenda(3,1);
-call InserirRecebimento(10, 0, 10, 'Cartão de débito', 1);
-call InserirVenda('2024-09-17 23:00:00', 2, 2);
-call InserirProdutoVenda(1,2);
-call InserirProdutoVenda(2,2);
-call InserirProdutoVenda(3,2);
-call InserirRecebimento(10, 0, 10, 'Cartão de crédito', 2);
-call InserirVenda('2022-09-17 21:30:10', 3, 4); #Cliente que não existe no sistema
-call InserirVenda('2022-09-17 21:30:10', 3, null); #Sem informar cliente
-call InserirProdutoVenda(1,3);
-call InserirProdutoVenda(2,3);
-call InserirProdutoVenda(null,3); #Sem informar produto
-call InserirRecebimento(10, 0, 10, 'Dinheiro', null); #Sem informar de qual venda
+#Niic Dias
+DELIMITER $$
+create procedure InserirFornecedor (
+  nome varchar(300), 
+  email varchar(300), 
+  cnpj varchar(100), 
+  telefone varchar(100), 
+  endereco varchar(500),
+  cep varchar(100),
+  uf varchar(100),
+  bairro varchar(100),
+  municipio varchar(100)
+)
+begin
+	declare teste_cnpj varchar (14);
+	set teste_cnpj = (select cnpj_for from Fornecedor where cnpj_for = cnpj);
+	
+			if (teste_cnpj = '') or (teste_cnpj is null) then    
+				insert into Fornecedor values (null, nome, email, cnpj, telefone, endereco, cep, uf, bairro, municipio);
+				select ('O Fornecedor foi salvo com sucesso!') as Confirmacao;
+			else
+				select 'O Fornecedor informado já está existe!' as Alerta;
+		end if;
+        
+end;
+$$
+DELIMITER ;
 
-select * from recebimento;
-select * from produto_venda;
-select * from venda;
+call InserirFornecedor('J', 'fornecedorJ@email.com', '8928942883498934', '(11) 98765-4321', 'Rua A, 123', '01000-000', 'SP', 'Bairro A', 'Cidade A');
+call InserirFornecedor('H', 'fornecedorH@email.com', '98408938948798938', '(22) 98765-4321', 'Rua B, 456', '02000-000', 'SP', 'Bairro B', 'Cidade B');
+call InserirFornecedor('I', 'fornecedorI@email.com', '8928942883498934', '(33) 98765-4321', 'Rua C, 789', '03000-000', 'SP', 'Bairro C', 'Cidade C');
 
+SELECT * FROM Fornecedor;
 
+#Thauany da Silva
 #PRODUTO
 DELIMITER $$
 create procedure InserirProduto (
@@ -231,7 +195,7 @@ call InserirProduto('Bombom', '', '2030-09-08', '20.00', '40.00', 'recheio de ma
 call InserirProduto('Barra de chocolate', '883283389238378', '2030-09-08', '20.00', '40.00', 'recheio de maracujá');
 
 
-
+#Thauany da Silva
 #PRODUTO
 DELIMITER $$
 create procedure InserirProduto (
@@ -265,35 +229,66 @@ call InserirProduto('Trufa de limão', '', '2030-09-08', '10.00', '30.00', 'rech
 call InserirProduto('La creme', '883283389238378', '2030-09-08', '5.00', '10.00', 'recheio de maracujá');
 SELECT * FROM Produto;
 
-DELIMITER $$
-create procedure InserirFornecedor (
-  nome varchar(300), 
-  email varchar(300), 
-  cnpj varchar(100), 
-  telefone varchar(100), 
-  endereco varchar(500),
-  cep varchar(100),
-  uf varchar(100),
-  bairro varchar(100),
-  municipio varchar(100)
-)
+#Diego Viana
+delimiter $$
+create procedure InserirVenda(data_hora datetime, usuario_fk int, cliente_fk int)
 begin
-	declare teste_cnpj varchar (14);
-	set teste_cnpj = (select cnpj_for from Fornecedor where cnpj_for = cnpj);
-	
-			if (teste_cnpj = '') or (teste_cnpj is null) then    
-				insert into Fornecedor values (null, nome, email, cnpj, telefone, endereco, cep, uf, bairro, municipio);
-				select ('O Fornecedor foi salvo com sucesso!') as Confirmacao;
-			else
-				select 'O Fornecedor informado já está existe!' as Alerta;
+declare teste varchar(100);
+set teste = (select id_cli from cliente where id_cli = cliente_fk);
+	if (cliente_fk is not null) then
+		if (teste <> null or teste <> 0) then
+			insert into venda values (null, data_hora, usuario_fk, cliente_fk);
+            select "Venda cadastrada com sucesso!" as 'Confirmação';
+		else
+			select "O cliente fornecido não existe no sistema. Realize o cadastro do cliente ou cadastre uma venda sem informar o cliente" as Erro;
 		end if;
-        
+    else
+		insert into venda values (null, data_hora, usuario_fk, null);
+		select "Venda cadastrada com sucesso sem cliente!" as 'Atenção';
+    end if;
 end;
-$$
-DELIMITER ;
+$$ delimiter ;
 
-call InserirFornecedor('J', 'fornecedorJ@email.com', '8928942883498934', '(11) 98765-4321', 'Rua A, 123', '01000-000', 'SP', 'Bairro A', 'Cidade A');
-call InserirFornecedor('H', 'fornecedorH@email.com', '98408938948798938', '(22) 98765-4321', 'Rua B, 456', '02000-000', 'SP', 'Bairro B', 'Cidade B');
-call InserirFornecedor('I', 'fornecedorI@email.com', '8928942883498934', '(33) 98765-4321', 'Rua C, 789', '03000-000', 'SP', 'Bairro C', 'Cidade C');
+call InserirVenda('2025-09-17 00:00:00', 1, 1);
+call InserirVenda('2024-09-17 23:00:00', 2, 2);
+call InserirVenda('2022-09-17 21:30:10', 3, 4); #Da erro pelo cliente não existir no sistema
+call InserirVenda('2022-09-17 21:30:10', 3, null); #Insere, mas da um 'Atenção'
+select * from Venda;
 
-SELECT * FROM Fornecedor;
+#Diego Viana
+delimiter $$
+create procedure InserirProdutoVenda(produto_fk int, venda_fk int)
+begin
+	if (produto_fk <> null or produto_fk <> 0) then
+		insert into Produto_Venda values (null, produto_fk, venda_fk);
+        select 'Produto inserido com sucesso!' as 'Confirmação';
+	else
+		select 'É obrigatório informar o produto que deseja cadastrar na compra!' as 'Erro';
+	end if;
+end;
+$$ delimiter ;
+
+call InserirProdutoVenda(1,1);
+call InserirProdutoVenda(2,1);
+call InserirProdutoVenda(null,1); #Da erro por não informar o produto
+call InserirProdutoVenda(3,1);
+select * from produto_venda;
+
+#Diego Viana
+delimiter $$
+create procedure InserirRecebimento(valor_venda double, desconto double, valor_entrada double, forma_pagamento varchar(100), venda_fk int)
+begin
+	if (venda_fk <> 0) then
+		insert into Recebimento values (null, valor_venda, desconto, valor_entrada, forma_pagamento, venda_fk);
+        select 'Recebimento cadastrado com suceso!' as 'Confirmação';
+	else
+		insert into Recebimento values (null, valor_venda, desconto, valor_entrada, forma_pagamento, venda_fk);
+        select 'Recebimento cadastrado com sucesso sem informar de qual venda!' as 'Atenção';
+    end if;
+end;
+$$ delimiter ;
+
+call InserirRecebimento(10, 0, 10, 'Cartão de débito', 1);
+call InserirRecebimento(10, 0, 10, 'Cartão de crédito', 2);
+call InserirRecebimento(10, 0, 10, 'Dinheiro', null); #Cadastra, mas da um 'Atenção' por não informar de qual venda é o recebimento
+select * from recebimento;
