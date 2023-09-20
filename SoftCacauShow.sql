@@ -323,3 +323,38 @@ $$ delimiter ;
 call salvar_usuario ('emilinha linda', '12/04/2111', '455786544', '456.125.356-95',  'batatas.com', 'operador de caixa' , '69 9 54887965', 'cracola', '8555548', 'RO', 'jardim verde', 'bolinha');
 
 select * from usuario;
+
+#jussara
+DELIMITER $$
+CREATE PROCEDURE InserirCliente (
+  nome VARCHAR(300), 
+  data_nasc DATE, 
+  cpf VARCHAR(200), 
+  rg VARCHAR(300), 
+  contato VARCHAR(300),
+  email VARCHAR(100),
+  endereco VARCHAR(500),
+  cep VARCHAR(100),
+  uf VARCHAR(100),
+  bairro VARCHAR(100),
+  municipio VARCHAR(100)
+)
+BEGIN
+  DECLARE teste_cpf VARCHAR(200);
+  SET teste_cpf = (SELECT cpf_cli FROM Cliente WHERE cpf_cli = cpf);
+  
+  IF (teste_cpf = '' OR teste_cpf IS NULL) THEN    
+    INSERT INTO Cliente VALUES (NULL, nome, data_nasc, cpf, rg, contato, email, endereco, cep, uf, bairro, municipio);
+    SELECT 'O Cliente foi salvo com sucesso!' AS Confirmacao;
+  ELSE
+    SELECT 'O Cliente informado já existe!' AS Alerta;
+  END IF;
+END;
+$$
+DELIMITER ;
+
+CALL InserirCliente('João Silva', '1990-01-01', '12345678901', '12345678', '(11) 98765-4321', 'joao@gmail.com', 'Rua das Flores, 123', '01000-000', 'SP', 'Centro', 'São Paulo');
+CALL InserirCliente('Maria Santos', '1995-02-02', '12345678902', '87654321', '(22) 98765-4321', 'maria@gmail.com', 'Avenida Brasil, 456', '02000-000', 'SP', 'Copacabana', 'Rio de Janeiro');
+CALL InserirCliente('Pedro Souza', '1998-03-03', '12345678903', '54321678', '(33) 98765-4321', 'pedro@gmail.com', 'Rua dos Cravos, 789', '03000-000', 'SP', 'Vila Nova', 'Belo Horizonte');
+
+select * from cliente;
