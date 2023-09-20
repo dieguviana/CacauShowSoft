@@ -30,16 +30,17 @@ namespace NewAppCacauShow.Telas
 
         private void Carregar()
         {
-            try
-            {
-                var dao = new VendasDAO();
+            var dao = new VendasDAO();
 
-                DataGridVendas.ItemsSource = dao.List();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Exceção", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            DataGridVendas.ItemsSource = dao.List();
+            //try
+            //{
+                
+            //}
+            //catch (Exception ex)
+            //{
+            ////    MessageBox.Show(ex.Message, "Exceção", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
         }
 
         private void Voltar_Click(object sender, RoutedEventArgs e)

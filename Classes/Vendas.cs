@@ -8,12 +8,21 @@ namespace NewAppCacauShow.Classes
 {
     class Vendas
     {
+
         public int Id { get; set; }
 
         public DateTime DataHora { get; set; }
-        
-        public int Usuario { get; set; }
+      
+        public string Usuario { get; set; }
 
-        public int Cliente { get; set; }
+        public string Cliente { get; set; }
+
+        public double ValorVenda { get; set; }
+
+        public double Desconto { get; set; }
+
+        public double ValorEntrada { get; set; }
+
+        public string FormaPagamento { get; set; }
     }
 }
