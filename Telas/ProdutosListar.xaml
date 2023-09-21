@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewAppCacauShow.Telas"
         mc:Ignorable="d"
-        Title="ProdutosListar" Height="720" Width="1080">
+        Title="ProdutosListar" Height="450" Width="800">
     <Grid>
         
     </Grid>
