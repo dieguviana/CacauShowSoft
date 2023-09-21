@@ -124,19 +124,68 @@ id_ven_fk int,
 foreign key (id_ven_fk) references venda (id_ven)
 );
 
-#Para os testes funcionarem, em razão das chaves estrangeiras
-insert into Usuario values (null, 'Thauany', '2000-01-01', '1111111-11', '000.000.000-00', 'thauany@celestino.com', 'Gerente', '69984777384', 'Nova Londrina', '00', 'RO', 'Não informado', 'Ji-Paraná');
-insert into Usuario values (null, 'Niic', '2000-01-01', '1111111-11', '000.000.000-00', 'niic@celestino.com', 'Gerente', '69984777384', 'Jipa', '00', 'RO', 'Não informado', 'Ji-Paraná');
-insert into Usuario values (null, 'Jussara', '2000-01-01', '1111111-11', '000.000.000-00', 'jussara@celestino.com', 'Gerente', '69984777384', 'Jipa', '00', 'RO', 'Não informado', 'Ji-Paraná');
-insert into Cliente values (null, 'Diego', '2000-01-01', '111.111.111-11', '01293-11', '69 9 8477-7384', 'diegu@gmail.com', 'Rua Dario', '919191', 'RO', 'Parque', 'Ji-Pa');
-insert into Cliente values (null, 'Hilary', '2000-01-01', '111.111.111-11', '01293-11', '69 9 8477-7384', 'hilary@gmail.com', 'Rua Dario', '919191', 'RO', 'Parque', 'Ji-Pa');
-insert into Cliente values (null, 'Emily', '2000-01-01', '111.111.111-11', '01293-11', '69 9 8477-7384', 'emily@gmail.com', 'Rua Dario', '919191', 'RO', 'Parque', 'Ji-Pa');
+#Emily
+delimiter $$
+create procedure cadastrar_usuario (nome varchar (100), data date, rg varchar(100), cpf varchar(100), email varchar(150), funcao varchar(100), contato varchar(100), endereco varchar(500), cep varchar(100), uf varchar(100), bairro varchar(100), municipio varchar(100))
+begin
+declare usar_cpf varchar (300);
 
-Insert into Produto values (null, 'Trufa de brigadeiro', '4357490475490', '2025-04-11', '4.00', '8.00', '200g');
-Insert into Produto values (null, 'Trufa de maracujá', '53454345345345', '2024-01-11', '4.00', '8.00', '200g');
-Insert into Produto values (null, 'Trufa de beijinho', '02344535245345', '2026-04-11', '4.00', '8.00', '200g');
+set usar_cpf = (select cpf_usu from usuario where (cpf_usu = cpf));
 
-select * from Produto;
+if  (cpf <> '') then 
+	if (usar_cpf = '') or (usar_cpf is null) then         
+				insert into usuario values (null, nome, data, rg, cpf, email, funcao, contato, endereco, cep, uf, bairro, municipio);
+                select concat('O usuário ', nome, ' foi inserido com sucesso!') as Confirmacao;
+    else
+		select 'O CPF informado já esta cadastrado!' as Alerta;
+    end if;
+else
+	select 'O campo cpf é obrigatório!' as Alerta;
+end if;
+end;
+$$ delimiter ;
+
+call cadastrar_usuario ('emilinha linda', '2111-04-12', '455786544', '456.125.356-95',  'batatas.com', 'operador de caixa' , '69 9 54887965', 'cracola', '8555548', 'RO', 'jardim verde', 'bolinha');
+call cadastrar_usuario ('emilinha linda', '2111-04-12', '455786544', '458.125.356-95',  'batatas.com', 'operador de caixa' , '69 9 54887965', 'cracola', '8555548', 'RO', 'jardim verde', 'bolinha');
+call cadastrar_usuario ('emilinha linda', '2111-04-12', '455786544', '457.125.356-95',  'batatas.com', 'operador de caixa' , '69 9 54887965', 'cracola', '8555548', 'RO', 'jardim verde', 'bolinha');
+
+select * from usuario;
+
+#jussara
+DELIMITER $$
+CREATE PROCEDURE InserirCliente (
+  nome VARCHAR(300), 
+  data_nasc DATE, 
+  cpf VARCHAR(200), 
+  rg VARCHAR(300), 
+  contato VARCHAR(300),
+  email VARCHAR(100),
+  endereco VARCHAR(500),
+  cep VARCHAR(100),
+  uf VARCHAR(100),
+  bairro VARCHAR(100),
+  municipio VARCHAR(100)
+)
+BEGIN
+  DECLARE teste_cpf VARCHAR(200);
+  SET teste_cpf = (SELECT cpf_cli FROM Cliente WHERE cpf_cli = cpf);
+  
+  IF (teste_cpf = '' OR teste_cpf IS NULL) THEN    
+    INSERT INTO Cliente VALUES (NULL, nome, data_nasc, cpf, rg, contato, email, endereco, cep, uf, bairro, municipio);
+    SELECT 'O Cliente foi salvo com sucesso!' AS Confirmacao;
+  ELSE
+    SELECT 'O Cliente informado já existe!' AS Alerta;
+  END IF;
+END;
+$$
+DELIMITER ;
+
+CALL InserirCliente('João Silva', '1990-01-01', '12345678901', '12345678', '(11) 98765-4321', 'joao@gmail.com', 'Rua das Flores, 123', '01000-000', 'SP', 'Centro', 'São Paulo');
+CALL InserirCliente('Maria Santos', '1995-02-02', '12345678902', '87654321', '(22) 98765-4321', 'maria@gmail.com', 'Avenida Brasil, 456', '02000-000', 'SP', 'Copacabana', 'Rio de Janeiro');
+CALL InserirCliente('Pedro Souza', '1998-03-03', '12345678903', '54321678', '(33) 98765-4321', 'pedro@gmail.com', 'Rua dos Cravos, 789', '03000-000', 'SP', 'Vila Nova', 'Belo Horizonte');
+
+select * from cliente;
+
 #Niic Dias
 DELIMITER $$
 create procedure InserirFornecedor (
@@ -200,7 +249,9 @@ end;
 $$
 DELIMITER ;
 
-call InserirProduto('Trufa de Morango', '883283389238378', '2030-09-08', '2.00', '4.00', 'recheio de morango');  
+call InserirProduto('Trufa de Morango', '883283389238378', '2030-09-08', '2.00', '4.00', 'recheio de morango');
+call InserirProduto('Trufa de Morango', '883283389238379', '2030-09-08', '2.00', '4.00', 'recheio de morango');
+call InserirProduto('Trufa de Morango', '883283389238370', '2030-09-08', '2.00', '4.00', 'recheio de morango');
 call InserirProduto('Trufa de limão', '', '2030-09-08', '10.00', '30.00', 'recheio de maracujá'); #Não vai ser inserido porque o campo está vazio.
 call InserirProduto('La creme', '883283389238378', '2030-09-08', '5.00', '10.00', 'recheio de maracujá'); #Não vai ser inserido porque o codigo informado já existe.
 SELECT * FROM Produto;
@@ -225,9 +276,9 @@ begin
 	end;
 $$ delimiter ;
 
-call InserirCompra ('2025-09-20', 'cartão','100.00','pago','1','2','3');
-call InserirCompra ('2024-09-20', 'cartão','100.00','pago','1','2','3');
-call InserirCompra ('2023-09-20', 'cartão','100.00','pago','1','2','3');
+call InserirCompra('2025-09-20', 'cartão','100.00','pago','1','2','3');
+call InserirCompra('2024-09-20', 'cartão','100.00','pago','1','2','3');
+call InserirCompra('2023-09-20', 'cartão','100.00','pago','1','2','3');
 
 select * from Compra;
 
@@ -251,13 +302,11 @@ set teste = (select id_cli from cliente where id_cli = cliente_fk);
 end;
 $$ delimiter ;
 
-
 call InserirVenda('2025-09-17 00:00:00', 1, 1);
 call InserirVenda('2024-09-17 23:00:00', 2, 2);
 call InserirVenda('2022-09-17 21:30:10', 3, 4); #Da erro pelo cliente não existir no sistema
 call InserirVenda('2022-09-17 21:30:10', 3, null); #Insere, mas da um 'Atenção'
 select * from Venda;
-
 
 #Diego Viana
 delimiter $$
@@ -278,6 +327,8 @@ call InserirProdutoVenda(null,1); #Da erro por não informar o produto
 call InserirProdutoVenda(3,1);
 select * from produto_venda;
 
+select * from produto;
+
 #Diego Viana
 delimiter $$
 create procedure InserirRecebimento(valor_venda double, desconto double, valor_entrada double, forma_pagamento varchar(100), venda_fk int)
@@ -292,69 +343,8 @@ begin
 end;
 $$ delimiter ;
 
+select * from venda;
+
 call InserirRecebimento(10, 0, 10, 'Cartão de débito', 1);
 call InserirRecebimento(10, 0, 10, 'Cartão de crédito', 2);
 call InserirRecebimento(10, 0, 10, 'Dinheiro', null); #Cadastra, mas da um 'Atenção' por não informar de qual venda é o recebimento
-select * from recebimento;
-
-
-
-#Emily
-delimiter $$
-create procedure cadastrar_usuario (nome varchar (100), data date, rg varchar(100), cpf varchar(100), email varchar(150), funcao varchar(100), contato varchar(100), endereco varchar(500), cep varchar(100), uf varchar(100), bairro varchar(100), municipio varchar(100))
-begin
-declare usar_cpf varchar (300);
-
-set usar_cpf = (select cpf_usu from usuario where (cpf_usu = cpf));
-
-if  (cpf <> '') then 
-	if (usar_cpf = '') or (usar_cpf is null) then         
-				insert into usuario values (null, nome, data, rg, cpf, email, funcao, contato, endereco, cep, uf, bairro, municipio);
-                select concat('O usuário ', nome, ' foi inserido com sucesso!') as Confirmacao;
-    else
-		select 'O CPF informado já esta cadastrado!' as Alerta;
-    end if;
-else
-	select 'O campo cpf é obrigatório!' as Alerta;
-end if;
-end;
-$$ delimiter ;
-
-call salvar_usuario ('emilinha linda', '12/04/2111', '455786544', '456.125.356-95',  'batatas.com', 'operador de caixa' , '69 9 54887965', 'cracola', '8555548', 'RO', 'jardim verde', 'bolinha');
-
-select * from usuario;
-
-#jussara
-DELIMITER $$
-CREATE PROCEDURE InserirCliente (
-  nome VARCHAR(300), 
-  data_nasc DATE, 
-  cpf VARCHAR(200), 
-  rg VARCHAR(300), 
-  contato VARCHAR(300),
-  email VARCHAR(100),
-  endereco VARCHAR(500),
-  cep VARCHAR(100),
-  uf VARCHAR(100),
-  bairro VARCHAR(100),
-  municipio VARCHAR(100)
-)
-BEGIN
-  DECLARE teste_cpf VARCHAR(200);
-  SET teste_cpf = (SELECT cpf_cli FROM Cliente WHERE cpf_cli = cpf);
-  
-  IF (teste_cpf = '' OR teste_cpf IS NULL) THEN    
-    INSERT INTO Cliente VALUES (NULL, nome, data_nasc, cpf, rg, contato, email, endereco, cep, uf, bairro, municipio);
-    SELECT 'O Cliente foi salvo com sucesso!' AS Confirmacao;
-  ELSE
-    SELECT 'O Cliente informado já existe!' AS Alerta;
-  END IF;
-END;
-$$
-DELIMITER ;
-
-CALL InserirCliente('João Silva', '1990-01-01', '12345678901', '12345678', '(11) 98765-4321', 'joao@gmail.com', 'Rua das Flores, 123', '01000-000', 'SP', 'Centro', 'São Paulo');
-CALL InserirCliente('Maria Santos', '1995-02-02', '12345678902', '87654321', '(22) 98765-4321', 'maria@gmail.com', 'Avenida Brasil, 456', '02000-000', 'SP', 'Copacabana', 'Rio de Janeiro');
-CALL InserirCliente('Pedro Souza', '1998-03-03', '12345678903', '54321678', '(33) 98765-4321', 'pedro@gmail.com', 'Rua dos Cravos, 789', '03000-000', 'SP', 'Vila Nova', 'Belo Horizonte');
-
-select * from cliente;
