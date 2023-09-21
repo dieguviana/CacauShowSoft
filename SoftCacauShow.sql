@@ -1,11 +1,10 @@
 #RESPONSABILIDADE DAS TABELAS DO BANCO DE DADOS
-
 #Cliente - Jussara
 #Usuario, Login - Emily
 #Fornecedor - Niic
 #Produto - Thauany
 #Compra, Produto_Compra, Pagamento - Hilary
-#Venda, Produto_Venda, Recebimento- Diego
+#Venda, Produto_Venda, Recebimento - Diego
 
 create database Soft_CacauShow;
 use Soft_CacauShow;
