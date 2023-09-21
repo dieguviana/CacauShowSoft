@@ -289,6 +289,24 @@ call InserirCompra('2025-09-20', 'cartão','100.00','pago','1','2','3');
 call InserirCompra('2024-09-20', 'cartão','100.00','pago','1','2','3');
 call InserirCompra('2023-09-20', 'cartão','100.00','pago','1','2','3');
 
+#Hilary Souza de Oliveira 
+delimiter $$
+create procedure InserirProdutoCompra(quant int,valor float, produto_fk int, compra_fk int)
+	begin
+    declare teste varchar(100);
+    set teste = (select id_pro from produto where id_pro = produto_fk);
+   
+		if(produto_fk is not null <> null or produto_fk <> 0) then
+				insert into Produto_Compra values (null, produto_fk, compra_fk);
+            select 'Produto inserido com sucesso!' as 'Confirmação';
+            else
+					select 'É obrigatório informar o produto da compra!' as 'Erro';
+			end if;
+	end;
+            
+    
+$$ delimiter ;
+
 select * from Compra;
 
 #Diego Viana
