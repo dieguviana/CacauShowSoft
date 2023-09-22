@@ -162,7 +162,7 @@ where
 (Recebimento.id_ven_fk = Venda.id_ven);
 
 select
-Produto_Venda.id_pro_ven as 'Código',
+Produto.codigo_pro as 'Código',
 Produto.nome_pro as 'Produto',
 Produto.valor_venda_pro as 'Valor unitário'
 from
