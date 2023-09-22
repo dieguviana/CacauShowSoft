@@ -18,26 +18,7 @@ namespace NewAppCacauShow.Classes
 
         public void Delete(Vendas t)
         {
-            try
-            {
-                var query = conn.Query();
-                query.CommandText = "DELETE FROM venda WHERE id_ven = @id";
 
-                query.Parameters.AddWithValue("@id", t.Id);
-
-                var result = query.ExecuteNonQuery();
-
-                if (result == 0)
-                    throw new Exception("O registro não foi removido da base de dados. Verifique e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                conn.Close();
-            }
         }
 
         public Vendas GetById(int id)
@@ -52,6 +33,7 @@ namespace NewAppCacauShow.Classes
 
         public List<Vendas> List()
         {
+
             try
             {
                 List<Vendas> list = new List<Vendas>();
@@ -79,7 +61,7 @@ namespace NewAppCacauShow.Classes
                 {
                     list.Add(new Vendas()
                     {
-                        Id = reader.GetInt32("id_ven"),
+                        IdVenda = reader.GetInt32("id_ven"),
                         DataHora = reader.GetDateTime("data_hora_ven"),
                         Usuario = reader.GetString("nome_usu"),
                         Cliente = reader.GetString("nome_cli"),
@@ -91,10 +73,10 @@ namespace NewAppCacauShow.Classes
                 }
 
                 return list;
-            }//catch (Exception ex)
-            //{
-                //throw ex;
-            //}
+            }catch (Exception ex)
+            {
+                throw ex;
+            }
             finally
             {
                 conn.Close();

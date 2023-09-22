@@ -12,20 +12,21 @@
             <!-- Título da Tela -->
             <TextBlock Text="Lista de Vendas" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="36" FontWeight="Bold" Foreground="White"/>
 
-            <DataGrid Name="DataGridVendas" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" AutoGenerateColumns="False">
+            <DataGrid Name="DataGridVendas" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" AutoGenerateColumns="False" SelectionChanged="DataGridVendas_SelectionChanged">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding IdVenda}"/>
                     <DataGridTextColumn Header="Data e Hora" Width="Auto" Binding="{Binding DataHora}"/>
                     <DataGridTextColumn Header="Usuário" Width="Auto" Binding="{Binding Usuario}"/>
                     <DataGridTextColumn Header="Cliente" Width="Auto" Binding="{Binding Cliente}"/>
                     <DataGridTextColumn Header="Valor Total" Width="Auto" Binding="{Binding ValorVenda}"/>
                     <DataGridTextColumn Header="Desconto" Width="Auto" Binding="{Binding Desconto}"/>
                     <DataGridTextColumn Header="Valor Pago" Width="Auto" Binding="{Binding ValorEntrada}"/>
-                    <DataGridTextColumn Header="Forma de pagamento" Width="Auto" Binding="{Binding ValorEntrada}"/>
+                    <DataGridTextColumn Header="Forma de pagamento" Width="Auto" Binding="{Binding FormaPagamento}"/>
                     <DataGridTemplateColumn Width="Auto" Header="Ações">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Button Content="Produtos" Width="80" Height="30" Background="Blue" Foreground="White" FontWeight="Bold" Click="Produto_Click"/>
                                     <Button Content="Editar" Width="80" Height="30" Background="Orange" Foreground="White" FontWeight="Bold" Click="Editar_Click"/>
                                     <Button Content="Excluir" Width="80" Height="30" Background="Red" Foreground="White" FontWeight="Bold" Click="Excluir_Click"/>
                                 </StackPanel>

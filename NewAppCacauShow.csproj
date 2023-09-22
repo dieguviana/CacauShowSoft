@@ -117,9 +117,6 @@
     <Compile Include="Telas\VendaProdutoListar.xaml.cs">
       <DependentUpon>VendaProdutoListar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Telas\Vendas.xaml.cs">
-      <DependentUpon>Vendas.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Telas\VendasListar.xaml.cs">
       <DependentUpon>VendasListar.xaml</DependentUpon>
     </Compile>
@@ -159,10 +156,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Telas\VendaProdutoListar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Telas\Vendas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

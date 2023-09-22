@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:NewAppCacauShow.Telas"
         mc:Ignorable="d"
         Title="VendaProdutoListar" Height="720" Width="1080">
     <Grid>
@@ -12,16 +11,11 @@
             <!-- Título da Tela -->
             <TextBlock Text="Produtos da venda" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="36" FontWeight="Bold" Foreground="White"/>
 
-            <DataGrid Name="DataGridVendas" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" AutoGenerateColumns="False">
+            <DataGrid Name="DataGridVendaProduto" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}"/>
-                    <DataGridTextColumn Header="Data e Hora" Width="Auto" Binding="{Binding DataHora}"/>
-                    <DataGridTextColumn Header="Usuário" Width="Auto" Binding="{Binding Usuario}"/>
-                    <DataGridTextColumn Header="Cliente" Width="Auto" Binding="{Binding Cliente}"/>
-                    <DataGridTextColumn Header="Valor Total" Width="Auto" Binding="{Binding ValorVenda}"/>
-                    <DataGridTextColumn Header="Desconto" Width="Auto" Binding="{Binding Desconto}"/>
-                    <DataGridTextColumn Header="Valor Pago" Width="Auto" Binding="{Binding ValorEntrada}"/>
-                    <DataGridTextColumn Header="Forma de pagamento" Width="Auto" Binding="{Binding ValorEntrada}"/>
+                    <DataGridTextColumn Header="Código" Width="Auto" Binding="{Binding IdVendaProduto}"/>
+                    <DataGridTextColumn Header="Produto" Width="Auto" Binding="{Binding Nome}"/>
+                    <DataGridTextColumn Header="Valor Unitário" Width="Auto" Binding="{Binding ValorVenda}"/>
                     <DataGridTemplateColumn Width="Auto" Header="Ações">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -35,10 +29,7 @@
             </DataGrid>
 
             <!-- Botão Voltar -->
-            <Button Content="Voltar ao Menu" Width="150" Height="40" Background="#2ECC71" Foreground="White" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20" Click="Voltar_Click"/>
-
-            <!-- Botão Cadastrar Venda -->
-            <Button Content="Cadastrar Venda" Width="150" Height="40" Background="#3498DB" Foreground="White" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20" Click="Cadastrar_Click"/>
+            <Button Content="Voltar ao Listar" Width="150" Height="40" Background="#2ECC71" Foreground="White" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20" Click="Voltar_Click"/>
         </Grid>
     </Grid>
 </Window>

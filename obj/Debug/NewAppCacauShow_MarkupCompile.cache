@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\xampp\htdocs\NewAppCacauShow\obj\Debug\
+H:\Meu Drive\IFRO\PDS\NewAppCacauShow\obj\Debug\
 NewAppCacauShow
 none
 false
 DEBUG;TRACE
-C:\xampp\htdocs\NewAppCacauShow\App.xaml
-9-667659796
+H:\Meu Drive\IFRO\PDS\NewAppCacauShow\App.xaml
+91454169773
 
-171388815270
-264474362
-Login.xaml;Telas\ClientesListar.xaml;Telas\EstoqueListar.xaml;Telas\FornecedoresListar.xaml;Telas\FuncionariosListar.xaml;Telas\Menu.xaml;Telas\ProdutosListar.xaml;Telas\Vendas.xaml;Telas\VendasListar.xaml;
+191863783601
+26-568164438
+Login.xaml;Telas\ClientesListar.xaml;Telas\EstoqueListar.xaml;Telas\FornecedoresListar.xaml;Telas\FuncionariosListar.xaml;Telas\Menu.xaml;Telas\ProdutosListar.xaml;Telas\VendaProdutoListar.xaml;Telas\VendasListar.xaml;
 
 False
 

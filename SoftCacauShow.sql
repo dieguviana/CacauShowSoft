@@ -115,7 +115,6 @@ foreign key (id_cli_fk) references Cliente (id_cli)
 );
 
 create table Produto_Venda(
-id_pro_ven int primary key auto_increment,
 id_pro_fk int,
 foreign key (id_pro_fk) references Produto (id_pro),
 id_ven_fk int,
@@ -132,6 +131,47 @@ id_ven_fk int,
 foreign key (id_ven_fk) references venda (id_ven)
 );
 
+insert into Usuario values (null, 'Diego', '2000-01-01', '1', '1', 'u@g', 'Atendente', '69', 'Rua', '1', 'RO', 'Pq', 'Ji');
+insert into Cliente values (null, 'Hilary', '2005-10-10', '101.313.123-12', '21231', '699847773844', 'udiegoviana@gmail.com', 'Rua', '13121', 'RO', 'Parque', 'ji-paraná');
+insert into Venda values (null, '2023-09-21 00:00:00', 1, 1);
+insert into Recebimento values (null, 2, 0, 2, 'Á vista', 1);
+insert into Produto values (null, 'Chocolate', '11321', '2024-09-21', 1, 2, '');
+insert into Produto_Venda values (1, 1);
+
+insert into Usuario values (null, 'Thauany', '2000-01-01', '1', '1', 'u@g', 'Atendente', '69', 'Rua', '1', 'RO', 'Pq', 'Ji');
+insert into Cliente values (null, 'Niic', '2005-10-10', '101.313.123-12', '21231', '699847773844', 'udiegoviana@gmail.com', 'Rua', '13121', 'RO', 'Parque', 'ji-paraná');
+insert into Venda values (null, '2023-09-21 00:10:00', 2, 2);
+insert into Recebimento values (null, 2, 0, 2, 'Parcelado', 2);
+insert into Produto values (null, 'Morango', '2121', '2024-09-21', 1, 2, '');
+insert into Produto_Venda values (2, 2);
+
+select
+Venda.id_ven as "Código",
+Venda.data_hora_ven as "Data e hora",
+Usuario.nome_usu as "Usuário",
+Cliente.nome_cli as "Cliente",
+Recebimento.valor_venda_rec as "Valor",
+Recebimento.desconto_rec as "Desconto",
+Recebimento.valor_entrada_rec as 'Valor Entrada',
+Recebimento.forma_pagamento_rec as 'Forma de Pagamento'
+from
+Venda, Usuario, Cliente, Recebimento
+where
+(Usuario.id_usu = Venda.id_usu_fk) and
+(Cliente.id_cli = Venda.id_cli_fk) and
+(Recebimento.id_ven_fk = Venda.id_ven);
+
+select
+Produto_Venda.id_pro_ven as 'Código',
+Produto.nome_pro as 'Produto',
+Produto.valor_venda_pro as 'Valor unitário'
+from
+Produto, Produto_Venda
+where
+(Produto_Venda.id_ven_fk is not null) and
+(Produto_Venda.id_pro_fk = Produto.id_pro);
+
+/*
 #Emily
 delimiter $$
 create procedure cadastrar_usuario (nome varchar (100), data date, rg varchar(100), cpf varchar(100), email varchar(150), funcao varchar(100), contato varchar(100), endereco varchar(500), cep varchar(100), uf varchar(100), bairro varchar(100), municipio varchar(100))
@@ -374,3 +414,13 @@ select * from venda;
 call InserirRecebimento(10, 0, 10, 'Cartão de débito', 1);
 call InserirRecebimento(10, 0, 10, 'Cartão de crédito', 2);
 call InserirRecebimento(10, 0, 10, 'Dinheiro', null); #Cadastra, mas da um 'Atenção' por não informar de qual venda é o recebimento
+
+select
+Produto_Venda.id_pro_ven,
+Produto.nome_pro,
+Produto.valor_venda_pro
+from
+Produto, Produto_Venda, Venda
+where
+(Produto_Venda.id_ven_fk = Venda.id_ven) and
+(Produto_Venda.id_pro_fk = Produto.id_pro);*/

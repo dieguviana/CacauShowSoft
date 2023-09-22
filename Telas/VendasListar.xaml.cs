@@ -20,6 +20,8 @@ namespace NewAppCacauShow.Telas
     /// </summary>
     public partial class VendasListar : Window
     {
+        private int vendaSelecionadaId;
+
         public VendasListar()
         {
             WindowState = WindowState.Maximized;
@@ -31,16 +33,24 @@ namespace NewAppCacauShow.Telas
         private void Carregar()
         {
             var dao = new VendasDAO();
+            
+            try
+            {
+                DataGridVendas.ItemsSource = dao.List();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Exceção", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
 
-            DataGridVendas.ItemsSource = dao.List();
-            //try
-            //{
-                
-            //}
-            //catch (Exception ex)
-            //{
-            ////    MessageBox.Show(ex.Message, "Exceção", MessageBoxButton.OK, MessageBoxImage.Error);
-            //}
+        private void DataGridVendas_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (DataGridVendas.SelectedItem != null)
+            {
+                Vendas vendaSelecionada = (Vendas)DataGridVendas.SelectedItem;
+                vendaSelecionadaId = vendaSelecionada.IdVenda;
+            }
         }
 
         private void Voltar_Click(object sender, RoutedEventArgs e)
@@ -52,10 +62,23 @@ namespace NewAppCacauShow.Telas
 
         private void Cadastrar_Click(object sender, RoutedEventArgs e)
         {
-            Vendas venda = new Vendas();
-            venda.Show();
-            this.Close();
+            
         }
+
+        private void Produto_Click(object sender, RoutedEventArgs e)
+        {
+            if (vendaSelecionadaId != 0)
+            {
+                VendaProdutoListar vendaProduto = new VendaProdutoListar(vendaSelecionadaId);
+                vendaProduto.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecione uma venda na lista.", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
 
         private void Excluir_Click(object sender, RoutedEventArgs e)
         {

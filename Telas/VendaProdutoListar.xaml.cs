@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NewAppCacauShow.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,39 @@ namespace NewAppCacauShow.Telas
     /// </summary>
     public partial class VendaProdutoListar : Window
     {
-        public VendaProdutoListar()
+        public VendaProdutoListar(int vendaId)
         {
+            WindowState = WindowState.Maximized;
+            WindowStyle = WindowStyle.SingleBorderWindow;
             InitializeComponent();
+            Carregar(vendaId);
+        }
+
+        private void Carregar(int vendaId)
+        {
+            var dao = new ProdutoVendaDAO();
+
+            try
+            {
+                DataGridVendaProduto.ItemsSource = dao.List(vendaId);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Exceção", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+
+        private void Excluir_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Voltar_Click(object sender, RoutedEventArgs e)
+        {
+            VendasListar vendasListar = new VendasListar();
+            vendasListar.Show();
+            this.Close();
         }
     }
 }
