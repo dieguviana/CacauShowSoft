@@ -90,35 +90,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Classes\ProdutoVenda.cs" />
-    <Compile Include="Classes\ProdutoVendaDAO.cs" />
-    <Compile Include="Classes\Vendas.cs" />
-    <Compile Include="Classes\VendasDAO.cs" />
+    <Compile Include="Classes\Venda.cs" />
+    <Compile Include="Classes\VendaDAO.cs" />
+    <Compile Include="Classes\VendaProduto.cs" />
+    <Compile Include="Classes\VendaProdutoDAO.cs" />
     <Compile Include="Conexao.cs" />
-    <Compile Include="IDAO.cs" />
-    <Compile Include="Telas\ClientesListar.xaml.cs">
-      <DependentUpon>ClientesListar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Telas\EstoqueListar.xaml.cs">
-      <DependentUpon>EstoqueListar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Telas\FornecedoresListar.xaml.cs">
-      <DependentUpon>FornecedoresListar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Telas\FuncionariosListar.xaml.cs">
-      <DependentUpon>FuncionariosListar.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Telas\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Telas\ProdutosListar.xaml.cs">
-      <DependentUpon>ProdutosListar.xaml</DependentUpon>
+    <Compile Include="Telas\VendaListar.xaml.cs">
+      <DependentUpon>VendaListar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Telas\VendaProdutoListar.xaml.cs">
       <DependentUpon>VendaProdutoListar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Telas\VendasListar.xaml.cs">
-      <DependentUpon>VendasListar.xaml</DependentUpon>
     </Compile>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
@@ -131,35 +115,15 @@
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Page Include="Telas\ClientesListar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Telas\EstoqueListar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Telas\FornecedoresListar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Telas\FuncionariosListar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Telas\Menu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Telas\ProdutosListar.xaml">
+    <Page Include="Telas\VendaListar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Telas\VendaProdutoListar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Telas\VendasListar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

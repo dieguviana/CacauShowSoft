@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-H:\Meu Drive\IFRO\PDS\NewAppCacauShow\obj\Debug\
+C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\obj\Debug\
 NewAppCacauShow
 none
 false
 DEBUG;TRACE
-H:\Meu Drive\IFRO\PDS\NewAppCacauShow\App.xaml
-91454169773
+C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\App.xaml
+41793951268
 
-191863783601
-26-568164438
-Login.xaml;Telas\ClientesListar.xaml;Telas\EstoqueListar.xaml;Telas\FornecedoresListar.xaml;Telas\FuncionariosListar.xaml;Telas\Menu.xaml;Telas\ProdutosListar.xaml;Telas\VendaProdutoListar.xaml;Telas\VendasListar.xaml;
+13-85336491
+26956249918
+Login.xaml;Telas\Menu.xaml;Telas\VendaListar.xaml;Telas\VendaProdutoListar.xaml;
 
 False
 

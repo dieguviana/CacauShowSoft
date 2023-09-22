@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 
 namespace NewAppCacauShow.Classes
 {
-    internal class ProdutoVendaDAO
+    internal class VendaProdutoDAO
     {
         private static Conexao conn;
 
-        public ProdutoVendaDAO()
+        public VendaProdutoDAO()
         {
             conn = new Conexao();
         }
 
-        public List<ProdutoVenda> List(int IdVenda)
+        public List<VendaProduto> List(int IdVenda)
         {
             try
             {
-                List<ProdutoVenda> list = new List<ProdutoVenda>();
+                List<VendaProduto> list = new List<VendaProduto>();
 
                 var query = conn.Query();
                 query.CommandText = "Select " +
@@ -40,7 +40,7 @@ namespace NewAppCacauShow.Classes
 
                 while (reader.Read())
                 {
-                    list.Add(new ProdutoVenda()
+                    list.Add(new VendaProduto()
                     {
                         IdVendaProduto = reader.GetInt32("codigo_pro"),
                         Nome = reader.GetString("nome_pro"),
@@ -49,10 +49,11 @@ namespace NewAppCacauShow.Classes
                 }
 
                 return list;
-            }catch (Exception ex)
-             {
-             throw ex;
-             }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             finally
             {
                 conn.Close();

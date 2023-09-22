@@ -1,42 +1,27 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
 
 namespace NewAppCacauShow.Classes
 {
-    internal class VendasDAO : IDAO<Vendas>
+    internal class VendaDAO
     {
         private static Conexao conn;
 
-        public VendasDAO()
+        public VendaDAO()
         {
             conn = new Conexao();
         }
 
-        public void Delete(Vendas t)
-        {
-
-        }
-
-        public Vendas GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Insert(Vendas t)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Vendas> List()
+        public List<Venda> List()
         {
 
             try
             {
-                List<Vendas> list = new List<Vendas>();
+                List<Venda> list = new List<Venda>();
 
                 var query = conn.Query();
                 query.CommandText = "select " +
@@ -59,7 +44,7 @@ namespace NewAppCacauShow.Classes
 
                 while (reader.Read())
                 {
-                    list.Add(new Vendas()
+                    list.Add(new Venda()
                     {
                         IdVenda = reader.GetInt32("id_ven"),
                         DataHora = reader.GetDateTime("data_hora_ven"),
@@ -73,7 +58,8 @@ namespace NewAppCacauShow.Classes
                 }
 
                 return list;
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -81,11 +67,6 @@ namespace NewAppCacauShow.Classes
             {
                 conn.Close();
             }
-        }
-
-        public void Update(Vendas t)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace NewAppCacauShow.Classes
 {
-    class ProdutoVenda
+    class VendaProduto
     {
         public int IdVendaProduto { get; set; }
-        
+
         public string Nome { get; set; }
-        
+
         public double ValorVenda { get; set; }
-        }
+    }
 }

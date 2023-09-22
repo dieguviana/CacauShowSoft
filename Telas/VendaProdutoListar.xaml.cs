@@ -30,7 +30,7 @@ namespace NewAppCacauShow.Telas
 
         private void Carregar(int vendaId)
         {
-            var dao = new ProdutoVendaDAO();
+            var dao = new VendaProdutoDAO();
 
             try
             {
@@ -50,7 +50,7 @@ namespace NewAppCacauShow.Telas
 
         private void Voltar_Click(object sender, RoutedEventArgs e)
         {
-            VendasListar vendasListar = new VendasListar();
+            VendaListar vendasListar = new VendaListar();
             vendasListar.Show();
             this.Close();
         }

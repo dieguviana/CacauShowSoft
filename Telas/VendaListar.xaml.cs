@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NewAppCacauShow.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,18 +12,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using NewAppCacauShow.Classes;
 
 namespace NewAppCacauShow.Telas
 {
     /// <summary>
-    /// Lógica interna para VendasListar.xaml
+    /// Lógica interna para VendaListar.xaml
     /// </summary>
-    public partial class VendasListar : Window
+    public partial class VendaListar : Window
     {
         private int vendaSelecionadaId;
 
-        public VendasListar()
+        public VendaListar()
         {
             WindowState = WindowState.Maximized;
             WindowStyle = WindowStyle.SingleBorderWindow;
@@ -32,8 +32,8 @@ namespace NewAppCacauShow.Telas
 
         private void Carregar()
         {
-            var dao = new VendasDAO();
-            
+            var dao = new VendaDAO();
+
             try
             {
                 DataGridVendas.ItemsSource = dao.List();
@@ -48,7 +48,7 @@ namespace NewAppCacauShow.Telas
         {
             if (DataGridVendas.SelectedItem != null)
             {
-                Vendas vendaSelecionada = (Vendas)DataGridVendas.SelectedItem;
+                Venda vendaSelecionada = (Venda)DataGridVendas.SelectedItem;
                 vendaSelecionadaId = vendaSelecionada.IdVenda;
             }
         }
@@ -62,7 +62,7 @@ namespace NewAppCacauShow.Telas
 
         private void Cadastrar_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void Produto_Click(object sender, RoutedEventArgs e)
@@ -82,7 +82,7 @@ namespace NewAppCacauShow.Telas
 
         private void Excluir_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void Editar_Click(object sender, RoutedEventArgs e)
