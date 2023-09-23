@@ -202,3 +202,5 @@ C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\obj\Debug\Telas\VendaProdutoL
 C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\obj\Debug\Telas\VendaProdutoListar.g.cs
 C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\obj\Debug\Telas\VendaListar.g.cs
 C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\obj\Debug\Telas\VendaListar.baml
+C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\obj\Debug\Telas\VendaCadastrar.g.cs
+C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\obj\Debug\Telas\VendaCadastrar.baml

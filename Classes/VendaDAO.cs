@@ -37,7 +37,7 @@ namespace NewAppCacauShow.Classes
                 "Venda, Usuario, Cliente, Recebimento " +
                 "where " +
                 "(Usuario.id_usu = Venda.id_usu_fk) and " +
-                "(Cliente.id_cli = Venda.id_cli_fk) and " +
+                "(Cliente.id_cli = Recebimento.id_cli_fk) and " +
                 "(Recebimento.id_ven_fk = Venda.id_ven);";
 
                 MySqlDataReader reader = query.ExecuteReader();
@@ -62,6 +62,55 @@ namespace NewAppCacauShow.Classes
             catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public void Delete(Venda venda)
+        {
+            try
+            {
+                var query = conn.Query();
+                query.CommandText = "DELETE FROM Venda_Produto WHERE id_ven_fk = @id; " +
+                    "Delete from Recebimento where id_ven_fk = @id; " +
+                    "Delete from Venda where id_ven = @id;";
+
+                query.Parameters.AddWithValue("@id", venda.IdVenda);
+
+                var result = query.ExecuteNonQuery();
+
+                if (result == 0)
+                    throw new Exception("Registro não removido da base de dados. Verifique e tente novamente.");
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public void Insert()
+        {
+            try
+            {
+                var query = conn.Query();
+                query.CommandText = "Call InserirVenda();";
+
+                var result = query.ExecuteNonQuery();
+
+                if (result == 0)
+                    throw new Exception("O registro não foi inserido. Verifique e tente novamente");
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
             finally
             {

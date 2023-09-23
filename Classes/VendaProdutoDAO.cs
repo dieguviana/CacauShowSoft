@@ -25,14 +25,15 @@ namespace NewAppCacauShow.Classes
 
                 var query = conn.Query();
                 query.CommandText = "Select " +
+                    "Venda_Produto.id_ven_pro, " +
                     "Produto.codigo_pro, " +
                     "Produto.nome_pro, " +
                     "Produto.valor_venda_pro " +
                     "from " +
-                    "Produto, Produto_Venda " +
+                    "Produto, Venda_Produto " +
                     "where " +
-                    "(Produto_Venda.id_ven_fk = @IdVenda) and " +
-                    "(Produto_Venda.id_pro_fk = Produto.id_pro);";
+                    "(Venda_Produto.id_ven_fk = @IdVenda) and " +
+                    "(Venda_Produto.id_pro_fk = Produto.id_pro);";
 
                 query.Parameters.AddWithValue("@IdVenda", IdVenda);
 
@@ -42,7 +43,8 @@ namespace NewAppCacauShow.Classes
                 {
                     list.Add(new VendaProduto()
                     {
-                        IdVendaProduto = reader.GetInt32("codigo_pro"),
+                        IdVendaProduto = reader.GetInt32("id_ven_pro"),
+                        CodigoPro = reader.GetInt32("codigo_pro"),
                         Nome = reader.GetString("nome_pro"),
                         ValorVenda = reader.GetDouble("valor_venda_pro")
                     });
@@ -53,6 +55,31 @@ namespace NewAppCacauShow.Classes
             catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public void Delete(VendaProduto vendaProduto)
+        {
+            try
+            {
+                var query = conn.Query();
+                query.CommandText = "DELETE FROM Venda_Produto WHERE id_ven_pro = @id";
+
+                query.Parameters.AddWithValue("@id", vendaProduto.IdVendaProduto);
+
+                var result = query.ExecuteNonQuery();
+
+                if (result == 0)
+                    throw new Exception("Registro não removido da base de dados. Verifique e tente novamente.");
+
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
             finally
             {

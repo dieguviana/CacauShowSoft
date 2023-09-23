@@ -20,10 +20,13 @@ namespace NewAppCacauShow.Telas
     /// </summary>
     public partial class VendaProdutoListar : Window
     {
+        private int vendaId;
+
         public VendaProdutoListar(int vendaId)
         {
             WindowState = WindowState.Maximized;
             WindowStyle = WindowStyle.SingleBorderWindow;
+            this.vendaId = vendaId;
             InitializeComponent();
             Carregar(vendaId);
         }
@@ -45,7 +48,24 @@ namespace NewAppCacauShow.Telas
 
         private void Excluir_Click(object sender, RoutedEventArgs e)
         {
+            var vendaProdutoSelected = DataGridVendaProduto.SelectedItem as VendaProduto;
 
+            var result = MessageBox.Show($"Deseja realmente remover o produto `{vendaProdutoSelected.Nome}`?", "Confirmação de Exclusão",
+                MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            try
+            {
+                if (result == MessageBoxResult.Yes)
+                {
+                    var dao = new VendaProdutoDAO();
+                    dao.Delete(vendaProdutoSelected);
+                    Carregar(vendaId);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Exceção", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void Voltar_Click(object sender, RoutedEventArgs e)

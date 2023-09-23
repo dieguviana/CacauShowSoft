@@ -29,7 +29,6 @@ create table Login(
 id_log int primary key auto_increment,
 hora_log time,
 data_log date,
-hora_logout_log time,
 id_usu_fk int not null,
 foreign key (id_usu_fk) references usuario (id_usu)
 );
@@ -109,12 +108,11 @@ create table Venda(
 id_ven int primary key auto_increment,
 data_hora_ven datetime,
 id_usu_fk int,
-foreign key (id_usu_fk) references Usuario (id_usu),
-id_cli_fk int,
-foreign key (id_cli_fk) references Cliente (id_cli)
+foreign key (id_usu_fk) references Usuario (id_usu)
 );
 
-create table Produto_Venda(
+create table Venda_Produto(
+id_ven_pro int primary key auto_increment,
 id_pro_fk int,
 foreign key (id_pro_fk) references Produto (id_pro),
 id_ven_fk int,
@@ -128,48 +126,46 @@ desconto_rec double,
 valor_entrada_rec double,
 forma_pagamento_rec varchar(100),
 id_ven_fk int,
-foreign key (id_ven_fk) references venda (id_ven)
+foreign key (id_ven_fk) references venda (id_ven),
+id_cli_fk int,
+foreign key (id_cli_fk) references Cliente (id_cli)
 );
 
 insert into Usuario values (null, 'Diego', '2000-01-01', '1', '1', 'u@g', 'Atendente', '69', 'Rua', '1', 'RO', 'Pq', 'Ji');
 insert into Cliente values (null, 'Hilary', '2005-10-10', '101.313.123-12', '21231', '699847773844', 'udiegoviana@gmail.com', 'Rua', '13121', 'RO', 'Parque', 'ji-paraná');
-insert into Venda values (null, '2023-09-21 00:00:00', 1, 1);
-insert into Recebimento values (null, 2, 0, 2, 'Á vista', 1);
+insert into Venda values (null, '2023-09-21 00:00:00', 1);
+insert into Recebimento values (null, 2, 0, 2, 'Pix', 1, 1);
 insert into Produto values (null, 'Chocolate', '11321', '2024-09-21', 1, 2, '');
-insert into Produto_Venda values (1, 1);
+insert into Venda_Produto values (null, 1, 1);
 
 insert into Usuario values (null, 'Thauany', '2000-01-01', '1', '1', 'u@g', 'Atendente', '69', 'Rua', '1', 'RO', 'Pq', 'Ji');
 insert into Cliente values (null, 'Niic', '2005-10-10', '101.313.123-12', '21231', '699847773844', 'udiegoviana@gmail.com', 'Rua', '13121', 'RO', 'Parque', 'ji-paraná');
-insert into Venda values (null, '2023-09-21 00:10:00', 2, 2);
-insert into Recebimento values (null, 2, 0, 2, 'Parcelado', 2);
+insert into Venda values (null, '2023-09-21 00:10:00', 2);
+insert into Recebimento values (null, 2, 0, 2, 'Cartão de débito', 2, 2);
 insert into Produto values (null, 'Morango', '2121', '2024-09-21', 1, 2, '');
-insert into Produto_Venda values (2, 2);
+insert into Venda_Produto values (null, 2, 2);
 
-select
-Venda.id_ven as "Código",
-Venda.data_hora_ven as "Data e hora",
-Usuario.nome_usu as "Usuário",
-Cliente.nome_cli as "Cliente",
-Recebimento.valor_venda_rec as "Valor",
-Recebimento.desconto_rec as "Desconto",
-Recebimento.valor_entrada_rec as 'Valor Entrada',
-Recebimento.forma_pagamento_rec as 'Forma de Pagamento'
-from
-Venda, Usuario, Cliente, Recebimento
-where
-(Usuario.id_usu = Venda.id_usu_fk) and
-(Cliente.id_cli = Venda.id_cli_fk) and
-(Recebimento.id_ven_fk = Venda.id_ven);
+#Diego Viana
+delimiter $$
+create procedure InserirVenda()
+begin
+declare usuario_fk int;
+declare data_hora datetime;
+set data_hora = now();
+set usuario_fk = (select id_usu_fk from login where (id_log = (select max(id_log) from login)));
+	insert into Venda values (null, data_hora, usuario_fk);
+end;
+$$ delimiter ;
 
-select
-Produto.codigo_pro as 'Código',
-Produto.nome_pro as 'Produto',
-Produto.valor_venda_pro as 'Valor unitário'
-from
-Produto, Produto_Venda
-where
-(Produto_Venda.id_ven_fk is not null) and
-(Produto_Venda.id_pro_fk = Produto.id_pro);
+Call InserirVenda();
+
+select * from venda;
+
+call InserirVenda('2025-09-17 00:00:00', 1, 1);
+call InserirVenda('2024-09-17 23:00:00', 2, 2);
+call InserirVenda('2022-09-17 21:30:10', 3, 4); #Da erro pelo cliente não existir no sistema
+call InserirVenda('2022-09-17 21:30:10', 3, null); #Insere, mas da um 'Atenção'
+select * from Venda;
 
 /*
 #Emily
@@ -347,32 +343,6 @@ create procedure InserirProdutoCompra(quant int,valor float, produto_fk int, com
 $$ delimiter ;
 
 select * from Compra;
-
-#Diego Viana
-delimiter $$
-create procedure InserirVenda(data_hora datetime, usuario_fk int, cliente_fk int)
-begin
-declare teste varchar(100);
-set teste = (select id_cli from cliente where id_cli = cliente_fk);
-	if (cliente_fk is not null) then
-		if (teste <> null or teste <> 0) then
-			insert into venda values (null, data_hora, usuario_fk, cliente_fk);
-            select "Venda cadastrada com sucesso!" as 'Confirmação';
-		else
-			select "O cliente fornecido não existe no sistema. Realize o cadastro do cliente ou cadastre uma venda sem informar o cliente" as Erro;
-		end if;
-    else
-		insert into venda values (null, data_hora, usuario_fk, null);
-		select "Venda cadastrada com sucesso sem cliente!" as 'Atenção';
-    end if;
-end;
-$$ delimiter ;
-
-call InserirVenda('2025-09-17 00:00:00', 1, 1);
-call InserirVenda('2024-09-17 23:00:00', 2, 2);
-call InserirVenda('2022-09-17 21:30:10', 3, 4); #Da erro pelo cliente não existir no sistema
-call InserirVenda('2022-09-17 21:30:10', 3, null); #Insere, mas da um 'Atenção'
-select * from Venda;
 
 #Diego Viana
 delimiter $$

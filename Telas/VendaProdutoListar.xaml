@@ -4,14 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="VendaProdutoListar" Height="720" Width="1080">
+        Title="Listar Produtos da Venda" Height="720" Width="1080">
     <Grid>
         <!-- Plano de fundo -->
         <Grid Background="#2E4053">
             <!-- Título da Tela -->
             <TextBlock Text="Produtos da venda" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="36" FontWeight="Bold" Foreground="White"/>
 
-            <DataGrid Name="DataGridVendaProduto" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" AutoGenerateColumns="False">
+            <DataGrid Name="DataGridVendaProduto" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" AutoGenerateColumns="False" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Código" Width="Auto" Binding="{Binding IdVendaProduto}"/>
                     <DataGridTextColumn Header="Produto" Width="Auto" Binding="{Binding Nome}"/>
@@ -20,7 +20,7 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <Button Content="Excluir" Width="80" Height="30" Background="Red" Foreground="White" FontWeight="Bold" Click="Excluir_Click"/>
+                                    <Button Content="Excluir" Width="80" Height="30" Background="#FF5733" Foreground="White" FontWeight="Bold" Click="Excluir_Click"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

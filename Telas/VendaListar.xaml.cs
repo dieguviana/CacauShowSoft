@@ -36,7 +36,7 @@ namespace NewAppCacauShow.Telas
 
             try
             {
-                DataGridVendas.ItemsSource = dao.List();
+                DataGridVenda.ItemsSource = dao.List();
             }
             catch (Exception ex)
             {
@@ -46,9 +46,9 @@ namespace NewAppCacauShow.Telas
 
         private void DataGridVendas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (DataGridVendas.SelectedItem != null)
+            if (DataGridVenda.SelectedItem != null)
             {
-                Venda vendaSelecionada = (Venda)DataGridVendas.SelectedItem;
+                Venda vendaSelecionada = (Venda)DataGridVenda.SelectedItem;
                 vendaSelecionadaId = vendaSelecionada.IdVenda;
             }
         }
@@ -62,7 +62,11 @@ namespace NewAppCacauShow.Telas
 
         private void Cadastrar_Click(object sender, RoutedEventArgs e)
         {
-
+            VendaCadastrar vendaCadastrar = new VendaCadastrar();
+            var dao = new VendaDAO();
+            dao.Insert();
+            vendaCadastrar.Show();
+            this.Close();
         }
 
         private void Produto_Click(object sender, RoutedEventArgs e)
@@ -82,7 +86,24 @@ namespace NewAppCacauShow.Telas
 
         private void Excluir_Click(object sender, RoutedEventArgs e)
         {
+            var vendaSelected = DataGridVenda.SelectedItem as Venda;
 
+            var result = MessageBox.Show($"Deseja realmente remover a venda `{vendaSelected.IdVenda}`?", "Confirmação de Exclusão",
+                MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            try
+            {
+                if (result == MessageBoxResult.Yes)
+                {
+                    var dao = new VendaDAO();
+                    dao.Delete(vendaSelected);
+                    Carregar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Exceção", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void Editar_Click(object sender, RoutedEventArgs e)

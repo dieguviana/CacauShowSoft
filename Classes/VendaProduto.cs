@@ -10,6 +10,8 @@ namespace NewAppCacauShow.Classes
     {
         public int IdVendaProduto { get; set; }
 
+        public int CodigoPro { get; set; }
+
         public string Nome { get; set; }
 
         public double ValorVenda { get; set; }

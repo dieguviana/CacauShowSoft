@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewAppCacauShow.Telas"
         mc:Ignorable="d"
-        Title="VendaListar" Height="720" Width="1080">
+        Title="Listar Vendas" Height="720" Width="1080">
     <Grid>
         <!-- Plano de fundo -->
         <Grid Background="#2E4053">
             <!-- Título da Tela -->
             <TextBlock Text="Lista de Vendas" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="36" FontWeight="Bold" Foreground="White"/>
 
-            <DataGrid Name="DataGridVendas" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" AutoGenerateColumns="False" SelectionChanged="DataGridVendas_SelectionChanged">
+            <DataGrid Name="DataGridVenda" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" AutoGenerateColumns="False" SelectionChanged="DataGridVendas_SelectionChanged" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding IdVenda}"/>
                     <DataGridTextColumn Header="Data e Hora" Width="Auto" Binding="{Binding DataHora}"/>
@@ -27,8 +27,8 @@
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <Button Content="Produtos" Width="80" Height="30" Background="Blue" Foreground="White" FontWeight="Bold" Click="Produto_Click"/>
-                                    <Button Content="Editar" Width="80" Height="30" Background="Orange" Foreground="White" FontWeight="Bold" Click="Editar_Click"/>
-                                    <Button Content="Excluir" Width="80" Height="30" Background="Red" Foreground="White" FontWeight="Bold" Click="Excluir_Click"/>
+                                    <Button Content="Editar" Width="80" Height="30" Background="#E67E22" Foreground="White" FontWeight="Bold" Click="Editar_Click"/>
+                                    <Button Content="Excluir" Width="80" Height="30" Background="#FF5733" Foreground="White" FontWeight="Bold" Click="Excluir_Click"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
