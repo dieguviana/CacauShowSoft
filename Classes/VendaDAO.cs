@@ -28,14 +28,16 @@ namespace NewAppCacauShow.Classes
                 query.CommandText = "select " +
                 "Venda.id_ven, " +
                 "Venda.data_hora_ven, " +
+                "Cliente.nome_cli, " +
                 "Recebimento.valor_venda_rec, " +
                 "Recebimento.desconto_rec, " +
                 "Recebimento.valor_pago_rec, " +
                 "Recebimento.forma_rec " +
                 "from " +
-                "Venda, Recebimento " +
+                "Venda, Recebimento, Cliente " +
                 "where " +
-                "(Recebimento.id_ven_fk = Venda.id_ven);";
+                "(Recebimento.id_ven_fk = Venda.id_ven) and " +
+                "(Recebimento.id_cli_fk = Cliente.id_cli)";
 
                 MySqlDataReader reader = query.ExecuteReader();
 
@@ -45,6 +47,7 @@ namespace NewAppCacauShow.Classes
                     {
                         IdVenda = reader.GetInt32("id_ven"),
                         DataHora = reader.GetDateTime("data_hora_ven").ToString("dd/MM/yyyy HH:mm:ss"),
+                        Cliente = reader.GetString("nome_cli"),
                         ValorVenda = reader.GetDouble("valor_venda_rec"),
                         Desconto = reader.GetDouble("desconto_rec"),
                         ValorPago = reader.GetDouble("valor_pago_rec"),
@@ -76,9 +79,6 @@ namespace NewAppCacauShow.Classes
                 query.Parameters.AddWithValue("@id", venda.IdVenda);
 
                 var result = query.ExecuteNonQuery();
-
-                if (result == 0)
-                    throw new Exception("Registro não removido da base de dados. Verifique e tente novamente.");
 
             }
             catch (Exception e)
@@ -145,20 +145,31 @@ namespace NewAppCacauShow.Classes
         {
             var query = conn.Query();
             query.CommandText = "Select " +
+                "Recebimento.id_rec, " +
                 "Recebimento.forma_rec, " +
                 "Cliente.cpf_cli, " +
                 "Recebimento.valor_venda_rec, " +
-                "Recebimento.desconto_rec" +
-                "Recebimento.valor_pago_rec";
+                "Recebimento.desconto_rec, " +
+                "Recebimento.valor_pago_rec " +
+                "from " +
+                "Recebimento, Cliente " +
+                "where " +
+                "(Recebimento.id_ven_fk = @id) and " +
+                "(Recebimento.id_cli_fk = Cliente.id_cli);";
+
+            query.Parameters.AddWithValue("@id", venda.IdVenda);
 
             MySqlDataReader reader = query.ExecuteReader();
-
-            venda.Forma = reader.GetString("form_rec");
-            venda.Cliente = reader.GetString("cpf_cli");
-            venda.ValorVenda = reader.GetDouble("valor_venda_rec");
-            venda.Desconto = reader.GetDouble("desconto_rec");
-            venda.ValorPago = reader.GetDouble("valor_pago_rec");
-
+            if (reader.Read())
+            {
+                venda.IdRec = reader.GetInt32("id_rec");
+                venda.Forma = reader.GetString("forma_rec");
+                venda.Cliente = reader.GetString("cpf_cli");
+                venda.ValorVenda = reader.GetDouble("valor_venda_rec");
+                venda.Desconto = reader.GetDouble("desconto_rec");
+                venda.ValorPago = reader.GetDouble("valor_pago_rec");
+            }
+            
             return venda;
         }
     }

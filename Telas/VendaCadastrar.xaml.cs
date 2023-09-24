@@ -58,7 +58,7 @@ namespace NewAppCacauShow.Telas
                     {
                         var dao2 = new VendaProdutoDAO();
                         dao2.Insert(vendaProduto);
-                        txtValorVenda.Text = Convert.ToString(vendaProduto.ValorUnitario);
+                        txtValorVenda.Text = Convert.ToString(vendaProduto.ValorTotal);
                     }
                     catch (Exception ex)
                     {
@@ -129,7 +129,7 @@ namespace NewAppCacauShow.Telas
                 }
                 else
                 {
-                    recebimento.Cliente_cpf = null; // Define como null se não informado
+                    recebimento.Cliente_cpf = ""; // Define como null se não informado
                 }
 
                 var dao = new VendaDAO();
@@ -139,7 +139,7 @@ namespace NewAppCacauShow.Telas
                 var dao2 = new RecebimentoDAO();
                 dao2.Insert(recebimento);
 
-                MessageBox.Show("Venda inserida com sucesso! O troco é de R$ " + recebimento.Troco, "Confirmação", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Venda inserida com sucesso! O troco é de R$ " + recebimento.Troco + ".", "Confirmação", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 var dao3 = new VendaDAO();
                 dao3.Insert();
@@ -174,7 +174,7 @@ namespace NewAppCacauShow.Telas
                     var dao2 = new VendaProdutoDAO();
                     dao2.Delete(vendaProduto);
                     Carregar(vendaSelected.IdVenda);
-                    txtValorVenda.Text = Convert.ToString(vendaProduto.ValorUnitario);
+                    txtValorVenda.Text = Convert.ToString(vendaProduto.ValorTotal);
                 }
             }
             catch (Exception ex)
@@ -204,6 +204,10 @@ namespace NewAppCacauShow.Telas
                         var dao2 = new VendaDAO();
                         dao2.Delete(vendaSelected);
                     }
+                    else
+                    {
+                        jaFoi = false;
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -219,7 +223,6 @@ namespace NewAppCacauShow.Telas
         {
             if (!jaFoi)
             {
-                jaFoi = true;
                 var dao = new VendaDAO();
 
                 var vendaSelected = dao.ultimaVenda();
@@ -233,6 +236,10 @@ namespace NewAppCacauShow.Telas
                     {
                         var dao2 = new VendaDAO();
                         dao2.Delete(vendaSelected);
+                    }
+                    else
+                    {
+                        e.Cancel = true;
                     }
                 }
                 catch (Exception ex)

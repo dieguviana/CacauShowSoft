@@ -9,6 +9,8 @@ namespace NewAppCacauShow.Classes
     class Venda
     {
         public int IdVenda { get; set; }
+
+        public int IdRec { get; set; }
         
         public string DataHora { get; set; }
         

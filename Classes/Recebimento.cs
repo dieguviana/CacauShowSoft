@@ -8,6 +8,8 @@ namespace NewAppCacauShow.Classes
 {
     class Recebimento
     {
+        public double IdRec { get; set; }
+
         public double ValorVenda { get; set; }
 
         public double Desconto { get; set; }

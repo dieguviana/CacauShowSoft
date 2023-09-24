@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewAppCacauShow.Telas"
         mc:Ignorable="d"
-        Title="Consultar Venda" Height="720" Width="1080">
+        Title="Consultar Venda" Height="720" Width="1080" Closing="FechandoJanela">
     <Grid Background="#2E4053">
         <!-- Título da Tela -->
         <TextBlock Text="Consultar Venda" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="36" FontWeight="Bold" Foreground="White"/>
@@ -32,7 +32,7 @@
             </StackPanel>
         </StackPanel>
 
-        <DataGrid Name="DataGridVendaProduto" Margin="0,200,0,100" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Top" MaxHeight="300" AutoGenerateColumns="False" CanUserAddRows="False"  FontSize="20">
+        <DataGrid Name="DataGridVendaProduto" Margin="0,200,0,100" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Top" MaxHeight="300" AutoGenerateColumns="False" CanUserAddRows="False"  FontSize="20" IsEnabled="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Código" Width="Auto" Binding="{Binding Codigo}"/>
                 <DataGridTextColumn Header="Produto" Width="Auto" Binding="{Binding Produto}"/>
@@ -63,7 +63,7 @@
             </StackPanel>
 
             <StackPanel Margin="87.5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="60">
-                <Button Content="Add" Width="60" Height="40" Click="AdicionarProduto_Click" Background="#3498DB" Foreground="White" FontSize="20" IsEnabled="False"/>
+                <Button Name="btnAdd" Content="Add" Width="60" Height="40" Click="AdicionarProduto_Click" Background="#3498DB" Foreground="White" FontSize="20" IsEnabled="False"/>
             </StackPanel>
 
             <StackPanel Margin="87.5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
@@ -80,7 +80,7 @@
 
         <!-- Botões Estilizados -->
         <StackPanel Margin="10,620,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Horizontal">
-            <Button Content="Voltar à lista" Width="200" Height="40" Margin="30, 10, 10, 10" Click="CancelarVenda_Click" Background="#FF5733" Foreground="White" FontSize="20"/>
+            <Button Content="Voltar à lista" Width="200" Height="40" Margin="30, 10, 10, 10" Click="VoltarListar_Click" Background="#FF5733" Foreground="White" FontSize="20"/>
             <Button Name="btnEditar" Content="Editar" Width="200" Height="40" Margin="30, 10, 10, 10" Click="EditarVenda_Click" Background="#3498DB" Foreground="White" FontSize="20"/>
         </StackPanel>
     </Grid>

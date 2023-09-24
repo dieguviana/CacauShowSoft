@@ -103,6 +103,9 @@ bairro_cli varchar(100),
 municipio_cli varchar(100)
 );
 
+insert into Cliente values (null, 'Cliente não informado', '2023-09-24', '', '', '', '', '', '', '', '', '');
+insert into Cliente values (null, 'Cliente informado não existe no sistema', '2023-09-24', '1', '', '', '', '', '', '', '', '');
+
 create table Venda(
 id_ven int primary key auto_increment,
 data_hora_ven datetime,
@@ -169,24 +172,35 @@ declare troco double;
 declare cliente_fk int;
 set troco = (-valorVenda + desconto + valorPago);
 set cliente_fk = (select id_cli from Cliente where (cpf_cli = cliente_cpf));
+if (cliente_fk is not null) then
 insert into Recebimento values (null, valorVenda, desconto, valorPago, forma, troco, venda_fk, cliente_fk);
-end
+else
+insert into Recebimento values (null, valorVenda, desconto, valorPago, forma, troco, venda_fk, 2);
+end if;
+end;
+$$ delimiter ;
+
+delimiter $$
+create procedure UpdateRecebimento(recebimento_id int, valorVenda double, desconto double, valorPago double, forma varchar(100), cliente_cpf varchar(100))
+begin
+declare troco double;
+declare cliente_fk int;
+set troco = (-valorVenda + desconto + valorPago);
+set cliente_fk = (select id_cli from Cliente where (cpf_cli = cliente_cpf));
+if (cliente_fk is not null) then
+update Recebimento set valor_venda_rec = valorVenda, desconto_rec = desconto, valor_pago_rec = valorPago, forma_rec = forma, troco_rec = troco, id_cli_fk = cliente_fk where (id_rec = recebimento_id);
+else
+update Recebimento set valor_venda_rec = valorVenda, desconto_rec = desconto, valor_pago_rec = valorPago, forma_rec = forma, troco_rec = troco, id_cli_fk = 2 where (id_rec = recebimento_id);
+end if;
+end;
 $$ delimiter ;
 
 insert into Usuario values (null, 'Diego', '2000-01-01', '1', '2', 'u@g', 'Atendente', '69', 'Rua', '1', 'RO', 'Pq', 'Ji');
 insert into Login values (null, now(), 1);
 insert into Cliente values (null, 'Hilary', '2005-10-10', '234.567.890-12', '21231', '699847773844', 'udiegoviana@gmail.com', 'Rua', '13121', 'RO', 'Parque', 'ji-paraná');
 insert into Produto values (null, 'Trufa de caramelo, beijo e doce de leite', '12345', '2024-09-21', 1, 2, '');
-
-insert into Usuario values (null, 'Thauany', '2000-01-01', '1', '1', 'u@g', 'Atendente', '69', 'Rua', '1', 'RO', 'Pq', 'Ji');
-insert into Login values (null, now(), 2);
-insert into Cliente values (null, 'Niic', '2005-10-10', '123.456.789-10', '21231', '699847773844', 'udiegoviana@gmail.com', 'Rua', '13121', 'RO', 'Parque', 'ji-paraná');
-insert into Produto values (null, 'Morango', '55555', '2024-09-21', 1, 2, '');
-
-select * from Venda_Produto;
-select * from Venda;
-select * from Recebimento;
-select * from usuario;
+insert into Produto values (null, 'Morango', '12346', '2024-09-21', 1, 4, '');
+insert into Produto values (null, 'Chocolate', '12347', '2024-09-21', 1, 6, '');
 
 /*
 #Emily

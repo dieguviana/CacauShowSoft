@@ -21,5 +21,7 @@ namespace NewAppCacauShow.Classes
         public int Venda_fk { get; set; }
 
         public double Subtotal { get; set; }
+
+        public double ValorTotal { get; set; }
     }
 }

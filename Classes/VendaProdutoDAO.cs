@@ -86,11 +86,11 @@ namespace NewAppCacauShow.Classes
                 {
                     if (reader.IsDBNull(reader.GetOrdinal("total")))
                     {
-                        vendaProduto.ValorUnitario = 0;
+                        vendaProduto.ValorTotal = 0;
                     }
                     else
                     {
-                        vendaProduto.ValorUnitario = reader.GetDouble("total");
+                        vendaProduto.ValorTotal = reader.GetDouble("total");
                     }
                 }
 
@@ -122,7 +122,7 @@ namespace NewAppCacauShow.Classes
 
                 if (reader.Read())
                 {
-                    vendaProduto.ValorUnitario = reader.GetDouble("subtotal_ven_pro");
+                    vendaProduto.ValorTotal = reader.GetDouble("subtotal_ven_pro");
                 }
 
                 return vendaProduto;

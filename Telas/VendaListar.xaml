@@ -16,6 +16,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding IdVenda}"/>
                     <DataGridTextColumn Header="Data e Hora" Width="Auto" Binding="{Binding DataHora}"/>
+                    <DataGridTextColumn Header="Cliente" Width="Auto" Binding="{Binding Cliente}"/>
                     <DataGridTextColumn Header="Valor Total" Width="Auto" Binding="{Binding ValorVenda}"/>
                     <DataGridTextColumn Header="Desconto" Width="Auto" Binding="{Binding Desconto}"/>
                     <DataGridTextColumn Header="Valor Pago" Width="Auto" Binding="{Binding ValorPago}"/>
@@ -25,7 +26,6 @@
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <Button Content="Detalhes" Width="100" Height="35" Background="Blue" Foreground="White" FontWeight="Bold" Click="Detalhes_Click"/>
-                                    <Button Content="Editar" Width="100" Height="35" Background="#E67E22" Foreground="White" FontWeight="Bold" Click="Editar_Click"/>
                                     <Button Content="Excluir" Width="100" Height="35" Background="#FF5733" Foreground="White" FontWeight="Bold" Click="Excluir_Click"/>
                                 </StackPanel>
                             </DataTemplate>

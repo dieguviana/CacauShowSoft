@@ -99,10 +99,5 @@ namespace NewAppCacauShow.Telas
                 MessageBox.Show(ex.Message, "Exceção", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-        private void Editar_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

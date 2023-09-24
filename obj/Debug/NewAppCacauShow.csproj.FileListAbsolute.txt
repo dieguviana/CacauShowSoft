@@ -198,8 +198,6 @@ H:\Meu Drive\IFRO\PDS\NewAppCacauShow\obj\Debug\NewAppCacauShow.Properties.Resou
 H:\Meu Drive\IFRO\PDS\NewAppCacauShow\obj\Debug\NewAppCacauShow.csproj.GenerateResource.cache
 H:\Meu Drive\IFRO\PDS\NewAppCacauShow\obj\Debug\NewAppCacauShow.csproj.CoreCompileInputs.cache
 H:\Meu Drive\IFRO\PDS\NewAppCacauShow\obj\Debug\NewAppCacauShow.csproj.CopyComplete
-C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\obj\Debug\Telas\VendaProdutoListar.baml
-C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\obj\Debug\Telas\VendaProdutoListar.g.cs
 C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\obj\Debug\Telas\VendaListar.g.cs
 C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\obj\Debug\Telas\VendaListar.baml
 C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\obj\Debug\Telas\VendaCadastrar.g.cs
