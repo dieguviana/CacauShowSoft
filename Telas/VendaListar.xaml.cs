@@ -69,18 +69,12 @@ namespace NewAppCacauShow.Telas
             this.Close();
         }
 
-        private void Produto_Click(object sender, RoutedEventArgs e)
+        private void Detalhes_Click(object sender, RoutedEventArgs e)
         {
-            if (vendaSelecionadaId != 0)
-            {
-                VendaProdutoListar vendaProduto = new VendaProdutoListar(vendaSelecionadaId);
-                vendaProduto.Show();
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Por favor, selecione uma venda na lista.", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            var vendaSelected = DataGridVenda.SelectedItem as Venda;
+            VendaConsultar vendaConsultar = new VendaConsultar(vendaSelected.IdVenda);
+            vendaConsultar.Show();
+            this.Close();
         }
 
 

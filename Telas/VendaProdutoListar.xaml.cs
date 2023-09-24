@@ -50,7 +50,7 @@ namespace NewAppCacauShow.Telas
         {
             var vendaProdutoSelected = DataGridVendaProduto.SelectedItem as VendaProduto;
 
-            var result = MessageBox.Show($"Deseja realmente remover o produto `{vendaProdutoSelected.Nome}`?", "Confirmação de Exclusão",
+            var result = MessageBox.Show($"Deseja realmente remover o produto `{vendaProdutoSelected.Produto}`?", "Confirmação de Exclusão",
                 MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
             try

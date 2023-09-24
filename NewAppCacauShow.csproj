@@ -90,6 +90,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Recebimento.cs" />
+    <Compile Include="Classes\RecebimentoDAO.cs" />
     <Compile Include="Classes\Venda.cs" />
     <Compile Include="Classes\VendaDAO.cs" />
     <Compile Include="Classes\VendaProduto.cs" />
@@ -100,6 +102,9 @@
     </Compile>
     <Compile Include="Telas\VendaCadastrar.xaml.cs">
       <DependentUpon>VendaCadastrar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\VendaConsultar.xaml.cs">
+      <DependentUpon>VendaConsultar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Telas\VendaListar.xaml.cs">
       <DependentUpon>VendaListar.xaml</DependentUpon>
@@ -123,6 +128,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Telas\VendaCadastrar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Telas\VendaConsultar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

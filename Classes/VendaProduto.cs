@@ -10,10 +10,16 @@ namespace NewAppCacauShow.Classes
     {
         public int IdVendaProduto { get; set; }
 
-        public int CodigoPro { get; set; }
+        public int Codigo { get; set; }
 
-        public string Nome { get; set; }
+        public double Quantidade { get; set; }
 
-        public double ValorVenda { get; set; }
+        public string Produto { get; set; }
+
+        public double ValorUnitario { get; set; }
+
+        public int Venda_fk { get; set; }
+
+        public double Subtotal { get; set; }
     }
 }

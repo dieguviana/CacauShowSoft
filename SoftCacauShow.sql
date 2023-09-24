@@ -27,8 +27,7 @@ municipio_usu varchar(100)
 
 create table Login(
 id_log int primary key auto_increment,
-hora_log time,
-data_log date,
+data_hora_log datetime,
 id_usu_fk int not null,
 foreign key (id_usu_fk) references usuario (id_usu)
 );
@@ -113,6 +112,8 @@ foreign key (id_usu_fk) references Usuario (id_usu)
 
 create table Venda_Produto(
 id_ven_pro int primary key auto_increment,
+quantidade_ven_pro double,
+subtotal_ven_pro double,
 id_pro_fk int,
 foreign key (id_pro_fk) references Produto (id_pro),
 id_ven_fk int,
@@ -123,27 +124,14 @@ create table Recebimento(
 id_rec int primary key auto_increment,
 valor_venda_rec double,
 desconto_rec double,
-valor_entrada_rec double,
-forma_pagamento_rec varchar(100),
+valor_pago_rec double,
+forma_rec varchar(100),
+troco_rec double,
 id_ven_fk int,
 foreign key (id_ven_fk) references venda (id_ven),
 id_cli_fk int,
 foreign key (id_cli_fk) references Cliente (id_cli)
 );
-
-insert into Usuario values (null, 'Diego', '2000-01-01', '1', '1', 'u@g', 'Atendente', '69', 'Rua', '1', 'RO', 'Pq', 'Ji');
-insert into Cliente values (null, 'Hilary', '2005-10-10', '101.313.123-12', '21231', '699847773844', 'udiegoviana@gmail.com', 'Rua', '13121', 'RO', 'Parque', 'ji-paraná');
-insert into Venda values (null, '2023-09-21 00:00:00', 1);
-insert into Recebimento values (null, 2, 0, 2, 'Pix', 1, 1);
-insert into Produto values (null, 'Chocolate', '11321', '2024-09-21', 1, 2, '');
-insert into Venda_Produto values (null, 1, 1);
-
-insert into Usuario values (null, 'Thauany', '2000-01-01', '1', '1', 'u@g', 'Atendente', '69', 'Rua', '1', 'RO', 'Pq', 'Ji');
-insert into Cliente values (null, 'Niic', '2005-10-10', '101.313.123-12', '21231', '699847773844', 'udiegoviana@gmail.com', 'Rua', '13121', 'RO', 'Parque', 'ji-paraná');
-insert into Venda values (null, '2023-09-21 00:10:00', 2);
-insert into Recebimento values (null, 2, 0, 2, 'Cartão de débito', 2, 2);
-insert into Produto values (null, 'Morango', '2121', '2024-09-21', 1, 2, '');
-insert into Venda_Produto values (null, 2, 2);
 
 #Diego Viana
 delimiter $$
@@ -157,15 +145,48 @@ set usuario_fk = (select id_usu_fk from login where (id_log = (select max(id_log
 end;
 $$ delimiter ;
 
-Call InserirVenda();
+#Diego Viana
+delimiter $$
+create procedure InserirVendaProduto(codigo int, quantidade double, venda_fk int)
+begin
+declare produto_fk int;
+declare subtotal double;
+declare mensagem varchar(100);
+set produto_fk = (select id_pro from produto where (codigo_pro = codigo));
+set subtotal = (select valor_venda_pro from produto where (codigo_pro = codigo)) * quantidade;
+	if (produto_fk <> 0 or produto_fk is not null) then
+		insert into Venda_Produto values (null, quantidade, subtotal, produto_fk, venda_fk);
+	else
+		set mensagem = 'O código de produto informado não existe no sistema';
+    end if;
+end;
+$$ delimiter ;
 
-select * from venda;
+delimiter $$
+create procedure InserirRecebimento(valorVenda double, desconto double, valorPago double, forma varchar(100), venda_fk int, cliente_cpf varchar(100))
+begin
+declare troco double;
+declare cliente_fk int;
+set troco = (-valorVenda + desconto + valorPago);
+set cliente_fk = (select id_cli from Cliente where (cpf_cli = cliente_cpf));
+insert into Recebimento values (null, valorVenda, desconto, valorPago, forma, troco, venda_fk, cliente_fk);
+end
+$$ delimiter ;
 
-call InserirVenda('2025-09-17 00:00:00', 1, 1);
-call InserirVenda('2024-09-17 23:00:00', 2, 2);
-call InserirVenda('2022-09-17 21:30:10', 3, 4); #Da erro pelo cliente não existir no sistema
-call InserirVenda('2022-09-17 21:30:10', 3, null); #Insere, mas da um 'Atenção'
+insert into Usuario values (null, 'Diego', '2000-01-01', '1', '2', 'u@g', 'Atendente', '69', 'Rua', '1', 'RO', 'Pq', 'Ji');
+insert into Login values (null, now(), 1);
+insert into Cliente values (null, 'Hilary', '2005-10-10', '234.567.890-12', '21231', '699847773844', 'udiegoviana@gmail.com', 'Rua', '13121', 'RO', 'Parque', 'ji-paraná');
+insert into Produto values (null, 'Trufa de caramelo, beijo e doce de leite', '12345', '2024-09-21', 1, 2, '');
+
+insert into Usuario values (null, 'Thauany', '2000-01-01', '1', '1', 'u@g', 'Atendente', '69', 'Rua', '1', 'RO', 'Pq', 'Ji');
+insert into Login values (null, now(), 2);
+insert into Cliente values (null, 'Niic', '2005-10-10', '123.456.789-10', '21231', '699847773844', 'udiegoviana@gmail.com', 'Rua', '13121', 'RO', 'Parque', 'ji-paraná');
+insert into Produto values (null, 'Morango', '55555', '2024-09-21', 1, 2, '');
+
+select * from Venda_Produto;
 select * from Venda;
+select * from Recebimento;
+select * from usuario;
 
 /*
 #Emily

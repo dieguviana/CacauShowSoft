@@ -12,23 +12,21 @@
             <!-- Título da Tela -->
             <TextBlock Text="Lista de Vendas" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="36" FontWeight="Bold" Foreground="White"/>
 
-            <DataGrid Name="DataGridVenda" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" AutoGenerateColumns="False" SelectionChanged="DataGridVendas_SelectionChanged" CanUserAddRows="False">
+            <DataGrid Name="DataGridVenda" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" AutoGenerateColumns="False" SelectionChanged="DataGridVendas_SelectionChanged" CanUserAddRows="False" FontSize="20" MaxHeight="500">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding IdVenda}"/>
                     <DataGridTextColumn Header="Data e Hora" Width="Auto" Binding="{Binding DataHora}"/>
-                    <DataGridTextColumn Header="Usuário" Width="Auto" Binding="{Binding Usuario}"/>
-                    <DataGridTextColumn Header="Cliente" Width="Auto" Binding="{Binding Cliente}"/>
                     <DataGridTextColumn Header="Valor Total" Width="Auto" Binding="{Binding ValorVenda}"/>
                     <DataGridTextColumn Header="Desconto" Width="Auto" Binding="{Binding Desconto}"/>
-                    <DataGridTextColumn Header="Valor Pago" Width="Auto" Binding="{Binding ValorEntrada}"/>
-                    <DataGridTextColumn Header="Forma de pagamento" Width="Auto" Binding="{Binding FormaPagamento}"/>
+                    <DataGridTextColumn Header="Valor Pago" Width="Auto" Binding="{Binding ValorPago}"/>
+                    <DataGridTextColumn Header="Forma de pagamento" Width="Auto" Binding="{Binding Forma}"/>
                     <DataGridTemplateColumn Width="Auto" Header="Ações">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <Button Content="Produtos" Width="80" Height="30" Background="Blue" Foreground="White" FontWeight="Bold" Click="Produto_Click"/>
-                                    <Button Content="Editar" Width="80" Height="30" Background="#E67E22" Foreground="White" FontWeight="Bold" Click="Editar_Click"/>
-                                    <Button Content="Excluir" Width="80" Height="30" Background="#FF5733" Foreground="White" FontWeight="Bold" Click="Excluir_Click"/>
+                                    <Button Content="Detalhes" Width="100" Height="35" Background="Blue" Foreground="White" FontWeight="Bold" Click="Detalhes_Click"/>
+                                    <Button Content="Editar" Width="100" Height="35" Background="#E67E22" Foreground="White" FontWeight="Bold" Click="Editar_Click"/>
+                                    <Button Content="Excluir" Width="100" Height="35" Background="#FF5733" Foreground="White" FontWeight="Bold" Click="Excluir_Click"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -37,10 +35,10 @@
             </DataGrid>
 
             <!-- Botão Voltar -->
-            <Button Content="Voltar ao Menu" Width="150" Height="40" Background="#2ECC71" Foreground="White" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20" Click="Voltar_Click"/>
+            <Button Content="Voltar ao Menu" Width="200" Height="40" Background="#2ECC71" Foreground="White" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20" Click="Voltar_Click" FontSize="20"/>
 
             <!-- Botão Cadastrar Venda -->
-            <Button Content="Cadastrar Venda" Width="150" Height="40" Background="#3498DB" Foreground="White" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20" Click="Cadastrar_Click"/>
+            <Button Content="Cadastrar Venda" Width="200" Height="40" Background="#3498DB" Foreground="White" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20" Click="Cadastrar_Click" FontSize="20"/>
         </Grid>
     </Grid>
 </Window>

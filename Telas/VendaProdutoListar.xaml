@@ -11,11 +11,13 @@
             <!-- Título da Tela -->
             <TextBlock Text="Produtos da venda" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="36" FontWeight="Bold" Foreground="White"/>
 
-            <DataGrid Name="DataGridVendaProduto" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid Name="DataGridVendaProduto" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" AutoGenerateColumns="False" CanUserAddRows="False"  FontSize="20">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Código" Width="Auto" Binding="{Binding IdVendaProduto}"/>
                     <DataGridTextColumn Header="Produto" Width="Auto" Binding="{Binding Nome}"/>
+                    <DataGridTextColumn Header="Quantidade" Width="Auto" Binding="{Binding Quantidade}"/>
                     <DataGridTextColumn Header="Valor Unitário" Width="Auto" Binding="{Binding ValorVenda}"/>
+                    <DataGridTextColumn Header="Subtotal" Width="Auto" Binding="{Binding Subtotal}"/>
                     <DataGridTemplateColumn Width="Auto" Header="Ações">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

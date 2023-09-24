@@ -1,31 +1,34 @@
-﻿<Window
+﻿<Window x:Class="NewAppCacauShow.Telas.VendaConsultar"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="NewAppCacauShow.Telas.VendaCadastrar"
-        Title="Realizar Venda" Height="720" Width="1080" Closing="FechandoJanela">
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NewAppCacauShow.Telas"
+        mc:Ignorable="d"
+        Title="Consultar Venda" Height="720" Width="1080">
     <Grid Background="#2E4053">
         <!-- Título da Tela -->
-        <TextBlock Text="Cadastro de Venda" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="36" FontWeight="Bold" Foreground="White"/>
+        <TextBlock Text="Consultar Venda" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="36" FontWeight="Bold" Foreground="White"/>
 
         <StackPanel Width="950" Height="75" VerticalAlignment="Top" Margin="0,520,0,0" Orientation="Horizontal">
             <StackPanel Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" >
                 <TextBlock Text="Cliente (CPF):" Foreground="White" FontSize="20"/>
-                <TextBox x:Name="txtClienteCPF" Height="30" FontSize="20"/>
+                <TextBox x:Name="txtClienteCPF" Height="30" FontSize="20" IsEnabled="False"/>
             </StackPanel>
 
             <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
                 <TextBlock Text="Valor da Venda (R$):" Foreground="White" FontSize="20"/>
-                <TextBlock x:Name="txtValorVenda" Height="30" IsEnabled="False" FontSize="20" Background="White"/>
+                <TextBox x:Name="txtValorVenda" Height="30" FontSize="20" IsEnabled="False"/>
             </StackPanel>
-            
+
             <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
                 <TextBlock Text="Desconto (R$):" Foreground="White" FontSize="20"/>
-                <TextBox x:Name="txtDesconto" Height="30" FontSize="20"/>
+                <TextBox x:Name="txtDesconto" Height="30" FontSize="20" IsEnabled="False"/>
             </StackPanel>
 
             <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
                 <TextBlock Text="Valor Pago (R$):" Foreground="White" FontSize="20"/>
-                <TextBox x:Name="txtValorPago" Height="30" FontSize="20"/>
+                <TextBox x:Name="txtValorPago" Height="30" FontSize="20" IsEnabled="False"/>
             </StackPanel>
         </StackPanel>
 
@@ -51,21 +54,21 @@
         <StackPanel Width="950" Height="75" VerticalAlignment="Top" Margin="0,100,0,0" Orientation="Horizontal">
             <StackPanel Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
                 <TextBlock Text="Cod Produto:" Foreground="White" FontSize="20"/>
-                <TextBox x:Name="txtCodigoProduto" Height="30" FontSize="20"/>
+                <TextBox x:Name="txtCodigoProduto" Height="30" FontSize="20" IsEnabled="False"/>
             </StackPanel>
 
             <StackPanel Margin="87.5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
                 <TextBlock Text="Quantidade:" Foreground="White" FontSize="20"/>
-                <TextBox x:Name="txtQuantidade" Height="30" FontSize="20"/>
+                <TextBox x:Name="txtQuantidade" Height="30" FontSize="20" IsEnabled="False"/>
             </StackPanel>
 
             <StackPanel Margin="87.5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="60">
-                <Button Content="Add" Width="60" Height="40" Click="AdicionarProduto_Click" Background="#3498DB" Foreground="White" FontSize="20"/>
+                <Button Content="Add" Width="60" Height="40" Click="AdicionarProduto_Click" Background="#3498DB" Foreground="White" FontSize="20" IsEnabled="False"/>
             </StackPanel>
 
             <StackPanel Margin="87.5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
                 <TextBlock Text="Forma de Pagamento:" Foreground="White" FontSize="20"/>
-                <ComboBox x:Name="cmbForma" Height="30" FontSize="20">
+                <ComboBox x:Name="cmbForma" Height="30" FontSize="20" IsEnabled="False">
                     <ComboBoxItem Content="Dinheiro"/>
                     <ComboBoxItem Content="Pix"/>
                     <ComboBoxItem Content="Cartão de Débito"/>
@@ -78,7 +81,7 @@
         <!-- Botões Estilizados -->
         <StackPanel Margin="10,620,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Horizontal">
             <Button Content="Voltar à lista" Width="200" Height="40" Margin="30, 10, 10, 10" Click="CancelarVenda_Click" Background="#FF5733" Foreground="White" FontSize="20"/>
-            <Button Content="Finalizar Venda" Width="200" Height="40" Margin="30, 10, 10, 10" Click="FinalizarVenda_Click" Background="#27AE60" Foreground="White" FontSize="20"/>
+            <Button Name="btnEditar" Content="Editar" Width="200" Height="40" Margin="30, 10, 10, 10" Click="EditarVenda_Click" Background="#3498DB" Foreground="White" FontSize="20"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 
 namespace NewAppCacauShow.Classes
 {
@@ -27,17 +28,13 @@ namespace NewAppCacauShow.Classes
                 query.CommandText = "select " +
                 "Venda.id_ven, " +
                 "Venda.data_hora_ven, " +
-                "Usuario.nome_usu, " +
-                "Cliente.nome_cli, " +
                 "Recebimento.valor_venda_rec, " +
                 "Recebimento.desconto_rec, " +
-                "Recebimento.valor_entrada_rec, " +
-                "Recebimento.forma_pagamento_rec " +
+                "Recebimento.valor_pago_rec, " +
+                "Recebimento.forma_rec " +
                 "from " +
-                "Venda, Usuario, Cliente, Recebimento " +
+                "Venda, Recebimento " +
                 "where " +
-                "(Usuario.id_usu = Venda.id_usu_fk) and " +
-                "(Cliente.id_cli = Recebimento.id_cli_fk) and " +
                 "(Recebimento.id_ven_fk = Venda.id_ven);";
 
                 MySqlDataReader reader = query.ExecuteReader();
@@ -47,13 +44,11 @@ namespace NewAppCacauShow.Classes
                     list.Add(new Venda()
                     {
                         IdVenda = reader.GetInt32("id_ven"),
-                        DataHora = reader.GetDateTime("data_hora_ven"),
-                        Usuario = reader.GetString("nome_usu"),
-                        Cliente = reader.GetString("nome_cli"),
+                        DataHora = reader.GetDateTime("data_hora_ven").ToString("dd/MM/yyyy HH:mm:ss"),
                         ValorVenda = reader.GetDouble("valor_venda_rec"),
                         Desconto = reader.GetDouble("desconto_rec"),
-                        ValorEntrada = reader.GetDouble("valor_entrada_rec"),
-                        FormaPagamento = reader.GetString("forma_pagamento_rec")
+                        ValorPago = reader.GetDouble("valor_pago_rec"),
+                        Forma = reader.GetString("forma_rec")
                     });
                 }
 
@@ -116,6 +111,55 @@ namespace NewAppCacauShow.Classes
             {
                 conn.Close();
             }
+        }
+
+        public Venda ultimaVenda()
+        {
+            Venda venda = new Venda();
+
+            try
+            {
+                var query = conn.Query();
+                query.CommandText = "SELECT MAX(id_ven) as id_ven FROM Venda";
+
+                MySqlDataReader reader = query.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    venda.IdVenda = reader.GetInt32("id_ven");
+                }
+
+                return venda;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public Venda GetById(Venda venda)
+        {
+            var query = conn.Query();
+            query.CommandText = "Select " +
+                "Recebimento.forma_rec, " +
+                "Cliente.cpf_cli, " +
+                "Recebimento.valor_venda_rec, " +
+                "Recebimento.desconto_rec" +
+                "Recebimento.valor_pago_rec";
+
+            MySqlDataReader reader = query.ExecuteReader();
+
+            venda.Forma = reader.GetString("form_rec");
+            venda.Cliente = reader.GetString("cpf_cli");
+            venda.ValorVenda = reader.GetDouble("valor_venda_rec");
+            venda.Desconto = reader.GetDouble("desconto_rec");
+            venda.ValorPago = reader.GetDouble("valor_pago_rec");
+
+            return venda;
         }
     }
 }
