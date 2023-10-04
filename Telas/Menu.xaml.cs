@@ -29,44 +29,29 @@ namespace NewAppCacauShow.Telas
 
         private void Vendas_Click(object sender, RoutedEventArgs e)
         {
-            VendasListar vendas = new VendasListar();
+            VendaListar vendas = new VendaListar();
             vendas.Show();
             this.Close();
         }
 
         private void Estoque_Click(object sender, RoutedEventArgs e)
         {
-            EstoqueListar estoque = new EstoqueListar();
-            estoque.Show();
-            this.Close();
         }
 
         private void Produtos_Click(object sender, RoutedEventArgs e)
         {
-            ProdutosListar produto = new ProdutosListar();
-            produto.Show();
-            this.Close();
         }
 
         private void Clientes_Click(object sender, RoutedEventArgs e)
         {
-            ClientesListar clientes = new ClientesListar();
-            clientes.Show();
-            this.Close();
         }
 
         private void Funcionarios_Click(object sender, RoutedEventArgs e)
         {
-            FuncionariosListar funcionarios = new FuncionariosListar();
-            funcionarios.Show();
-            this.Close();
         }
 
         private void Fornecedores_Click(object sender, RoutedEventArgs e)
         {
-            FornecedoresListar fornecedores = new FornecedoresListar();
-            fornecedores.Show();
-            this.Close();
         }
     }
 }

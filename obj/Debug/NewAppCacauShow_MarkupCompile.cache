@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\App.xaml
-9-667659796
+5-905331305
 
-171388815270
+16604445674
 26956249918
-Login.xaml;Telas\ClientesListar.xaml;Telas\EstoqueListar.xaml;Telas\FornecedoresListar.xaml;Telas\FuncionariosListar.xaml;Telas\Menu.xaml;Telas\ProdutosListar.xaml;Telas\Vendas.xaml;Telas\VendasListar.xaml;
+Login.xaml;Telas\Menu.xaml;Telas\VendaCadastrar.xaml;Telas\VendaConsultar.xaml;Telas\VendaListar.xaml;
 
 False
 
