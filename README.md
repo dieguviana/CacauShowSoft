@@ -4,9 +4,9 @@ Menu: Diego
 
 Venda, Recebimento e Produto_Venda: Diego
 
-Compra, Pagamento e Produto_Compra: Hilary
+Compra, Pagamento e Produto_Compra: Thauany
 
-Produto: Thauany
+Produto: Hilary
 
 Cliente: Jussara
 
