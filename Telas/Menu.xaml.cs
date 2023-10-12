@@ -36,6 +36,9 @@ namespace NewAppCacauShow.Telas
 
         private void Estoque_Click(object sender, RoutedEventArgs e)
         {
+            CompraListar compras = new CompraListar();
+            compras.Show();
+            this.Close();
         }
 
         private void Produtos_Click(object sender, RoutedEventArgs e)
