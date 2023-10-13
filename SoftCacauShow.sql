@@ -196,9 +196,9 @@ $$ delimiter ;
 insert into Usuario values (null, 'Diego', '2000-01-01', '1', '2', 'u@g', 'Atendente', '69', 'Rua', '1', 'RO', 'Pq', 'Ji');
 insert into Login values (null, now(), 1);
 insert into Cliente values (null, 'Hilary', '2005-10-10', '234.567.890-12', '21231', '699847773844', 'udiegoviana@gmail.com', 'Rua', '13121', 'RO', 'Parque', 'ji-paraná');
-insert into Produto values (null, 'Trufa de caramelo, beijo e doce de leite', '12345', '2024-09-21', 1, 2, '');
-insert into Produto values (null, 'Morango', '12346', '2024-09-21', 1, 4, '');
-insert into Produto values (null, 'Chocolate', '12347', '2024-09-21', 1, 6, '');
+insert into Produto values (null, 'Trufa de caramelo, beijo e doce de leite', '123', '2024-09-21', 1, 2, '');
+insert into Produto values (null, 'Morango', '1234', '2024-09-21', 1, 4, '');
+insert into Produto values (null, 'Chocolate', '12345', '2024-09-21', 1, 6, '');
 
 delimiter $$
 create procedure InserirCompra()
@@ -232,10 +232,10 @@ create procedure InserirPagamento(valorCompra double, status_ varchar(100), venc
 begin
 declare fornecedor_fk int;
 set fornecedor_fk = (select id_for from Fornecedor where (cnpj_for = fornecedor_cnpj));
-if (fornecedor_fk is null ) then
+if (fornecedor_fk is null) then
 insert into Pagamento values (null, valorCompra, status_, vencimento, forma, compra_fk, 1);
 end if;
-end;
+end
 $$ delimiter ;
 
 
