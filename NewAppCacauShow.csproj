@@ -106,6 +106,9 @@
     <Compile Include="Telas\CompraCadastrar.xaml.cs">
       <DependentUpon>CompraCadastrar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Telas\CompraConsultar.xaml.cs">
+      <DependentUpon>CompraConsultar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Telas\CompraListar.xaml.cs">
       <DependentUpon>CompraListar.xaml</DependentUpon>
     </Compile>
@@ -133,6 +136,10 @@
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Page Include="Telas\CompraCadastrar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Telas\CompraConsultar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

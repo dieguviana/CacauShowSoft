@@ -72,7 +72,7 @@ namespace NewAppCacauShow.Telas
         private void Detalhes_Click(object sender, RoutedEventArgs e)
         {
             var compraSelected = DataGridCompra.SelectedItem as Compra;
-            VendaConsultar compraConsultar = new VendaConsultar(compraSelected.IdCompra);
+            CompraConsultar compraConsultar = new CompraConsultar(compraSelected.IdCompra);
             compraConsultar.Show();
             this.Close();
         }

@@ -319,3 +319,5 @@ C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\CompraCad
 C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\CompraListar.g.cs
 C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\CompraCadastrar.baml
 C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\CompraListar.baml
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\CompraConsultar.g.cs
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\CompraConsultar.baml
