@@ -228,20 +228,18 @@ end
 $$ delimiter ;
 
 delimiter $$
-
 create procedure InserirPagamento(valorCompra double, status_ varchar(100), vencimento date, forma varchar(100), compra_fk int, fornecedor_cnpj varchar(100))
 begin
 declare fornecedor_fk int;
 set fornecedor_fk = (select id_for from Fornecedor where (cnpj_for = fornecedor_cnpj));
-if (fornecedor_fk is null) then
+if (fornecedor_fk is null ) then
 insert into Pagamento values (null, valorCompra, status_, vencimento, forma, compra_fk, 1);
 end if;
-end
+end;
 $$ delimiter ;
 
 
 delimiter $$
-
 create procedure UpdatePagamento(pagamento_id int, valorCompra double, status_ varchar(200), vencimento date, forma varchar(100), fornecedor_cnpj varchar(100))
 begin
 declare fornecedor_fk int;
@@ -252,9 +250,9 @@ else
 update Pagamento set valor_compra_pag = valorCompra, status_pag = status_, vencimento_pag = vencimento, forma_pag = forma, id_for_fk = 1 where (id_for = pagamento_id);
 end if;
 end
-
 $$ delimiter ;
-select * from compra;
+
+
 /*
 #Emily
 delimiter $$
