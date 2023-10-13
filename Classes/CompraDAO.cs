@@ -37,7 +37,7 @@ namespace NewAppCacauShow.Classes
                 "Compra, Pagamento, Fornecedor " +
                 "where " +
                 "(Pagamento.id_com_fk = Compra.id_com) and " +
-                "(Pagamento.id_com_fk = Compra.id_com)";
+                "(Pagamento.id_for_fk = Fornecedor.id_for)";
 
                 MySqlDataReader reader = query.ExecuteReader();
 
@@ -50,7 +50,7 @@ namespace NewAppCacauShow.Classes
                         Fornecedor = reader.GetString("nome_for"),
                         ValorCompra = reader.GetDouble("valor_compra_pag"),
                         Status = reader.GetString("status_pag"),
-                        Vencimento = reader.GetDateTime("vencimento_pag").ToString("dd/MM/yyyy HH:mm:ss"),
+                        Vencimento = reader.GetDateTime("vencimento_pag").ToString("dd/MM/yyyy"),
                         Forma = reader.GetString("forma_pag")
                     });
                 }
@@ -167,7 +167,7 @@ namespace NewAppCacauShow.Classes
                 compra.Fornecedor = reader.GetString("cnpj_for");
                 compra.ValorCompra = reader.GetDouble("valor_compra_pag");
                 compra.Status = reader.GetString("status_pag");
-                compra.Vencimento = reader.GetDateTime("vencimento_pag").ToString("dd/MM/yyyy HH:mm:ss");
+                compra.Vencimento = reader.GetDateTime("vencimento_pag").ToString("dd/MM/yyyy");
 
             }
 

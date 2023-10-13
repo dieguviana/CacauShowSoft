@@ -72,8 +72,7 @@ namespace NewAppCacauShow.Telas
         private bool jaFoi = false;
 
        
-      
-
+     
         private void FinalizarCompra_Click(object sender, RoutedEventArgs e)
         {
            
