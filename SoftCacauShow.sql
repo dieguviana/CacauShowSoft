@@ -57,31 +57,27 @@ descricao_pro varchar(100)
 
 create table Compra(
 id_com int primary key auto_increment,
-data_com date,
-forma_pag_com varchar(200),
-valor_total_com float,
-status_com varchar(200),
+data_hora_com datetime,
 id_usu_fk int,
-foreign key (id_usu_fk) references Usuario (id_usu),
-id_for_fk int,
-foreign key (id_for_fk) references Fornecedor(id_for),
-id_pro_fk int,
-foreign key (id_pro_fk) references Produto(id_pro)
+foreign key (id_usu_fk) references Usuario (id_usu)
 );
 
 create table Pagamento(
 id_pag int primary key auto_increment, 
+valor_compra_pag double,
+status_pag varchar(200),
 vencimento_pag date,
-valor_pag double,
-parcela_pag int,
+forma_pag int,
 id_com_fk int not null,
-foreign key (id_com_fk) references compra (id_com)
+foreign key (id_com_fk) references compra (id_com),
+id_for_fk int,
+foreign key (id_for_fk) references fornecedor (id_for)
 );
 
-create table Produto_Compra(
+create table Compra_Porduto(
 id_pro_com int primary key auto_increment,
-quant_pro_com int,
-valor_pro_com float,
+quantidade_com_pro double,
+subtotal_com_pro double,
 id_pro_fk int,
 foreign key (id_pro_fk) references Produto (id_pro),
 id_com_fk int,
@@ -201,6 +197,33 @@ insert into Cliente values (null, 'Hilary', '2005-10-10', '234.567.890-12', '212
 insert into Produto values (null, 'Trufa de caramelo, beijo e doce de leite', '12345', '2024-09-21', 1, 2, '');
 insert into Produto values (null, 'Morango', '12346', '2024-09-21', 1, 4, '');
 insert into Produto values (null, 'Chocolate', '12347', '2024-09-21', 1, 6, '');
+
+delimiter $$
+create procedure InserirCompra()
+begin
+declare usuario_fk int;
+declare data_hora datetime;
+set data_hora = now();
+set usuario_fk = (select id_usu_fk from login where (id_log = (select max(id_log) from login)));
+	insert into Compra values (null, data_hora, usuario_fk);
+end
+$$ delimiter ;
+
+delimiter $$
+create procedure InserirCompraProduto(codigo int, quantidade double, compra_fk int)
+begin
+declare produto_fk int;
+declare subtotal double;
+declare mensagem varchar(100);
+set produto_fk = (select id_pro from produto where (codigo_pro = codigo));
+set subtotal = (select valor_compra_pro from produto where (codigo_pro = codigo)) * quantidade;
+	if (produto_fk <> 0 or produto_fk is not null) then
+		insert into Compra_Produto values (null, quantidade, subtotal, produto_fk, compra_fk);
+	else
+		set mensagem = 'O código de produto informado não existe no sistema';
+    end if;
+end
+$$ delimiter ;
 
 /*
 #Emily

@@ -116,8 +116,8 @@ namespace NewAppCacauShow.Telas
                 return;
             }
 
-            // Forma de pagamento - obrigatório
-            var selectedItem = cmbForma.SelectedItem as ComboBoxItem;
+                // Forma de pagamento - obrigatório
+                var selectedItem = cmbForma.SelectedItem as ComboBoxItem;
                 if (selectedItem != null)
                 {
                     string textoSelecionado = selectedItem.Content.ToString();
