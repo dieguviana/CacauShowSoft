@@ -47,8 +47,8 @@
                     <Button Style="{StaticResource NoHoverButtonStyle}" Background="Transparent" BorderThickness="0" Click="Estoque_Click">
                         <StackPanel Orientation="Vertical"
                                     Margin="50,20,50,20">
-                            <Image Source="/Icons/estoque.png" Width="150" Height="150"/>
-                            <TextBlock Text="Estoque" Margin="0,10,0,0" Foreground="White" FontWeight="Bold" TextAlignment="Center" FontSize="20"/>
+                            <Image Source="/Icons/compra_png.png" Width="150" Height="150"/>
+                            <TextBlock Text="Compras" Margin="0,10,0,0" Foreground="White" FontWeight="Bold" TextAlignment="Center" FontSize="20"/>
                         </StackPanel>
                     </Button>
                     <!-- Produtos -->
