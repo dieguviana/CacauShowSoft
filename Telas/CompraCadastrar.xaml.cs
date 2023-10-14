@@ -123,17 +123,18 @@ namespace NewAppCacauShow.Telas
                     string textoSelecionado = selectedItem.Content.ToString();
                     pagamento.Forma = textoSelecionado;
 
-                    // Fornecedor - opcional (pode ser null se não informado)
-                    if (!string.IsNullOrWhiteSpace(txtFornecedor.Text))
-                    {
-                        pagamento.Fornecedor_cnpj = txtFornecedor.Text;
-                    }
-                    else
-                    {
-                        pagamento.Fornecedor_cnpj = ""; // Define como null se não informado
-                    }
+                // Fornecedor - Obrigatório
+                if (!string.IsNullOrWhiteSpace(txtFornecedor.Text))
+                {
+                    pagamento.Fornecedor_cnpj = txtFornecedor.Text;
+                }
+                else
+                {
+                    MessageBox.Show("O campo fornecedor é obrigatório.", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
 
-                    var dao = new CompraDAO();
+                var dao = new CompraDAO();
                     var compraSelected = dao.ultimaCompra();
                     pagamento.Compra_fk = compraSelected.IdCompra;
 

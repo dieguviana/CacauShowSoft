@@ -44,7 +44,8 @@ uf_for varchar(100),
 bairro_for varchar(100),
 municipio_for varchar(100)
 );
-Insert into Fornecedor values (null,'Fornecedor informado não existe', '', '', '', '', '', '', '', '');
+Insert into Fornecedor values (null,'Fornecedor informado não existe', '', '21212', '', '', '', '', '', '');
+Insert into Fornecedor values (null,'oi', '', '1234564', '', '', '', '', '', '');
 
 
 create table Produto(
@@ -200,6 +201,9 @@ insert into Produto values (null, 'Trufa de caramelo, beijo e doce de leite', '1
 insert into Produto values (null, 'Morango', '1234', '2024-09-21', 1, 4, '');
 insert into Produto values (null, 'Chocolate', '12345', '2024-09-21', 1, 6, '');
 
+
+
+# THAUANY
 delimiter $$
 create procedure InserirCompra()
 begin
@@ -227,16 +231,25 @@ set subtotal = (select valor_compra_pro from produto where (codigo_pro = codigo)
 end
 $$ delimiter ;
 
-delimiter $$
-create procedure InserirPagamento(valorCompra double, status_ varchar(100), vencimento date, forma varchar(100), compra_fk int, fornecedor_cnpj varchar(100))
-begin
-declare fornecedor_fk int;
-set fornecedor_fk = (select id_for from Fornecedor where (cnpj_for = fornecedor_cnpj));
-if (fornecedor_fk is null) then
-insert into Pagamento values (null, valorCompra, status_, vencimento, forma, compra_fk, 1);
-end if;
-end
-$$ delimiter ;
+DELIMITER $$
+CREATE PROCEDURE InserirPagamento(valorCompra DOUBLE, status_ VARCHAR(100), vencimento DATE, forma VARCHAR(100), compra_fk INT, fornecedor_cnpj VARCHAR(100))
+BEGIN
+  DECLARE fornecedor_fk INT;
+  SET fornecedor_fk = (SELECT id_for FROM Fornecedor WHERE cnpj_for = fornecedor_cnpj);
+
+  IF fornecedor_fk IS NULL THEN
+    -- Inserir o fornecedor, se ele não existir
+    INSERT INTO Fornecedor (cnpj_for) VALUES (fornecedor_cnpj);
+    SET fornecedor_fk = LAST_INSERT_ID(); -- Obtém o ID do fornecedor inserido
+  END IF;
+
+  -- Inserir o pagamento associado ao fornecedor
+  INSERT INTO Pagamento (valor_compra_pag, status_pag, vencimento_pag, forma_pag, id_com_fk, id_for_fk)
+  VALUES (valorCompra, status_, vencimento, forma, compra_fk, fornecedor_fk);
+  
+END $$
+DELIMITER ;
+
 
 
 delimiter $$
