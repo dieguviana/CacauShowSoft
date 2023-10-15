@@ -60,8 +60,6 @@ namespace NewAppCacauShow.Telas
             }
         }
 
-       
-
         private void Excluir_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -158,11 +156,12 @@ namespace NewAppCacauShow.Telas
 
                     var dao2 = new PagamentoDAO();
                     dao2.Insert(pagamento);
+                var dao3 = new CompraDAO();
+                dao3.Insert();
 
-                    MessageBox.Show("Compra inserida com sucesso!" + ".", "Confirmação", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Compra inserida com sucesso!", "Confirmação", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                    var dao3 = new CompraDAO();
-                    dao3.Insert();
+                   
 
                     // Limpe os campos
                     txtValorCompra.Text = "";
