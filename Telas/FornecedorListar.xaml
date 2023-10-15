@@ -1,0 +1,48 @@
+﻿<Window x:Class="NewAppCacauShow.Telas.FornecedorListar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NewAppCacauShow.Telas"
+        mc:Ignorable="d"
+       
+        Title="Listar Fornecedores" Height="720" Width="1080">
+    <Grid>
+        <!-- Plano de fundo -->
+        <Grid Background="#2E4053">
+            <!-- Título da Tela -->
+            <TextBlock Text="Lista de Fornecedores" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="36" FontWeight="Bold" Foreground="White"/>
+
+            <DataGrid Name="DataGridFornecedor" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" AutoGenerateColumns="False" SelectionChanged="DataGridFornecedor_SelectionChanged" CanUserAddRows="False" FontSize="20" MaxHeight="500">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding IdFornecedor}"/>
+                    <DataGridTextColumn Header="Nome" Width="Auto" Binding="{Binding Nome}"/>
+                    <DataGridTextColumn Header="Razão Social" Width="Auto" Binding="{Binding RazaoSocial}"/>
+                    <DataGridTextColumn Header="CNPJ" Width="Auto" Binding="{Binding CNPJ}"/>
+                    <DataGridTextColumn Header="Telefone" Width="Auto" Binding="{Binding Telefone}"/>
+                    <DataGridTextColumn Header="Endereço" Width="Auto" Binding="{Binding Endereco}"/>
+                    <DataGridTextColumn Header="CEP" Width="Auto" Binding="{Binding CEP}"/>
+                    <DataGridTextColumn Header="UF" Width="Auto" Binding="{Binding UF}"/>
+                    <DataGridTextColumn Header="Bairro" Width="Auto" Binding="{Binding Bairro}"/>
+                    <DataGridTextColumn Header="Município" Width="Auto" Binding="{Binding Municipio}"/>
+                    <DataGridTemplateColumn Width="Auto" Header="Ações">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Button Content="Detalhes" Width="100" Height="35" Background="Blue" Foreground="White" FontWeight="Bold" Click="Detalhes_Click"/>
+                                    <Button Content="Excluir" Width="100" Height="35" Background="#FF5733" Foreground="White" FontWeight="Bold" Click="Excluir_Click"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!-- Botão Voltar -->
+            <Button Content="Voltar ao Menu" Width="200" Height="40" Background="#2ECC71" Foreground="White" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20" Click="Voltar_Click" FontSize="20"/>
+
+            <!-- Botão Cadastrar Fornecedor -->
+            <Button Content="Cadastrar Fornecedor" Width="210" Height="40" Background="#3498DB" Foreground="White" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20" Click="Cadastrar_Click" FontSize="20"/>
+        </Grid>
+    </Grid>
+</Window>
