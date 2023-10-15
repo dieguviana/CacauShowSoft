@@ -5,8 +5,85 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewAppCacauShow.Telas"
         mc:Ignorable="d"
-        Title="FornecedorCadastrar" Height="450" Width="800">
-    <Grid>
-        
+        Title="Cadastrar Fornecedor" Height="720" Width="1080">
+
+    <Grid Background="#2E4053">
+        <!-- Título da Tela -->
+        <TextBlock Text="Cadastrar Fornecedor" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" FontSize="36" FontWeight="Bold" Foreground="White"/>
+
+        <!-- Primeira fileira -->
+        <StackPanel Width="950" Height="75" VerticalAlignment="Top" Margin="0,160,0,0" Orientation="Horizontal">
+            <StackPanel Margin="80,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
+                <TextBlock Text="Nome:" Foreground="White" FontSize="20"/>
+                <TextBox x:Name="txtNome" Height="30" FontSize="20"/>
+            </StackPanel>
+            <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
+                <TextBlock Text="Razão Social:" Foreground="White" FontSize="20"/>
+                <TextBox x:Name="txtRazaoSocial" Height="30" FontSize="20"/>
+            </StackPanel>
+            <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
+                <TextBlock Text="CNPJ:" Foreground="White" FontSize="20"/>
+                <TextBox x:Name="txtCNPJ" Height="30" FontSize="20"/>
+            </StackPanel>
+            
+        </StackPanel>
+
+        <!-- Segunda fileira -->
+        <StackPanel Width="950" Height="75" VerticalAlignment="Top" Margin="0,280,0,0" Orientation="Horizontal">
+            <StackPanel Margin="80,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
+                <TextBlock Text="Telefone:" Foreground="White" FontSize="20"/>
+                <TextBox x:Name="txtTelefone" Height="30" FontSize="20"/>
+            </StackPanel>
+
+            <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
+                <TextBlock Text="Endereço:" Foreground="White" FontSize="20"/>
+                <TextBox x:Name="txtEndereco" Height="30" FontSize="20"/>
+            </StackPanel>
+
+            <StackPanel Margin= "50, 0, 0, 0 " HorizontalAlignment= "Center " VerticalAlignment= "Center " Width= "240 ">
+                <TextBlock Text= "Municipio: " Foreground= "White " FontSize= "20 "/>
+                <TextBox x:Name="txtMunicipio" Height= "30 " FontSize= "20 "/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Terceira fileira -->
+        <StackPanel Width= "950 " Height= "75 " VerticalAlignment= "Top " Margin= "0, 400, 0, 0 " Orientation= "Horizontal ">
+            <StackPanel Margin= "80, 0, 0, 0 " HorizontalAlignment= "Center " VerticalAlignment= "Center " Width= "240 ">
+                <TextBlock Text= "CEP: " Foreground= "White " FontSize= "20 "/>
+                <TextBox x:Name= "txtCEP" Height= "30 " FontSize= "20 "/>
+            </StackPanel>
+
+            <StackPanel Margin= "50, 0, 0, 0 " HorizontalAlignment= "Center " VerticalAlignment= "Center " Width= "240 ">
+                <TextBlock Text= "UF: " Foreground= "White " FontSize= "20 "/>
+                <TextBox x:Name= "txtUF" Height ="30" FontSize ="20" />
+            </StackPanel>
+
+            <StackPanel Margin ="50 , 0 , 0 , 0" HorizontalAlignment = "Center" VerticalAlignment = "Center" Width ="240" >
+                <TextBlock Text = "Bairro " Foreground = "White" FontSize ="20" />
+                <TextBox Name = "txtBairro" Height ="30" FontSize ="20 "/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Botões Estilizados -->
+        <StackPanel Margin ="10 ,620 , 0 , 0 "
+                HorizontalAlignment ="Center "
+                VerticalAlignment ="Top "
+                Orientation ="Horizontal ">
+            <Button Content ="Voltar à lista"
+                Width ="200 "
+                Height ="40 "
+                Margin ="30 ,10 ,10 ,10 "
+                Click ="CancelarCadastro_Click "
+                Background ="#FF5733 "
+                Foreground ="White "
+                FontSize ="20 "/>
+            <Button Content ="Cadastrar Fornecedor "
+                Width ="200 "
+                Height ="40 "
+                Margin ="30 ,10 ,10 ,10 "
+                Background ="#27AE60 "
+                Foreground ="White "
+                FontSize ="20 " Click="CadastrarFornecedor_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

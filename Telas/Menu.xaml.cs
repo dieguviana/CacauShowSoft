@@ -55,6 +55,9 @@ namespace NewAppCacauShow.Telas
 
         private void Fornecedores_Click(object sender, RoutedEventArgs e)
         {
+            FornecedorListar fornecedor = new FornecedorListar();
+            fornecedor.Show();
+            this.Close();
         }
     }
 }

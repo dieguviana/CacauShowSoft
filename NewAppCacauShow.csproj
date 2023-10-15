@@ -94,6 +94,8 @@
     <Compile Include="Classes\CompraDAO.cs" />
     <Compile Include="Classes\CompraProduto.cs" />
     <Compile Include="Classes\CompraProdutoDAO.cs" />
+    <Compile Include="Classes\Fornecedor.cs" />
+    <Compile Include="Classes\FornecedorDAO.cs" />
     <Compile Include="Classes\Pagamento.cs" />
     <Compile Include="Classes\PagamentoDAO.cs" />
     <Compile Include="Classes\Recebimento.cs" />
@@ -111,6 +113,15 @@
     </Compile>
     <Compile Include="Telas\CompraListar.xaml.cs">
       <DependentUpon>CompraListar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\FornecedorCadastrar.xaml.cs">
+      <DependentUpon>FornecedorCadastrar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\FornecedorConsultar.xaml.cs">
+      <DependentUpon>FornecedorConsultar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\FornecedorListar.xaml.cs">
+      <DependentUpon>FornecedorListar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Telas\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
@@ -144,6 +155,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Telas\CompraListar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Telas\FornecedorCadastrar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Telas\FornecedorConsultar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Telas\FornecedorListar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -327,3 +327,9 @@ C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\obj\Debug\Telas\CompraListar.
 C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\obj\Debug\Telas\CompraCadastrar.baml
 C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\obj\Debug\Telas\CompraConsultar.baml
 C:\Users\udieg\OneDrive\Documentos\NewAppCacauShow\obj\Debug\Telas\CompraListar.baml
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\FornecedorCadastrar.g.cs
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\FornecedorCadastrar.baml
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\FornecedorListar.g.cs
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\FornecedorListar.baml
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\FornecedorConsultar.g.cs
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\FornecedorConsultar.baml
