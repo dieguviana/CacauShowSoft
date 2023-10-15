@@ -69,9 +69,6 @@ namespace NewAppCacauShow.Telas
             }
         }
 
-        private bool jaFoi = false;
-
-       
      
         private void FinalizarCompra_Click(object sender, RoutedEventArgs e)
         {
@@ -134,7 +131,7 @@ namespace NewAppCacauShow.Telas
                     return;
                 }
 
-                var dao = new CompraDAO();
+                     var dao = new CompraDAO();
                     var compraSelected = dao.ultimaCompra();
                     pagamento.Compra_fk = compraSelected.IdCompra;
 
@@ -200,6 +197,8 @@ namespace NewAppCacauShow.Telas
                 }
             
         }
+
+        private bool jaFoi = false;
 
         private void CancelarCompra_Click(object sender, RoutedEventArgs e)
         {
