@@ -21,14 +21,14 @@ namespace NewAppCacauShow.Classes
             try
             {
                 var query = conn.Query();
-                query.CommandText = "Call InserirPagamento(@valorCompra, @status_, @vencimento, @forma, @compra_fk, @fornecedor_cnpj)";
+                query.CommandText = "Call InserirPagamento(@valorCompra, @status_, @vencimento, @forma, @compra_fk, @fornecedor_nome)";
 
                 query.Parameters.AddWithValue("@valorCompra", pagamento.ValorCompra);
                 query.Parameters.AddWithValue("@status_", pagamento.Status);
                 query.Parameters.AddWithValue("@vencimento", pagamento.Vencimento);
                 query.Parameters.AddWithValue("@forma", pagamento.Forma);
                 query.Parameters.AddWithValue("@compra_fk", pagamento.Compra_fk);
-                query.Parameters.AddWithValue("@fornecedor_cnpj", pagamento.Fornecedor_cnpj);
+                query.Parameters.AddWithValue("@fornecedor_nome", pagamento.Fornecedor_nome);
                 int rowsAffected = query.ExecuteNonQuery();
 
                
@@ -57,7 +57,7 @@ namespace NewAppCacauShow.Classes
                 query.Parameters.AddWithValue("@vencimento", pagamento.Vencimento);
                 query.Parameters.AddWithValue("@forma", pagamento.Forma);
                 query.Parameters.AddWithValue("@compra_fk", pagamento.Compra_fk);
-                query.Parameters.AddWithValue("@fornecedor_cnpj", pagamento.Fornecedor_cnpj);
+                query.Parameters.AddWithValue("@fornecedor_cnpj", pagamento.Fornecedor_nome);
                 int rowsAffected = query.ExecuteNonQuery();
 
                 

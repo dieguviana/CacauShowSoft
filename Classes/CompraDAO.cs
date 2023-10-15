@@ -147,7 +147,7 @@ namespace NewAppCacauShow.Classes
             query.CommandText = "Select " +
                 "Pagamento.id_pag, " +
                 "Pagamento.forma_pag, " +
-                "Fornecedor.cnpj_for, " +
+                "Fornecedor.nome_for, " +
                 "Pagamento.valor_compra_pag, " +
                 "Pagamento.status_pag, " +
                 "Pagamento.vencimento_pag " +
@@ -164,7 +164,7 @@ namespace NewAppCacauShow.Classes
             {
                 compra.IdPag = reader.GetInt32("id_pag");
                 compra.Forma = reader.GetString("forma_pag");
-                compra.Fornecedor = reader.GetString("cnpj_for");
+                compra.Fornecedor = reader.GetString("nome_for");
                 compra.ValorCompra = reader.GetDouble("valor_compra_pag");
                 compra.Status = reader.GetString("status_pag");
                 compra.Vencimento = reader.GetDateTime("vencimento_pag").ToString("dd/MM/yyyy");

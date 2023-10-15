@@ -2,8 +2,8 @@
 #Cliente - Jussara
 #Usuario, Login - Emily
 #Fornecedor - Niic
-#Produto - Thauany
-#Compra, Produto_Compra, Pagamento - Hilary
+#Produto - Hilary
+#Compra, Produto_Compra, Pagamento - Thauany
 #Venda, Produto_Venda, Recebimento - Diego
 
 create database Soft_CacauShow;
@@ -208,9 +208,7 @@ insert into Produto values (null, 'Trufa de caramelo, beijo e doce de leite', '1
 insert into Produto values (null, 'Morango', '1234', '2024-09-21', 1, 4, '');
 insert into Produto values (null, 'Chocolate', '12345', '2024-09-21', 1, 6, '');
 
-
-
-# THAUANY
+#THAUANY CELESTINO
 delimiter $$
 create procedure InserirCompra()
 begin
@@ -238,26 +236,31 @@ set subtotal = (select valor_compra_pro from produto where (codigo_pro = codigo)
 end
 $$ delimiter ;
 
-DELIMITER $$
-CREATE PROCEDURE InserirPagamento(valorCompra DOUBLE, status_ VARCHAR(100), vencimento DATE, forma VARCHAR(100), compra_fk INT, fornecedor_cnpj VARCHAR(100))
-BEGIN
-  DECLARE fornecedor_fk INT;
-  SET fornecedor_fk = (SELECT id_for FROM Fornecedor WHERE cnpj_for = fornecedor_cnpj);
+delimiter $$
 
-  IF fornecedor_fk IS NULL THEN
-    -- Inserir o fornecedor, se ele não existir
-    INSERT INTO Fornecedor (cnpj_for) VALUES (fornecedor_cnpj);
-    SET fornecedor_fk = LAST_INSERT_ID(); -- Obtém o ID do fornecedor inserido
-  END IF;
+Create procedure InserirPagamento(
+    valorcompra double,
+    status_ varchar(100),
+    vencimento date,
+    forma varchar(100),
+    compra_fk int,
+    fornecedor_nome varchar(255) 
+)
+begin
+    declare fornecedor_fk int;
 
-  -- Inserir o pagamento associado ao fornecedor
-  INSERT INTO Pagamento (valor_compra_pag, status_pag, vencimento_pag, forma_pag, id_com_fk, id_for_fk)
-  VALUES (valorCompra, status_, vencimento, forma, compra_fk, fornecedor_fk);
-  
-END $$
-DELIMITER ;
+    set fornecedor_fk = (select id_for from fornecedor where nome_for = fornecedor_nome);
 
+    if fornecedor_fk is null then
+        insert into fornecedor (nome_for) values (fornecedor_nome);
+        set fornecedor_fk = last_insert_id(); 
+    end if;
 
+    insert into pagamento (valor_compra_pag, status_pag, vencimento_pag, forma_pag, id_com_fk, id_for_fk)
+    values (valorcompra, status_, vencimento, forma, compra_fk, fornecedor_fk);
+end $$
+
+delimiter ;
 
 delimiter $$
 create procedure UpdatePagamento(pagamento_id int, valorCompra double, status_ varchar(200), vencimento date, forma varchar(100), fornecedor_cnpj varchar(100))
@@ -272,7 +275,6 @@ end if;
 end
 $$ delimiter ;
 
-select * from fornecedor;
 /*
 #Emily
 delimiter $$

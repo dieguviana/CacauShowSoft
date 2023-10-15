@@ -28,7 +28,7 @@ namespace NewAppCacauShow.Telas
                 InitializeComponent();
                 Closing += FornecedorCadastrar_Closing;
 
-            var dao = new FornecedorDAO();
+                var dao = new FornecedorDAO();
 
                 // Obtém os dados do fornecedor usando o ID fornecido como parâmetro
                 Fornecedor fornecedorSelected = dao.GetById(fornecedorId);

@@ -47,7 +47,7 @@ namespace NewAppCacauShow.Telas
                         break; // Saia do loop assim que encontrar uma correspondência
                     }
                 }
-                txtFornecedor.Text = compraSelected.Fornecedor;
+               
                 txtValorCompra.Text = compraSelected.ValorCompra.ToString(); // Converta para string
                 cbStatus.Text = compraSelected.Status.ToString(); // Converta para string
                 dtpVencimento.Text = compraSelected.Vencimento.ToString(); // Converta para string
@@ -88,7 +88,7 @@ namespace NewAppCacauShow.Telas
                 btnAdd.IsEnabled = true;
                 cmbForma.IsEnabled = true;
                 DataGridCompraProduto.IsEnabled = true;
-                txtFornecedor.IsEnabled = true;
+                cbFornecedor.IsEnabled = true;
                 cbStatus.IsEnabled = true;
                 dtpVencimento.IsEnabled = true;
 
@@ -144,15 +144,18 @@ namespace NewAppCacauShow.Telas
                     string textoSelecionado = selectedItem.Content.ToString();
                     pagamento.Forma = textoSelecionado;
 
-                    // Fornecedor - opcional (pode ser null se não informado)
-                    if (!string.IsNullOrWhiteSpace(txtFornecedor.Text))
+                    // Obter o nome do fornecedor selecionado no ComboBox
+                    string fornecedorSelecionado = cbFornecedor.SelectedValue as string;
+                    if (!string.IsNullOrWhiteSpace(fornecedorSelecionado))
                     {
-                        pagamento.Fornecedor_cnpj = txtFornecedor.Text;
+                        pagamento.Fornecedor_nome = fornecedorSelecionado;
                     }
                     else
                     {
-                        pagamento.Fornecedor_cnpj = ""; // Define como null se não informado
+                        MessageBox.Show("Selecione um fornecedor válido.", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
                     }
+
                     pagamento.Compra_fk = identificadorCompra;
                     pagamento.IdPag = identificadorPagamento;
 
@@ -173,7 +176,7 @@ namespace NewAppCacauShow.Telas
                     btnAdd.IsEnabled = false;
                     cmbForma.IsEnabled = false;
                     DataGridCompraProduto.IsEnabled = false;
-                    txtFornecedor.IsEnabled = false;
+                    cbFornecedor.IsEnabled = false;
                     txtValorCompra.IsEnabled = false;
                     cbStatus.IsEnabled = false;
                     dtpVencimento.IsEnabled = false;

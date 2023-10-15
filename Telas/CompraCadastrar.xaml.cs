@@ -1,4 +1,5 @@
-﻿using NewAppCacauShow.Classes;
+﻿using MySql.Data.MySqlClient;
+using NewAppCacauShow.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,8 +26,25 @@ namespace NewAppCacauShow.Telas
             WindowState = WindowState.Maximized;
             WindowStyle = WindowStyle.SingleBorderWindow;
             InitializeComponent();
+            PreencherFornecedores();
         }
 
+        private void PreencherFornecedores()
+        {
+            // Crie uma nova instância de Conexao
+            Conexao conn = new Conexao();
+            // Supondo que 'cbFornecedor' seja o seu ComboBox
+
+            var query = conn.Query();
+            query.CommandText = "SELECT nome_for FROM Fornecedor";
+
+            MySqlDataReader reader = query.ExecuteReader();
+
+            while (reader.Read())
+            {
+                cbFornecedor.Items.Add(reader.GetString("nome_for"));
+            }
+        }
 
         private void Carregar(int compraId)
         {
@@ -120,18 +138,21 @@ namespace NewAppCacauShow.Telas
                     string textoSelecionado = selectedItem.Content.ToString();
                     pagamento.Forma = textoSelecionado;
 
-                // Fornecedor - Obrigatório
-                if (!string.IsNullOrWhiteSpace(txtFornecedor.Text))
+                // Obter o nome do fornecedor selecionado no ComboBox
+                string fornecedorSelecionado = cbFornecedor.SelectedValue as string;
+                if (!string.IsNullOrWhiteSpace(fornecedorSelecionado))
                 {
-                    pagamento.Fornecedor_cnpj = txtFornecedor.Text;
+                    pagamento.Fornecedor_nome = fornecedorSelecionado;
                 }
                 else
                 {
-                    MessageBox.Show("O campo fornecedor é obrigatório.", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Selecione um fornecedor válido.", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
-                     var dao = new CompraDAO();
+
+
+                    var dao = new CompraDAO();
                     var compraSelected = dao.ultimaCompra();
                     pagamento.Compra_fk = compraSelected.IdCompra;
 
@@ -148,7 +169,7 @@ namespace NewAppCacauShow.Telas
                     cbStatus.Text = "";
                     dtpVencimento.Text = "";
                     cmbForma.SelectedItem = null;
-                    txtFornecedor.Text = "";
+                    cbFornecedor.Text = "";
                     DataGridCompraProduto.ItemsSource = null;
                 }
                 else

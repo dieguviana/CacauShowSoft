@@ -20,6 +20,6 @@ namespace NewAppCacauShow.Classes
 
         public int Compra_fk { get; set; }
 
-        public string Fornecedor_cnpj { get; set; }
+        public string Fornecedor_nome { get; set; }
     }
 }
