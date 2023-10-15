@@ -35,7 +35,7 @@ foreign key (id_usu_fk) references usuario (id_usu)
 create table Fornecedor(
 id_for int primary key auto_increment,
 nome_for varchar(300),
-email_for varchar(300),
+razao_social_for varchar(300),
 cnpj_for varchar(300),
 telefone_for varchar(300),
 endereco_for varchar(500),
@@ -44,8 +44,15 @@ uf_for varchar(100),
 bairro_for varchar(100),
 municipio_for varchar(100)
 );
-Insert into Fornecedor values (null,'Fornecedor informado não existe', '', '21212', '', '', '', '', '', '');
-Insert into Fornecedor values (null,'oi', '', '1234564', '', '', '', '', '', '');
+
+INSERT INTO Fornecedor VALUES (null, 'Cacau Show', 'F.s. Comercio de Chocolates LTDA', '35.378.559/0001-32',
+'(51) 98635-1985', 'Paraguassu, 1864', '95525-000', 'Rio Grande do Sul', 'Centro', 'Capão da Canoa');
+
+INSERT INTO Fornecedor VALUES (null, 'Chocolate Master', 'Master Chocolates Ltda', '12.345.678/0001-99',
+'(11) 98765-4321', 'Rua AAAAA, 123', '12345-678', 'São Paulo', 'Centro', 'São Paulo');
+
+INSERT INTO Fornecedor VALUES (null, 'Fornecimento Ltda', 'Fornecedora do Brasil Ltda', '11.222.333/0001-44',
+'(31) 98765-4321', 'Rua XXXXX, 789', '98765-432', 'Minas Gerais', 'Belo Horizonte', 'Barro Preto');
 
 
 create table Produto(
@@ -265,7 +272,7 @@ end if;
 end
 $$ delimiter ;
 
-
+select * from fornecedor;
 /*
 #Emily
 delimiter $$
