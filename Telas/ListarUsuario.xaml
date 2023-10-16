@@ -1,4 +1,4 @@
-﻿<Window x:Class="NewAppCacauShow.Telas.FornecedorListar"
+﻿<Window x:Class="NewAppCacauShow.Telas.ListarUsuario"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,42 +7,18 @@
         mc:Ignorable="d"
        
         Title="Listar Usuários" Height="720" Width="1080">
-    <Grid>
-        <!-- Plano de fundo -->
+    <!--<Grid>
+        --><!-- Plano de fundo --><!--
         <Grid Background="#2E4053">
-            <!-- Título da Tela -->
+            --><!-- Título da Tela --><!--
             <TextBlock Text="Lista de Usuários" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="36" FontWeight="Bold" Foreground="White"/>
 
-            <DataGrid Name="DataGridFornecedor" HorizontalAlignment="Center" VerticalAlignment="Center" AutoGenerateColumns="False" SelectionChanged="DataGridFornecedor_SelectionChanged" CanUserAddRows="False" FontSize="20" MaxHeight="500" Width="850">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding IdUsuario}"/>
-                    <DataGridTextColumn Header="Nome" Width="Auto" Binding="{Binding Nome}"/>
-                    <DataGridTextColumn Header="CPF" Width="Auto" Binding="{Binding CPF}"/>
-                    <DataGridTextColumn Header="RG" Width="Auto" Binding="{Binding RG}"/>
-                    <DataGridTextColumn Header="Telefone" Width="Auto" Binding="{Binding Telefone}"/>
-                    <DataGridTextColumn Header="Endereço" Width="Auto" Binding="{Binding Endereco}"/>
-                    <DataGridTextColumn Header="Funçao" Width="Auto" Binding="{Binding Funcao}"/>
-                    <DataGridTextColumn Header="Data De Nascimento" Width="Auto" Binding="{Binding DataDeNascimento}"/>
-                    <DataGridTextColumn Header="Salário" Width="Auto" Binding="{Binding salario}"/>
-                    <DataGridTemplateColumn Width="Auto" Header="Ações">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <Button Content="Detalhes" Width="100" Height="35" Background="Blue" Foreground="White" FontWeight="Bold" Click="Detalhes_Click"/>
-                                    <Button Content="Excluir" Width="100" Height="35" Background="#FF5733" Foreground="White" FontWeight="Bold" Click="Excluir_Click"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-
-            <!-- Botão Voltar -->
+            --><!-- Botão Voltar --><!--
             <Button Content="Voltar ao Menu" Width="200" Height="40" Background="#2ECC71" Foreground="White" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20" Click="Voltar_Click" FontSize="20"/>
 
-            <!-- Botão Cadastrar Fornecedor -->
+            --><!-- Botão Cadastrar Fornecedor --><!--
             <Button Content="Cadastrar Usuário" Width="210" Height="40" Background="DeepPink" Foreground="White" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20" Click="Cadastrar_Click" FontSize="20"/>
         </Grid>
-    </Grid>
+    </Grid>-->
 </Window>
 
