@@ -132,6 +132,9 @@
     <Compile Include="Telas\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Telas\ProdutoCadastrar.xaml.cs">
+      <DependentUpon>ProdutoCadastrar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Telas\VendaCadastrar.xaml.cs">
       <DependentUpon>VendaCadastrar.xaml</DependentUpon>
     </Compile>
@@ -185,6 +188,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Telas\Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Telas\ProdutoCadastrar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

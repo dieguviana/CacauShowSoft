@@ -1,12 +1,90 @@
-﻿<Window x:Class="NewAppCacauShow.Telas.ProdutoCadastrar"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:NewAppCacauShow.Telas"
-        mc:Ignorable="d"
-        Title="ProdutoCadastrar" Height="450" Width="800">
-    <Grid>
-        
+        xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="NewAppCacauShow.Telas.VendaCadastrar"
+        Title="Realizar Venda" Height="720" Width="1080" Closing="FechandoJanela">
+    <Grid Background="#2E4053">
+        <!-- Título da Tela -->
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="36" FontWeight="Bold" Foreground="White"><Run Text="C"/><Run Language="pt-br" Text="adastro de Produto"/></TextBlock>
+
+        <StackPanel Width="950" Height="75" VerticalAlignment="Top" Margin="0,520,0,0" Orientation="Horizontal">
+            <StackPanel Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" >
+                <TextBlock Text="Cliente (CPF):" Foreground="White" FontSize="20"/>
+                <TextBox x:Name="txtClienteCPF" Height="30" FontSize="20"/>
+            </StackPanel>
+
+            <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
+                <TextBlock Text="Valor da Venda (R$):" Foreground="White" FontSize="20"/>
+                <TextBlock x:Name="txtValorVenda" Height="30" IsEnabled="False" FontSize="20" Background="White"/>
+            </StackPanel>
+
+            <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
+                <TextBlock Text="Desconto (R$):" Foreground="White" FontSize="20"/>
+                <TextBox x:Name="txtDesconto" Height="30" FontSize="20"/>
+            </StackPanel>
+
+            <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
+                <TextBlock Text="Valor Pago (R$):" Foreground="White" FontSize="20"/>
+                <TextBox x:Name="txtValorPago" Height="30" FontSize="20"/>
+            </StackPanel>
+        </StackPanel>
+
+        <DataGrid Name="DataGridVendaProduto" Margin="0,200,0,100" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Top" MaxHeight="300" AutoGenerateColumns="False" CanUserAddRows="False"  FontSize="20" RenderTransformOrigin="0.564,2.706">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Código" Width="Auto" Binding="{Binding Codigo}"/>
+                <DataGridTextColumn Header="Produto" Width="Auto" Binding="{Binding Produto}"/>
+                <DataGridTextColumn Header="Quantidade" Width="Auto" Binding="{Binding Quantidade}"/>
+                <DataGridTextColumn Header="Valor Unitário" Width="Auto" Binding="{Binding ValorUnitario}"/>
+                <DataGridTextColumn Header="Subtotal" Width="Auto" Binding="{Binding Subtotal}"/>
+                <DataGridTemplateColumn Width="Auto" Header="Ações">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Button Content="Excluir" Width="80" Height="30" Background="#FF5733" Foreground="White" FontWeight="Bold" Click="Excluir_Click"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Width="950" Height="75" VerticalAlignment="Top" Margin="50,104,80,0" Orientation="Horizontal">
+            <StackPanel Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
+                <TextBlock Text="Cod Produto:" Foreground="White" FontSize="20"/>
+                <TextBox x:Name="txtCodigoProduto" Height="30" FontSize="20"/>
+            </StackPanel>
+
+            <StackPanel Margin="87.5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
+                <TextBlock Foreground="White" FontSize="20"><Run Language="pt-br" Text="Nome Produto:"/></TextBlock>
+                <TextBox x:Name="txtQuantidade" Height="30" FontSize="20"/>
+            </StackPanel>
+
+            <StackPanel Margin="87.5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="60">
+                <Button Content="Add" Width="60" Height="40" Click="AdicionarProduto_Click" Background="#3498DB" Foreground="White" FontSize="20"/>
+            </StackPanel>
+
+            <StackPanel Margin="87.5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
+                <TextBlock Text="Forma de Pagamento:" Foreground="White" FontSize="20"/>
+                <ComboBox x:Name="cmbForma" Height="30" FontSize="20">
+                    <ComboBoxItem Content="Dinheiro"/>
+                    <ComboBoxItem Content="Pix"/>
+                    <ComboBoxItem Content="Cartão de Débito"/>
+                    <ComboBoxItem Content="Cartão de Crédito"/>
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+
+        <TextBox Name="txtDescricaoProduto" Margin="475,305,125,210"/>
+
+
+
+
+
+        <!-- Botões Estilizados -->
+        <StackPanel Margin="10,620,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Horizontal">
+            <Button Content="Voltar à lista" Width="200" Height="40" Margin="30, 10, 10, 10" Click="CancelarVenda_Click" Background="#FF5733" Foreground="White" FontSize="20"/>
+            <Button Content="Finalizar Cadastro" Width="200" Height="40" Margin="30, 10, 10, 10" Click="FinalizarVenda_Click" Background="#27AE60" Foreground="White" FontSize="20"/>
+        </StackPanel>
+        <Calendar HorizontalAlignment="Left" Margin="61,266,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
