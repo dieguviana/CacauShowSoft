@@ -336,13 +336,3 @@ C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\Fornecedo
 C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\CadastrarUsuario.g.cs
 C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\ListarUsuario.g.cs
 C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\Login.g.cs
-C:\Users\HILARY\Downloads\NewAppCacauShow\obj\Debug\Telas\ProdutoCadastrar.baml
-C:\Users\HILARY\Downloads\NewAppCacauShow\obj\Debug\Telas\CadastrarUsuario.g.cs
-C:\Users\HILARY\Downloads\NewAppCacauShow\obj\Debug\Telas\CompraCadastrar.g.cs
-C:\Users\HILARY\Downloads\NewAppCacauShow\obj\Debug\Telas\CompraConsultar.g.cs
-C:\Users\HILARY\Downloads\NewAppCacauShow\obj\Debug\Telas\CompraListar.g.cs
-C:\Users\HILARY\Downloads\NewAppCacauShow\obj\Debug\Telas\FornecedorCadastrar.g.cs
-C:\Users\HILARY\Downloads\NewAppCacauShow\obj\Debug\Telas\FornecedorConsultar.g.cs
-C:\Users\HILARY\Downloads\NewAppCacauShow\obj\Debug\Telas\FornecedorListar.g.cs
-C:\Users\HILARY\Downloads\NewAppCacauShow\obj\Debug\Telas\ListarUsuario.g.cs
-C:\Users\HILARY\Downloads\NewAppCacauShow\obj\Debug\Telas\ProdutoCadastrar.g.cs
