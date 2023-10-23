@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -54,8 +55,8 @@ namespace NewAppCacauShow.Classes
                 {
                     list.Add(new ProdutoCadastrar()
                     {
-                        Id = reader.GetInt32("id"),
-                        Nome = reader.GetString("id_pro"),
+                        Id = reader.GetInt32("id_pro"),
+                        Nome = reader.GetString("nome_pro"),
                         Codigo = reader.GetString("cod_pro"),
                         Vencimento = reader.GetDateTime("venc_pro"),
                         ValorCompra = reader.GetFloat("com_pro"),
@@ -81,9 +82,25 @@ namespace NewAppCacauShow.Classes
                 var query = conn.Query();
                 query.CommandText= "Delete";
 
-            } catch(Exception ex)
+            } catch(Exception e)
             {
+                throw e;
+            }
+            finally 
+            {
+                conn.Close();
+            }
+        }
+        public void Insert(ProdutoCadastrar produtocadastrar)
+        {
+            try
+            {
+                var query = conn.Query();
+                query.CommandText = "INSERT INTO ProdutoCadastrar (id_pro, nome_pro, cod_pro, venc_pro, com_pro, ven_pro) VALUES(@nome, @codigo, @vencimento, @comprarProduto, @vendaProduto)";
 
+                query.Parameters.AddWithValue("@nome",produtocadastrar.Nome);
+                query.Parameters.AddWithValue("@codigo", produtocadastrar.Codigo);
+                
             }
         }
         }
