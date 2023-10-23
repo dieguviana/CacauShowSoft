@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace NewAppCacauShow.Telas
 {
     /// <summary>
-    /// Lógica interna para CadastrarUsuario.xaml
+    /// Lógica interna para UsuarioCadastrar.xaml
     /// </summary>
-    public partial class CadastrarUsuario : Window
+    public partial class UsuarioCadastrar : Window
     {
-        public CadastrarUsuario()
+        public UsuarioCadastrar()
         {
             InitializeComponent();
         }

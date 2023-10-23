@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\
+C:\Users\2021102020001\Documents\NewAppCacauShow\obj\Debug\
 NewAppCacauShow
 none
 false
 DEBUG;TRACE
-C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\App.xaml
-13406929492
+C:\Users\2021102020001\Documents\NewAppCacauShow\App.xaml
+14-435280787
 
-32453958997
-26-271558938
-Login.xaml;Telas\CadastrarUsuario.xaml;Telas\CompraCadastrar.xaml;Telas\CompraConsultar.xaml;Telas\CompraListar.xaml;Telas\FornecedorCadastrar.xaml;Telas\FornecedorConsultar.xaml;Telas\FornecedorListar.xaml;Telas\ListarUsuario.xaml;Telas\Menu.xaml;Telas\VendaCadastrar.xaml;Telas\VendaConsultar.xaml;Telas\VendaListar.xaml;
+331599578040
+26-1408798518
+Login.xaml;Telas\CompraCadastrar.xaml;Telas\CompraConsultar.xaml;Telas\CompraListar.xaml;Telas\FornecedorCadastrar.xaml;Telas\FornecedorConsultar.xaml;Telas\FornecedorListar.xaml;Telas\ListarUsuario.xaml;Telas\Menu.xaml;Telas\ProdutoCadastrar.xaml;Telas\UsuarioCadastrar.xaml;Telas\VendaCadastrar.xaml;Telas\VendaConsultar.xaml;Telas\VendaListar.xaml;
 
-True
+False
 
