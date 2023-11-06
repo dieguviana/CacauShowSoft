@@ -18,6 +18,33 @@ namespace NewAppCacauShow.Classes
             conn = new Conexao();
         }
 
+        public bool ClienteExiste(string cpf)
+        {
+            bool clienteExiste = false;
+            try
+            {
+                var query = conn.Query();
+                query.CommandText = "SELECT COUNT(id_cli) FROM Cliente WHERE cpf_cli = @cpf";
+                query.Parameters.AddWithValue("@cpf", cpf);
+
+                int count = Convert.ToInt32(query.ExecuteScalar());
+
+                if (count > 0)
+                {
+                    clienteExiste = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao verificar a existência do cliente: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return clienteExiste;
+        }
+
         public Recebimento Insert(Recebimento recebimento)
         {
             try

@@ -51,12 +51,12 @@
         <StackPanel Width="950" Height="75" VerticalAlignment="Top" Margin="0,100,0,0" Orientation="Horizontal">
             <StackPanel Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
                 <TextBlock Text="Cod Produto:" Foreground="White" FontSize="20"/>
-                <TextBox x:Name="txtCodigoProduto" Height="30" FontSize="20"/>
+                <TextBox x:Name="txtCodigoProduto" Height="30" FontSize="20" PreviewTextInput="TextBox_PreviewTextInput"/>
             </StackPanel>
 
             <StackPanel Margin="87.5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
                 <TextBlock Text="Quantidade:" Foreground="White" FontSize="20"/>
-                <TextBox x:Name="txtQuantidade" Height="30" FontSize="20"/>
+                <TextBox x:Name="txtQuantidade" Height="30" FontSize="20" PreviewTextInput="TextBox_PreviewTextInput"/>
             </StackPanel>
 
             <StackPanel Margin="87.5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="60">

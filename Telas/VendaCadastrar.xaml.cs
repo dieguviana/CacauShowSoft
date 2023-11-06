@@ -41,37 +41,55 @@ namespace NewAppCacauShow.Telas
             }
         }
 
+        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            // Verifica se o texto inserido é um número inteiro
+            if (!int.TryParse(e.Text, out _))
+            {
+                e.Handled = true; // Ignora a entrada se não for um número inteiro
+            }
+        }
+
         private void AdicionarProduto_Click(object sender, RoutedEventArgs e)
         {
             VendaProduto vendaProduto = new VendaProduto();
+            var dao = new VendaProdutoDAO();
 
             if (txtCodigoProduto.Text != "")
             {
                 vendaProduto.Codigo = Convert.ToInt32(txtCodigoProduto.Text);
-                if (txtQuantidade.Text != "")
+
+                if (dao.ProdutoExiste(vendaProduto.Codigo))
                 {
-                    vendaProduto.Quantidade = Convert.ToDouble(txtQuantidade.Text);
-                    var dao = new VendaDAO(); var vendaSelected = dao.ultimaVenda();
-                    vendaProduto.Venda_fk = vendaSelected.IdVenda;
-
-                    try
+                    if (txtQuantidade.Text != "")
                     {
-                        var dao2 = new VendaProdutoDAO();
-                        dao2.Insert(vendaProduto);
-                        txtValorVenda.Text = Convert.ToString(vendaProduto.ValorTotal);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "Exceção", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                    txtCodigoProduto.Text = "";
-                    txtQuantidade.Text = "";
+                        vendaProduto.Quantidade = Convert.ToDouble(txtQuantidade.Text);
+                        var dao2 = new VendaDAO(); var vendaSelected = dao2.ultimaVenda();
+                        vendaProduto.Venda_fk = vendaSelected.IdVenda;
 
-                    Carregar(vendaSelected.IdVenda);
+                        try
+                        {
+                            var dao3 = new VendaProdutoDAO();
+                            dao3.Insert(vendaProduto);
+                            txtValorVenda.Text = Convert.ToString(vendaProduto.ValorTotal);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Exceção", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                        txtCodigoProduto.Text = "";
+                        txtQuantidade.Text = "";
+
+                        Carregar(vendaSelected.IdVenda);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Insira a quantidade de produtos", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Insira a quantidade de produtos", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("O produto com o código especificado não existe.", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
@@ -132,25 +150,33 @@ namespace NewAppCacauShow.Telas
                     recebimento.Cliente_cpf = ""; // Define como null se não informado
                 }
 
-                var dao = new VendaDAO();
-                var vendaSelected = dao.ultimaVenda();
-                recebimento.Venda_fk = vendaSelected.IdVenda;
+                var dao = new RecebimentoDAO();
+                if (dao.ClienteExiste(recebimento.Cliente_cpf))
+                {
+                    var dao2 = new VendaDAO();
+                    var vendaSelected = dao2.ultimaVenda();
+                    recebimento.Venda_fk = vendaSelected.IdVenda;
 
-                var dao2 = new RecebimentoDAO();
-                dao2.Insert(recebimento);
+                    var dao3 = new RecebimentoDAO();
+                    dao3.Insert(recebimento);
 
-                MessageBox.Show("Venda inserida com sucesso! O troco é de R$ " + recebimento.Troco + ".", "Confirmação", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Venda inserida com sucesso! O troco é de R$ " + recebimento.Troco + ".", "Confirmação", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                var dao3 = new VendaDAO();
-                dao3.Insert();
+                    var dao4 = new VendaDAO();
+                    dao4.Insert();
 
-                // Limpe os campos
-                txtValorVenda.Text = "";
-                txtDesconto.Text = "";
-                txtValorPago.Text = "";
-                cmbForma.SelectedItem = null;
-                txtClienteCPF.Text = "";
-                DataGridVendaProduto.ItemsSource = null;
+                    // Limpe os campos
+                    txtValorVenda.Text = "";
+                    txtDesconto.Text = "";
+                    txtValorPago.Text = "";
+                    cmbForma.SelectedItem = null;
+                    txtClienteCPF.Text = "";
+                    DataGridVendaProduto.ItemsSource = null;
+                }
+                else
+                {
+                    MessageBox.Show("O cliente com o CPF especificado não existe no sistema.", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             else
             {

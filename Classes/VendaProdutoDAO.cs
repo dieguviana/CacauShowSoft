@@ -106,6 +106,33 @@ namespace NewAppCacauShow.Classes
             }
         }
 
+        public bool ProdutoExiste(int codigoProduto)
+        {
+            bool produtoExiste = false;
+            try
+            {
+                var query = conn.Query();
+                query.CommandText = "SELECT COUNT(id_pro) FROM Produto WHERE codigo_pro = @codigoPro";
+                query.Parameters.AddWithValue("@codigoPro", codigoProduto);
+
+                int count = Convert.ToInt32(query.ExecuteScalar());
+
+                if (count > 0)
+                {
+                    produtoExiste = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao verificar a existência do produto: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return produtoExiste;
+        }
+
         public VendaProduto Insert(VendaProduto vendaProduto)
         {
             try
@@ -129,7 +156,7 @@ namespace NewAppCacauShow.Classes
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message + " Insira um código de produto que exista no sistema.", "Exceção", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(e.Message, "Exceção", MessageBoxButton.OK, MessageBoxImage.Error);
                 return null;
             }
             finally
