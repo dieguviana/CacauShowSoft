@@ -85,5 +85,13 @@
                 </StackPanel>
             </StackPanel>
         </Grid>
+        <Button Content ="Sair"
+                Width ="200"
+                Height ="40"
+                Margin ="440,625,440,39"
+                Click ="CancelarCadastro_Click"
+                Background ="#FF5733"
+                Foreground ="White"
+                FontSize ="20"/>
     </Grid>
 </Window>

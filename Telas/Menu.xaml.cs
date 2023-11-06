@@ -59,5 +59,12 @@ namespace NewAppCacauShow.Telas
             fornecedor.Show();
             this.Close();
         }
+
+        private void CancelarCadastro_Click(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Close();
+        }
     }
 }

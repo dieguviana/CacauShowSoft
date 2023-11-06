@@ -23,5 +23,15 @@ namespace NewAppCacauShow.Telas
         {
             InitializeComponent();
         }
+
+        private void CancelarCadastro_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CadastrarFornecedor_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
