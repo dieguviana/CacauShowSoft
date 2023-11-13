@@ -20,11 +20,6 @@
                     <DataGridTextColumn Header="Razão Social" Width="Auto" Binding="{Binding RazaoSocial}"/>
                     <DataGridTextColumn Header="CNPJ" Width="Auto" Binding="{Binding CNPJ}"/>
                     <DataGridTextColumn Header="Telefone" Width="Auto" Binding="{Binding Telefone}"/>
-                    <DataGridTextColumn Header="Endereço" Width="Auto" Binding="{Binding Endereco}"/>
-                    <DataGridTextColumn Header="CEP" Width="Auto" Binding="{Binding CEP}"/>
-                    <DataGridTextColumn Header="UF" Width="Auto" Binding="{Binding UF}"/>
-                    <DataGridTextColumn Header="Bairro" Width="Auto" Binding="{Binding Bairro}"/>
-                    <DataGridTextColumn Header="Município" Width="Auto" Binding="{Binding Municipio}"/>
                     <DataGridTemplateColumn Width="Auto" Header="Ações">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
