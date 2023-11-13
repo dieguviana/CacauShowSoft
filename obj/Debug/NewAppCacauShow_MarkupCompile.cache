@@ -4,17 +4,30 @@
 winexe
 C#
 .cs
+<<<<<<< Updated upstream
 C:\Users\2021102020030\Documents\Projeto\NewAppCacauShow\obj\Debug\
+=======
+C:\Users\2021102020023\Documents\Projeto.Pds\NewAppCacauShow\obj\Debug\
+>>>>>>> Stashed changes
 NewAppCacauShow
 none
 false
 DEBUG;TRACE
+<<<<<<< Updated upstream
 C:\Users\2021102020030\Documents\Projeto\NewAppCacauShow\App.xaml
 15-1947655550
 
 34740768035
 26-1325755716
 Login.xaml;Telas\CadastrarCliente1.xaml;Telas\CompraCadastrar.xaml;Telas\CompraConsultar.xaml;Telas\CompraListar.xaml;Telas\FornecedorCadastrar.xaml;Telas\FornecedorConsultar.xaml;Telas\FornecedorListar.xaml;Telas\ListarUsuario.xaml;Telas\Menu.xaml;Telas\ProdutoCadastrar.xaml;Telas\UsuarioCadastrar.xaml;Telas\VendaCadastrar.xaml;Telas\VendaConsultar.xaml;Telas\VendaListar.xaml;
+=======
+C:\Users\2021102020023\Documents\Projeto.Pds\NewAppCacauShow\App.xaml
+14-435280787
+
+331599578040
+26-304153038
+Login.xaml;Telas\CompraCadastrar.xaml;Telas\CompraConsultar.xaml;Telas\CompraListar.xaml;Telas\FornecedorCadastrar.xaml;Telas\FornecedorConsultar.xaml;Telas\FornecedorListar.xaml;Telas\ListarUsuario.xaml;Telas\Menu.xaml;Telas\ProdutoCadastrar.xaml;Telas\UsuarioCadastrar.xaml;Telas\VendaCadastrar.xaml;Telas\VendaConsultar.xaml;Telas\VendaListar.xaml;
+>>>>>>> Stashed changes
 
 True
 
