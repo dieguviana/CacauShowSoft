@@ -487,3 +487,11 @@ C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\UsuarioCa
 C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\ClienteCadastrar.g.cs
 C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\ClienteConsultar.g.cs
 C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\ClienteListar.g.cs
+C:\Users\2021102020023\Documents\Projeto.Pds\NewAppCacauShow\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\2021102020023\Documents\Projeto.Pds\NewAppCacauShow\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\2021102020023\Documents\Projeto.Pds\NewAppCacauShow\obj\Debug\Telas\ClienteCadastrar.g.cs
+C:\Users\2021102020023\Documents\Projeto.Pds\NewAppCacauShow\obj\Debug\Telas\ClienteConsultar.g.cs
+C:\Users\2021102020023\Documents\Projeto.Pds\NewAppCacauShow\obj\Debug\Telas\ClienteListar.g.cs
+C:\Users\2021102020023\Documents\Projeto.Pds\NewAppCacauShow\obj\Debug\Telas\ClienteCadastrar.baml
+C:\Users\2021102020023\Documents\Projeto.Pds\NewAppCacauShow\obj\Debug\Telas\ClienteConsultar.baml
+C:\Users\2021102020023\Documents\Projeto.Pds\NewAppCacauShow\obj\Debug\Telas\ClienteListar.baml

@@ -47,6 +47,9 @@ namespace NewAppCacauShow.Telas
 
         private void Clientes_Click(object sender, RoutedEventArgs e)
         {
+            ClienteCadastrar  cliente = new ClienteCadastrar();
+            cliente.Show();
+            this.Close();
         }
 
         private void Funcionarios_Click(object sender, RoutedEventArgs e)

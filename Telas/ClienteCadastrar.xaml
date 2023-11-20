@@ -88,18 +88,5 @@
                 Foreground ="White "
                 FontSize ="20 " Click="CadastrarCliente_Click"/>
         </StackPanel>
-        <StackPanel Width="950" Height="75" VerticalAlignment="Top" Margin="-90,499,220,0" Orientation="Horizontal" Grid.RowSpan="2">
-            <StackPanel Margin="80,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240"/>
-
-            <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
-                <TextBlock Text="UF:" Foreground="White" FontSize="20"/>
-                <TextBox x:Name="txtUF" Height="30" FontSize="20"/>
-            </StackPanel>
-
-            <StackPanel Margin= "50, 0, 0, 0 " HorizontalAlignment= "Center " VerticalAlignment= "Center " Width= "240 ">
-                <TextBlock Text= "Municipio: " Foreground= "White " FontSize= "20 "/>
-                <TextBox x:Name="txtMunicipio" Height= "30 " FontSize= "20 "/>
-            </StackPanel>
-        </StackPanel>
     </Grid>
 </Window>

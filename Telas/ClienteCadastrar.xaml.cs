@@ -25,18 +25,18 @@ namespace NewAppCacauShow.Telas
             WindowState = WindowState.Maximized;
             WindowStyle = WindowStyle.SingleBorderWindow;
             InitializeComponent();
-            Closing += FornecedorCadastrar_Closing;
+            Closing += ClienteCadastrar_Closing;
         }
 
 
         private void CadastrarCliente_Click(object sender, RoutedEventArgs e)
         {
-            Fornecedor fornecedor = new Fornecedor();
+            Cliente cliente = new Cliente();
 
             // Nome - obrigatório
             if (!string.IsNullOrWhiteSpace(txtNome.Text))
             {
-                fornecedor.Nome = txtNome.Text;
+                cliente.Nome = txtNome.Text;
             }
             else
             {
@@ -47,7 +47,7 @@ namespace NewAppCacauShow.Telas
             // CPF - obrigatória
             if (!string.IsNullOrWhiteSpace(txtCPF.Text))
             {
-                fornecedor.CPF = txtCPF.Text;
+                cliente.CPF = txtCPF.Text;
             }
             else
             {
@@ -59,7 +59,7 @@ namespace NewAppCacauShow.Telas
             // Contato - obrigatório
             if (!string.IsNullOrWhiteSpace(txtContato.Text))
             {
-                fornecedor.Contato = txtContato.Text;
+                cliente.Contato = txtContato.Text;
             }
             else
             {
@@ -68,11 +68,11 @@ namespace NewAppCacauShow.Telas
             }
 
 
-            // Se todos os campos obrigatórios estão preenchidos, você pode prosseguir com a inserção do fornecedor
+            // Se todos os campos obrigatórios estão preenchidos, você pode prosseguir com a inserção do cliente
             var dao = new ClienteDAO();
-            dao.Insert(Cliente);
+            dao.Insert(cliente);
 
-            MessageBox.Show("Fornecedor inserido com sucesso!", "Confirmação", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Cliente inserido com sucesso!", "Confirmação", MessageBoxButton.OK, MessageBoxImage.Information);
 
             // Limpar os campos após a inserção
             txtNome.Text = "";
@@ -83,15 +83,15 @@ namespace NewAppCacauShow.Telas
             txtEmail.Text = "";
             txtEndereco.Text = "";
             txtCEP.Text = "";
-            txtUF.Text = "";
+            //txtUF.Text = "";
             txtBairro.Text = "";
-            txtMunicipio.Text = "";
+            //txtMunicipio.Text = "";
         }
 
 
         private bool isClosingConfirmed = false;
 
-        private void FornecedorCadastrar_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void ClienteCadastrar_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (!isClosingConfirmed)
             {
@@ -107,14 +107,14 @@ namespace NewAppCacauShow.Telas
 
         private void Cancelar_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show("Qualquer informação registrada nessa tela será perdida. Deseja realmente voltar à lista de fornecedores?", "Confirmação de Cancelamento",
+            var result = MessageBox.Show("Qualquer informação registrada nessa tela será perdida. Deseja realmente voltar à lista de clientees?", "Confirmação de Cancelamento",
                 MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
             if (result == MessageBoxResult.Yes)
             {
                 isClosingConfirmed = true; // Define a flag para true ao confirmar o fechamento
-                FornecedorListar fornecedorListar = new FornecedorListar();
-                fornecedorListar.Show();
+                ClienteListar clienteListar = new ClienteListar();
+                clienteListar.Show();
                 Close(); // Fecha a janela
             }
         }
