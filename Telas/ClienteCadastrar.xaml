@@ -1,24 +1,29 @@
-﻿<Window x:Class="NewAppCacauShow.Telas.CadastrarCliente"
+﻿<Window x:Class="NewAppCacauShow.Telas.ClienteCadastrar"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewAppCacauShow.Telas"
         mc:Ignorable="d"
-        Title="CadastrarCliente" Height="606" Width="960">
-    <Grid Background="#2E4053" Margin="0,0,-370,-186" Width="NaN" Height="NaN">
+        Title="ClienteCadastrar"  Height="720" Width="1080">
+
+    <Grid Background="#2E4053">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="15*"/>
+        </Grid.RowDefinitions>
         <!-- Título da Tela -->
         <TextBlock Text="Cadastrar Cliente" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" FontSize="36" FontWeight="Bold" Foreground="White"/>
 
         <!-- Primeira fileira -->
-        <StackPanel Width="950" Height="75" VerticalAlignment="Top" Margin="0,160,0,0" Orientation="Horizontal">
+        <StackPanel Width="950" Height="75" VerticalAlignment="Top" Margin="65,160,65,0" Orientation="Horizontal">
             <StackPanel Margin="80,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
                 <TextBlock Text="Nome:" Foreground="White" FontSize="20"/>
                 <TextBox x:Name="txtNome" Height="30" FontSize="20"/>
             </StackPanel>
             <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
-                <TextBlock Text="Razão Social:" Foreground="White" FontSize="20"/>
-                <TextBox x:Name="txtRazaoSocial" Height="30" FontSize="20"/>
+                <TextBlock Text="Data Nascimento:" Foreground="White" FontSize="20"/>
+                <TextBox x:Name="txtDataNasc" Height="30" FontSize="20"/>
             </StackPanel>
             <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
                 <TextBlock Text="CPF:" Foreground="White" FontSize="20"/>
@@ -28,33 +33,33 @@
         </StackPanel>
 
         <!-- Segunda fileira -->
-        <StackPanel Width="950" Height="75" VerticalAlignment="Top" Margin="0,280,0,0" Orientation="Horizontal">
+        <StackPanel Width="950" Height="75" VerticalAlignment="Top" Margin="65,280,65,0" Orientation="Horizontal">
             <StackPanel Margin="80,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
-                <TextBlock Text="Telefone:" Foreground="White" FontSize="20"/>
-                <TextBox x:Name="txtTelefone" Height="30" FontSize="20"/>
+                <TextBlock Text="RG:" Foreground="White" FontSize="20"/>
+                <TextBox x:Name="txtRG" Height="30" FontSize="20"/>
             </StackPanel>
 
             <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
-                <TextBlock Text="Endereço:" Foreground="White" FontSize="20"/>
-                <TextBox x:Name="txtEndereco" Height="30" FontSize="20"/>
+                <TextBlock Text="Contato:" Foreground="White" FontSize="20"/>
+                <TextBox x:Name="txtContato" Height="30" FontSize="20"/>
             </StackPanel>
 
             <StackPanel Margin= "50, 0, 0, 0 " HorizontalAlignment= "Center " VerticalAlignment= "Center " Width= "240 ">
-                <TextBlock Text= "Municipio: " Foreground= "White " FontSize= "20 "/>
-                <TextBox x:Name="txtMunicipio" Height= "30 " FontSize= "20 "/>
+                <TextBlock Text= "E-mail: " Foreground= "White " FontSize= "20 "/>
+                <TextBox x:Name="txtEmail" Height= "30 " FontSize= "20 "/>
             </StackPanel>
         </StackPanel>
 
         <!-- Terceira fileira -->
-        <StackPanel Width= "950 " Height= "75 " VerticalAlignment= "Top " Margin= "0, 400, 0, 0 " Orientation= "Horizontal ">
+        <StackPanel Width= "950 " Height= "75 " VerticalAlignment= "Top" Margin= "65,400,65,0" Orientation= "Horizontal ">
             <StackPanel Margin= "80, 0, 0, 0 " HorizontalAlignment= "Center " VerticalAlignment= "Center " Width= "240 ">
                 <TextBlock Text= "CEP: " Foreground= "White " FontSize= "20 "/>
                 <TextBox x:Name= "txtCEP" Height= "30 " FontSize= "20 "/>
             </StackPanel>
 
             <StackPanel Margin= "50, 0, 0, 0 " HorizontalAlignment= "Center " VerticalAlignment= "Center " Width= "240 ">
-                <TextBlock Text= "UF: " Foreground= "White " FontSize= "20 "/>
-                <TextBox x:Name= "txtUF" Height ="30" FontSize ="20" />
+                <TextBlock Text= "Endereço: " Foreground= "White " FontSize= "20 "/>
+                <TextBox x:Name= "txtEndereco" Height ="30" FontSize ="20" />
             </StackPanel>
 
             <StackPanel Margin ="50 , 0 , 0 , 0" HorizontalAlignment = "Center" VerticalAlignment = "Center" Width ="240" >
@@ -64,25 +69,37 @@
         </StackPanel>
 
         <!-- Botões Estilizados -->
-        <StackPanel Margin ="10 ,620 , 0 , 0 "
-                HorizontalAlignment ="Center "
-                VerticalAlignment ="Top "
-                Orientation ="Horizontal ">
+        <StackPanel Margin ="305,81,0,0"
+                HorizontalAlignment ="Left"
+                VerticalAlignment ="Top"
+                Orientation ="Horizontal " Grid.Row="1">
             <Button Content ="Voltar à lista"
                 Width ="200 "
                 Height ="40 "
                 Margin ="30 ,10 ,10 ,10 "
-                Click ="CancelarCadastro_Click "
                 Background ="#FF5733 "
                 Foreground ="White "
-                FontSize ="20 "/>
+                FontSize ="20 " Click="Cancelar_Click"/>
             <Button Content ="Cadastrar Cliente "
                 Width ="200 "
                 Height ="40 "
                 Margin ="30 ,10 ,10 ,10 "
                 Background ="#27AE60 "
                 Foreground ="White "
-                FontSize ="20 " Click="CadastrarFornecedor_Click"/>
+                FontSize ="20 " Click="CadastrarCliente_Click"/>
+        </StackPanel>
+        <StackPanel Width="950" Height="75" VerticalAlignment="Top" Margin="-90,499,220,0" Orientation="Horizontal" Grid.RowSpan="2">
+            <StackPanel Margin="80,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240"/>
+
+            <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
+                <TextBlock Text="UF:" Foreground="White" FontSize="20"/>
+                <TextBox x:Name="txtUF" Height="30" FontSize="20"/>
+            </StackPanel>
+
+            <StackPanel Margin= "50, 0, 0, 0 " HorizontalAlignment= "Center " VerticalAlignment= "Center " Width= "240 ">
+                <TextBlock Text= "Municipio: " Foreground= "White " FontSize= "20 "/>
+                <TextBox x:Name="txtMunicipio" Height= "30 " FontSize= "20 "/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>

@@ -481,3 +481,9 @@ C:\Users\2021102020023\Documents\Projeto.Pds\NewAppCacauShow\obj\Debug\NewAppCac
 C:\Users\2021102020023\Documents\Projeto.Pds\NewAppCacauShow\obj\Debug\NewAppCacauShow.csproj.CoreCompileInputs.cache
 C:\Users\2021102020023\Documents\Projeto.Pds\NewAppCacauShow\obj\Debug\NewAppCacauShow.csproj.CopyComplete
 >>>>>>> Stashed changes
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\CadastrarCliente1.g.cs
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\ProdutoCadastrar.g.cs
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\UsuarioCadastrar.g.cs
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\ClienteCadastrar.g.cs
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\ClienteConsultar.g.cs
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\ClienteListar.g.cs
