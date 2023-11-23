@@ -495,3 +495,11 @@ C:\Users\2021102020023\Documents\Projeto.Pds\NewAppCacauShow\obj\Debug\Telas\Cli
 C:\Users\2021102020023\Documents\Projeto.Pds\NewAppCacauShow\obj\Debug\Telas\ClienteCadastrar.baml
 C:\Users\2021102020023\Documents\Projeto.Pds\NewAppCacauShow\obj\Debug\Telas\ClienteConsultar.baml
 C:\Users\2021102020023\Documents\Projeto.Pds\NewAppCacauShow\obj\Debug\Telas\ClienteListar.baml
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\ClienteCadastrar.baml
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\ClienteConsultar.baml
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\ClienteListar.baml
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\ListarUsuario.baml
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\ProdutoCadastrar.baml
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\UsuarioCadastrar.baml

@@ -83,9 +83,9 @@ namespace NewAppCacauShow.Telas
             txtEmail.Text = "";
             txtEndereco.Text = "";
             txtCEP.Text = "";
-            //txtUF.Text = "";
+            txtUF.Text = "";
             txtBairro.Text = "";
-            //txtMunicipio.Text = "";
+            txtMunicipio.Text = "";
         }
 
 

@@ -33,7 +33,7 @@
         </StackPanel>
 
         <!-- Segunda fileira -->
-        <StackPanel Width="950" Height="75" VerticalAlignment="Top" Margin="65,280,65,0" Orientation="Horizontal">
+        <StackPanel Width="950" Height="75" VerticalAlignment="Top" Margin="65,250,65,0" Orientation="Horizontal">
             <StackPanel Margin="80,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
                 <TextBlock Text="RG:" Foreground="White" FontSize="20"/>
                 <TextBox x:Name="txtRG" Height="30" FontSize="20"/>
@@ -51,7 +51,7 @@
         </StackPanel>
 
         <!-- Terceira fileira -->
-        <StackPanel Width= "950 " Height= "75 " VerticalAlignment= "Top" Margin= "65,400,65,0" Orientation= "Horizontal ">
+        <StackPanel Width= "950 " Height= "75 " VerticalAlignment= "Top" Margin= "65,350,65,0" Orientation= "Horizontal ">
             <StackPanel Margin= "80, 0, 0, 0 " HorizontalAlignment= "Center " VerticalAlignment= "Center " Width= "240 ">
                 <TextBlock Text= "CEP: " Foreground= "White " FontSize= "20 "/>
                 <TextBox x:Name= "txtCEP" Height= "30 " FontSize= "20 "/>
@@ -66,6 +66,23 @@
                 <TextBlock Text = "Bairro " Foreground = "White" FontSize ="20" />
                 <TextBox Name = "txtBairro" Height ="30" FontSize ="20 "/>
             </StackPanel>
+            
+        </StackPanel>
+
+        <!-- Terceira fileira -->
+        <StackPanel Width= "950 " Height= "75 " VerticalAlignment= "Top" Margin= "65,440,65,0" Orientation= "Horizontal ">
+            <StackPanel Margin= "80, 0, 0, 0 " HorizontalAlignment= "Center " VerticalAlignment= "Center " Width= "240 "/>
+
+            <StackPanel Margin= "-100, 0, 0, 0 " HorizontalAlignment= "Center " VerticalAlignment= "Center " Width= "240 ">
+                <TextBlock Text= "UF: " Foreground= "White " FontSize= "20 "/>
+                <TextBox x:Name= "txtUF" Height ="30" FontSize ="20" />
+            </StackPanel>
+
+            <StackPanel Margin ="50 , 0 , 0 , 0" HorizontalAlignment = "Center" VerticalAlignment = "Center" Width ="240" >
+                <TextBlock Text = "Município: " Foreground = "White" FontSize ="20" />
+                <TextBox Name = "txtMunicipio" Height ="30" FontSize ="20 "/>
+            </StackPanel>
+
         </StackPanel>
 
         <!-- Botões Estilizados -->
@@ -86,7 +103,7 @@
                 Margin ="30 ,10 ,10 ,10 "
                 Background ="#27AE60 "
                 Foreground ="White "
-                FontSize ="20 " Click="CadastrarCliente_Click"/>
+                FontSize ="20 " Click=" CadastrarCliente_Click"/>
         </StackPanel>
-    </Grid>
+    </Grid> 
 </Window>
