@@ -87,7 +87,7 @@ foreign key (id_for_fk) references fornecedor (id_for)
 create table Compra_Produto(
 id_com_pro int primary key auto_increment,
 quantidade_com_pro double,
-subtotal_com_pro double,
+subtotal_com_pro double, 
 id_pro_fk int,
 foreign key (id_pro_fk) references Produto (id_pro),
 id_com_fk int,
@@ -97,7 +97,6 @@ foreign key (id_com_fk) references Compra (id_com)
 create table Cliente(
 id_cli int primary key auto_increment,
 nome_cli varchar (300),
-data_nasc_cli date,
 cpf_cli varchar(200),
 rg_cli varchar(300),
 contato_cli varchar(300),
@@ -108,7 +107,10 @@ uf_cli varchar(100),
 bairro_cli varchar(100),
 municipio_cli varchar(100)
 );
+insert into Cliente values (null, 'Hilary', '234.567.890-12', '21231', '699847773844', 'udiegoviana@gmail.com', 'Rua', '13121', 'RO', 'Parque', 'ji-paraná');
+select * from cliente;
 
+delete from Cliente where id_cli = 2;
 
 create table Venda(
 id_ven int primary key auto_increment,
@@ -201,7 +203,6 @@ $$ delimiter ;
 
 insert into Usuario values (null, 'Diego', '2000-01-01', '1', '2', 'u@g', 'Atendente', '69', 'Rua', '1', 'RO', 'Pq', 'Ji');
 insert into Login values (null, now(), 1);
-insert into Cliente values (null, 'Hilary', '2005-10-10', '234.567.890-12', '21231', '699847773844', 'udiegoviana@gmail.com', 'Rua', '13121', 'RO', 'Parque', 'ji-paraná');
 insert into Produto values (null, 'Trufa de caramelo, beijo e doce de leite', '123', '2024-09-21', 1, 2, '');
 insert into Produto values (null, 'Morango', '1234', '2024-09-21', 1, 4, '');
 insert into Produto values (null, 'Chocolate', '12345', '2024-09-21', 1, 6, '');
