@@ -74,18 +74,18 @@ namespace NewAppCacauShow.Telas
 
             MessageBox.Show("Cliente inserido com sucesso!", "Confirmação", MessageBoxButton.OK, MessageBoxImage.Information);
 
-            // Limpar os campos após a inserção
-            //txtNome.Text = "";
-            //txtDataNasc.Text = "";
-            //txtCPF.Text = "";
-            //txtContato.Text = "";
-            //txtRG.Text = "";
-            //txtEmail.Text = "";
-            //txtEndereco.Text = "";
-            //txtCEP.Text = "";
-            //txtUF.Text = "";
-            //txtBairro.Text = "";
-            //txtMunicipio.Text = "";
+            //Limpar os campos após a inserção
+            txtNome.Text = "";
+            txtDataNasc.Text = "";
+            txtCPF.Text = "";
+            txtContato.Text = "";
+            txtRG.Text = "";
+            txtEmail.Text = "";
+            txtEndereco.Text = "";
+            txtCEP.Text = "";
+            txtUF.Text = "";
+            txtBairro.Text = "";
+            txtMunicipio.Text = "";
         }
 
 
