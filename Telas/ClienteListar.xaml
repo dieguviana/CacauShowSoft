@@ -5,8 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewAppCacauShow.Telas"
         mc:Ignorable="d"
-        Title="ClienteListar" Height="450" Width="800">
+       
+        Title="Listar Clientes" Height="720" Width="1080">
     <Grid>
-        
+        <!-- Plano de fundo -->
+        <Grid Background="#2E4053">
+            <!-- Título da Tela -->
+            <TextBlock Text="Lista de Clientes" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="36" FontWeight="Bold" Foreground="White"/>
+
+            <DataGrid Name="DataGridCliente" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" AutoGenerateColumns="False" SelectionChanged="DataGridCliente_SelectionChanged" CanUserAddRows="False" FontSize="20" MaxHeight="500">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding IdCliente}"/>
+                    <DataGridTextColumn Header="Nome" Width="Auto" Binding="{Binding Nome}"/>
+                    <DataGridTextColumn Header="Data Nascimento" Width="Auto" Binding="{Binding DataNasc}"/>
+                    <DataGridTextColumn Header="CPF" Width="Auto" Binding="{Binding CPF}"/>
+                    <DataGridTextColumn Header="Contato" Width="Auto" Binding="{Binding Contato}"/>
+                    <DataGridTemplateColumn Width="Auto" Header="Ações">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Button Content="Detalhes" Width="100" Height="35" Background="Blue" Foreground="White" FontWeight="Bold" Click="Detalhes_Click"/>
+                                    <Button Content="Excluir" Width="100" Height="35" Background="#FF5733" Foreground="White" FontWeight="Bold" Click="Excluir_Click"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!-- Botão Voltar -->
+            <Button Content="Voltar ao Menu" Width="200" Height="40" Background="#2ECC71" Foreground="White" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20" Click="Voltar_Click" FontSize="20"/>
+
+            <!-- Botão Cadastrar Cliente -->
+            <Button Content="Cadastrar Cliente" Width="210" Height="40" Background="#3498DB" Foreground="White" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20" Click="Cadastrar_Click" FontSize="20"/>
+        </Grid>
     </Grid>
 </Window>

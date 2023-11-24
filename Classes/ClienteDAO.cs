@@ -36,10 +36,10 @@ namespace NewAppCacauShow.Classes
                 cliente.Contato = reader.GetString("contato_cli");
                 cliente.Email = reader.GetString("email_cli");
                 cliente.Endereco = reader.GetString("endereco_cli");
-                cliente.CEP = reader.GetString("cep_for");
-                cliente.UF = reader.GetString("uf_for");
-                cliente.Bairro = reader.GetString("bairro_for");
-                cliente.Municipio = reader.GetString("municipio_for");
+                cliente.CEP = reader.GetString("cep_cli");
+                cliente.UF = reader.GetString("uf_cli");
+                cliente.Bairro = reader.GetString("bairro_cli");
+                cliente.Municipio = reader.GetString("municipio_cli");
             }
 
             return cliente;
@@ -61,16 +61,18 @@ namespace NewAppCacauShow.Classes
                 {
                     list.Add(new Cliente()
                     {
-                        IdCliente = reader.GetInt32("id_for"),
-                        Nome = reader.GetString("nome_for"),
+                        IdCliente = reader.GetInt32("id_cli"),
+                        Nome = reader.GetString("nome_cli"),
                         DataNasc = reader.GetString("data_nasc_cli"),
-                        CPF = reader.GetString("cpf_for"),
-                        Contato = reader.GetString("telefone_for"),
-                        Endereco = reader.GetString("endereco_for"),
-                        CEP = reader.GetString("cep_for"),
-                        UF = reader.GetString("uf_for"),
-                        Bairro = reader.GetString("bairro_for"),
-                        Municipio = reader.GetString("municipio_for")
+                        CPF = reader.GetString("cpf_cli"),
+                        RG = reader.GetString("rg_cli"),
+                        Contato = reader.GetString("contato_cli"),
+                        Email = reader.GetString("email_cli"),
+                        Endereco = reader.GetString("endereco_cli"),
+                        CEP = reader.GetString("cep_cli"),
+                        UF = reader.GetString("uf_cli"),
+                        Bairro = reader.GetString("bairro_cli"),
+                        Municipio = reader.GetString("municipio_cli")
                     });
                 }
 
@@ -91,7 +93,7 @@ namespace NewAppCacauShow.Classes
             try
             {
                 var query = conn.Query();
-                query.CommandText = "DELETE FROM Cliente WHERE id_for = @id";
+                query.CommandText = "DELETE FROM Cliente WHERE id_cli = @id";
 
                 query.Parameters.AddWithValue("@id", cliente.IdCliente);
 
