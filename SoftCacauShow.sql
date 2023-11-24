@@ -109,8 +109,6 @@ bairro_cli varchar(100),
 municipio_cli varchar(100)
 );
 
-insert into Cliente values (null, 'Cliente não informado', '2023-09-24', '', '', '', '', '', '', '', '', '');
-insert into Cliente values (null, 'Cliente informado não existe no sistema', '2023-09-24', '1', '', '', '', '', '', '', '', '');
 
 create table Venda(
 id_ven int primary key auto_increment,
