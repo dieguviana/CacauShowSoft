@@ -30,7 +30,6 @@ namespace NewAppCacauShow.Classes
             {
                 cliente.IdCliente = reader.GetInt32("id_cli");
                 cliente.Nome = reader.GetString("nome_cli");
-                cliente.DataNasc = reader.GetString("data_nasc_cli");
                 cliente.CPF = reader.GetString("cpf_cli");
                 cliente.RG = reader.GetString("rg_cli");
                 cliente.Contato = reader.GetString("contato_cli");
@@ -63,7 +62,6 @@ namespace NewAppCacauShow.Classes
                     {
                         IdCliente = reader.GetInt32("id_cli"),
                         Nome = reader.GetString("nome_cli"),
-                        DataNasc = reader.GetString("data_nasc_cli"),
                         CPF = reader.GetString("cpf_cli"),
                         RG = reader.GetString("rg_cli"),
                         Contato = reader.GetString("contato_cli"),
@@ -114,10 +112,9 @@ namespace NewAppCacauShow.Classes
             try
             {
                 var query = conn.Query();
-                query.CommandText = "INSERT INTO Cliente (nome_cli, data_nasc_cli, cpf_cli, rg_cli, contato_cli, email_cli, endereco_cli, cep_cli, uf_cli, bairro_cli, municipio_cli) VALUES (@nome, @datanasc, @cpf, @rg, @contato, @email, @endereco, @cep, @uf, @bairro, @municipio)";
+                query.CommandText = "INSERT INTO Cliente (nome_cli, cpf_cli, rg_cli, contato_cli, email_cli, endereco_cli, cep_cli, uf_cli, bairro_cli, municipio_cli) VALUES (@nome, @cpf, @rg, @contato, @email, @endereco, @cep, @uf, @bairro, @municipio)";
 
                 query.Parameters.AddWithValue("@nome", cliente.Nome);
-                query.Parameters.AddWithValue("@datanasc", cliente.DataNasc);
                 query.Parameters.AddWithValue("@cpf", cliente.CPF);
                 query.Parameters.AddWithValue("@rg", cliente.RG);
                 query.Parameters.AddWithValue("@contato", cliente.Contato);
@@ -148,12 +145,11 @@ namespace NewAppCacauShow.Classes
             try
             {
                 var query = conn.Query();
-                query.CommandText = "UPDATE Cliente SET nome_cli = @nome, data_nasc_cli = @datanasc, " +
+                query.CommandText = "UPDATE Cliente SET nome_cli = @nome, " +
                     "cpf_cli = @cpf, rg_cli = @rg, contato_cli = @contato, email_cli = @email, endereco_cli = @endereco, cep_cli = @cep, uf_cli = @uf, " +
                     "bairro_cli = @bairro, municipio_cli = @municipio WHERE id_cli = @id";
 
                 query.Parameters.AddWithValue("@nome", cliente.Nome);
-                query.Parameters.AddWithValue("@datanasc", cliente.DataNasc);
                 query.Parameters.AddWithValue("@cpf", cliente.CPF);
                 query.Parameters.AddWithValue("@rg", cliente.RG);
                 query.Parameters.AddWithValue("@contato", cliente.Contato);

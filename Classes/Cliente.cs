@@ -10,7 +10,6 @@ namespace NewAppCacauShow.Classes
     {
         public int IdCliente { get; set; }
         public string Nome { get; set; }
-        public string DataNasc { get; set; }
         public string CPF { get; set; }
         public string RG { get; set; }
         public string Email { get; set; }

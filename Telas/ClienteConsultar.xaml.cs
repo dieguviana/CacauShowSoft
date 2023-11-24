@@ -38,7 +38,6 @@ namespace NewAppCacauShow.Telas
             if (clienteSelected != null)
             {
                 txtNome.Text = clienteSelected.Nome;
-                txtDataNasc.Text = clienteSelected.DataNasc;
                 txtCPF.Text = clienteSelected.CPF;
                 txtRG.Text = clienteSelected.RG;
                 txtContato.Text = clienteSelected.Contato;
@@ -85,7 +84,6 @@ namespace NewAppCacauShow.Telas
 
                 cliente.IdCliente = identificadorCliente;
                 cliente.Nome = txtNome.Text;
-                cliente.DataNasc = txtDataNasc.Text;
                 cliente.CPF = txtCPF.Text;
                 cliente.RG = txtRG.Text;
                 cliente.Contato = txtContato.Text;

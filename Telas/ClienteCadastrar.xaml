@@ -17,12 +17,12 @@
                 <TextBox x:Name="txtNome" Height="30" FontSize="20"/>
             </StackPanel>
             <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
-                <TextBlock Text="Data Nascimento:" Foreground="White" FontSize="20"/>
-                <TextBox x:Name="txtDataNasc" Height="30" FontSize="20"/>
-            </StackPanel>
-            <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
                 <TextBlock Text="CPF:" Foreground="White" FontSize="20"/>
                 <TextBox x:Name="txtCPF" Height="30" FontSize="20"/>
+            </StackPanel>
+            <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
+                <TextBlock Text="RG:" Foreground="White" FontSize="20"/>
+                <TextBox x:Name="txtRG" Height="30" FontSize="20" TextChanged="txtCPF_TextChanged"/>
             </StackPanel>
 
         </StackPanel>
@@ -30,35 +30,35 @@
         <!-- Segunda fileira -->
         <StackPanel Width="950" Height="75" VerticalAlignment="Top" Margin="0,250,0,0" Orientation="Horizontal">
             <StackPanel Margin="80,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
-                <TextBlock Text="RG:" Foreground="White" FontSize="20"/>
-                <TextBox x:Name="txtRG" Height="30" FontSize="20"/>
-            </StackPanel>
-
-            <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
                 <TextBlock Text="Contato:" Foreground="White" FontSize="20"/>
                 <TextBox x:Name="txtContato" Height="30" FontSize="20"/>
             </StackPanel>
 
+            <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
+                <TextBlock Text="E-mail:" Foreground="White" FontSize="20"/>
+                <TextBox x:Name="txtEmail" Height="30" FontSize="20"/>
+            </StackPanel>
+
             <StackPanel Margin= "50, 0, 0, 0 " HorizontalAlignment= "Center " VerticalAlignment= "Center " Width= "240 ">
-                <TextBlock Text= "E-mail: " Foreground= "White " FontSize= "20 "/>
-                <TextBox x:Name="txtEmail" Height= "30 " FontSize= "20 "/>
+                <TextBlock Text= "CEP: " Foreground= "White " FontSize= "20 "/>
+                <TextBox x:Name="txtCEP" Height= "30 " FontSize= "20 "/>
             </StackPanel>
         </StackPanel>
 
         <!-- Terceira fileira -->
         <StackPanel Width= "950 " Height= "75 " VerticalAlignment= "Top " Margin= "0, 340, 0, 0 " Orientation= "Horizontal ">
             <StackPanel Margin= "80, 0, 0, 0 " HorizontalAlignment= "Center " VerticalAlignment= "Center " Width= "240 ">
-                <TextBlock Text= "CEP: " Foreground= "White " FontSize= "20 "/>
-                <TextBox x:Name= "txtCEP" Height= "30 " FontSize= "20 "/>
+                <TextBlock Text= "Endereço: " Foreground= "White " FontSize= "20 "/>
+                <TextBox x:Name= "txtEndereco" Height= "30 " FontSize= "20 "/>
             </StackPanel>
 
             <StackPanel Margin= "50, 0, 0, 0 " HorizontalAlignment= "Center " VerticalAlignment= "Center " Width= "240 ">
-                <TextBlock Text= "Endereço: " Foreground= "White " FontSize= "20 "/>
-                <TextBox x:Name= "txtEndereco" Height ="30" FontSize ="20" />
+                <TextBlock Text= "Município: " Foreground= "White " FontSize= "20 "/>
+                <TextBox x:Name= "txtMunicipio" Height ="30" FontSize ="20" />
             </StackPanel>
 
             <StackPanel Margin ="50 , 0 , 0 , 0" HorizontalAlignment = "Center" VerticalAlignment = "Center" Width ="240" >
-                <TextBlock Text = "Bairro " Foreground = "White" FontSize ="20" />
+                <TextBlock Text = "Bairro: " Foreground = "White" FontSize ="20" />
                 <TextBox Name = "txtBairro" Height ="30" FontSize ="20 "/>
             </StackPanel>
 
@@ -68,15 +68,12 @@
         <StackPanel Width= "950 " Height= "75 " VerticalAlignment= "Top" Margin= "65,430,65,0" Orientation= "Horizontal ">
             <StackPanel Margin= "80, 0, 0, 0 " HorizontalAlignment= "Center " VerticalAlignment= "Center " Width= "240 "/>
 
-            <StackPanel Margin= "-100, 0, 0, 0 " HorizontalAlignment= "Center " VerticalAlignment= "Center " Width= "240 ">
+            <StackPanel Margin= "-240, 0, 0, 0 " HorizontalAlignment= "Center " VerticalAlignment= "Center " Width= "240 ">
                 <TextBlock Text= "UF: " Foreground= "White " FontSize= "20 "/>
                 <TextBox x:Name= "txtUF" Height ="30" FontSize ="20" />
             </StackPanel>
 
-            <StackPanel Margin ="50 , 0 , 0 , 0" HorizontalAlignment = "Center" VerticalAlignment = "Center" Width ="240" >
-                <TextBlock Text = "Município: " Foreground = "White" FontSize ="20" />
-                <TextBox Name = "txtMunicipio" Height ="30" FontSize ="20 "/>
-            </StackPanel>
+            <StackPanel Margin ="50 , 0 , 0 , 0" HorizontalAlignment = "Center" VerticalAlignment = "Center" Width ="240" />
 
         </StackPanel>
 

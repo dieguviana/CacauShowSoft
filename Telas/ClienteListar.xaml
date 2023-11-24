@@ -17,7 +17,6 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding IdCliente}"/>
                     <DataGridTextColumn Header="Nome" Width="Auto" Binding="{Binding Nome}"/>
-                    <DataGridTextColumn Header="Data Nascimento" Width="Auto" Binding="{Binding DataNasc}"/>
                     <DataGridTextColumn Header="CPF" Width="Auto" Binding="{Binding CPF}"/>
                     <DataGridTextColumn Header="Contato" Width="Auto" Binding="{Binding Contato}"/>
                     <DataGridTemplateColumn Width="Auto" Header="Ações">

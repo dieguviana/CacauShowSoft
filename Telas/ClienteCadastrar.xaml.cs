@@ -44,7 +44,7 @@ namespace NewAppCacauShow.Telas
                 return;
             }
 
-            // CPF - obrigatória
+            // CPF - obrigatório
             if (!string.IsNullOrWhiteSpace(txtCPF.Text))
             {
                 cliente.CPF = txtCPF.Text;
@@ -54,7 +54,6 @@ namespace NewAppCacauShow.Telas
                 MessageBox.Show("O campo de CPF é obrigatório.", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-
 
             // Contato - obrigatório
             if (!string.IsNullOrWhiteSpace(txtContato.Text))
@@ -67,6 +66,17 @@ namespace NewAppCacauShow.Telas
                 return;
             }
 
+            // Campos não obrigatórios (ajuste para evitar nulos)
+            cliente.RG = string.Empty;
+            cliente.Email = string.Empty;
+            cliente.Endereco = string.Empty;
+            cliente.CEP = string.Empty;
+            cliente.UF = string.Empty;
+            cliente.Bairro = string.Empty;
+            cliente.Municipio = string.Empty;
+
+
+            // Adicione outros campos não obrigatórios aqui
 
             // Se todos os campos obrigatórios estão preenchidos, você pode prosseguir com a inserção do cliente
             var dao = new ClienteDAO();
@@ -74,9 +84,8 @@ namespace NewAppCacauShow.Telas
 
             MessageBox.Show("Cliente inserido com sucesso!", "Confirmação", MessageBoxButton.OK, MessageBoxImage.Information);
 
-            //Limpar os campos após a inserção
+            // Limpar os campos após a inserção
             txtNome.Text = "";
-            txtDataNasc.Text = "";
             txtCPF.Text = "";
             txtContato.Text = "";
             txtRG.Text = "";
@@ -117,6 +126,11 @@ namespace NewAppCacauShow.Telas
                 clienteListar.Show();
                 Close(); // Fecha a janela
             }
+        }
+
+        private void txtCPF_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
