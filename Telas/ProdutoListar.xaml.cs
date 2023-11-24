@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace NewAppCacauShow.Telas
 {
     /// <summary>
-    /// Lógica interna para ListarUsuario.xaml
+    /// Lógica interna para ProdutoListar.xaml
     /// </summary>
-    public partial class ListarUsuario : Window
+    public partial class ProdutoListar : Window
     {
-        public ListarUsuario()
+        public ProdutoListar()
         {
             InitializeComponent();
         }
