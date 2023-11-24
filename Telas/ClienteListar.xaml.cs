@@ -34,10 +34,14 @@ namespace NewAppCacauShow.Telas
         {
             var dao = new ClienteDAO();
 
-
+            try
+            {
                 DataGridCliente.ItemsSource = dao.List();
-            
-        
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Exceção", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void DataGridCliente_SelectionChanged(object sender, SelectionChangedEventArgs e)

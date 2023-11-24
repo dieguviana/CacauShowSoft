@@ -47,7 +47,7 @@ namespace NewAppCacauShow.Telas
 
         private void Clientes_Click(object sender, RoutedEventArgs e)
         {
-            ClienteListar  cliente = new ClienteListar();
+            ClienteListar cliente = new ClienteListar();
             cliente.Show();
             this.Close();
         }
