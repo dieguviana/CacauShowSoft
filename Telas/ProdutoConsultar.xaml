@@ -5,8 +5,69 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewAppCacauShow.Telas"
         mc:Ignorable="d"
-        Title="ProdutoConsultar" Height="450" Width="800">
-    <Grid>
+        Title="Consultar Produto" Height="720" Width="1080">
+    <Grid Background="#2E4053">
+        <!-- Título da Tela -->
+        <TextBlock Text="Cadastrar Produto" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" FontSize="36" FontWeight="Bold" Foreground="White"/>
+
+        <!-- Primeira fileira -->
+        <StackPanel Width="950" Height="75" VerticalAlignment="Top" Margin="0,160,0,0" Orientation="Horizontal">
+            <StackPanel Margin="80,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="530">
+                <TextBlock Text="Nome" Foreground="White" FontSize="20"/>
+                <TextBox x:Name="txtNome" Height="30" FontSize="20" IsEnabled="False"/>
+            </StackPanel>
+
+            <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
+                <TextBlock Text="Valor Venda" Foreground="White" FontSize="20"/>
+                <TextBox x:Name="txtValorVen" Height="30" FontSize="20" IsEnabled="False"/>
+            </StackPanel>
+
+        </StackPanel>
+
+        <!-- Segunda fileira -->
+        <StackPanel Width="950" Height="75" VerticalAlignment="Top" Margin="0,280,0,0" Orientation="Horizontal">
+            <StackPanel Margin="80,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
+                <TextBlock Text="Código" Foreground="White" FontSize="20"/>
+                <TextBox x:Name="txtCodigo" Height="30" FontSize="20" IsEnabled="False"/>
+            </StackPanel>
+
+            <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
+                <TextBlock Text="Vencimento" Foreground="White" FontSize="20"/>
+                <DatePicker Name="txtVencimento" Height="30" FontSize="20" IsEnabled="False"/>
+            </StackPanel>
+
+            <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
+                <TextBlock Text="Valor Compra" Foreground="White" FontSize="20"/>
+                <TextBox x:Name="txtValorCom" Height="30" FontSize="20" IsEnabled="False"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Terceira fileira -->
+        <StackPanel Width="950" Height="75" VerticalAlignment="Top" Margin="0,400,0,0" Orientation="Horizontal">
+            <StackPanel Margin="80,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="900">
+                <TextBlock Text="Descrição" Foreground="White" FontSize="20"/>
+                <TextBox x:Name="txtDescricao" Height="30" FontSize="20" IsEnabled="False"/>
+            </StackPanel>
+
+            <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240"/>
+            <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240"/>
+        </StackPanel>
         
+        <!-- Botões Estilizados -->
+        <StackPanel Margin ="10 ,620 , 0 , 0 "
+                HorizontalAlignment ="Center "
+                VerticalAlignment ="Top "
+                Orientation ="Horizontal ">
+            <Button Content ="Voltar à lista"
+                Width ="200 "
+                Height ="40 "
+                Margin ="30 ,10 ,10 ,10 "
+                Background ="#FF5733 "
+                Foreground ="White "
+                FontSize ="20 " Click="VoltarListar_Click"/>
+            <Button Name="btnEditar" Content="Editar" Width="200" Height="40" Margin="30, 10, 10, 10" Background="#3498DB" Foreground="White" FontSize="20" Click="EditarProduto_Click"/>
+
+        </StackPanel>
     </Grid>
+
 </Window>

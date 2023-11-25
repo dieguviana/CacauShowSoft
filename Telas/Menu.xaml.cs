@@ -43,7 +43,7 @@ namespace NewAppCacauShow.Telas
 
         private void Produtos_Click(object sender, RoutedEventArgs e)
         {
-            ProdutoCadastrar produto = new ProdutoCadastrar();
+            ProdutoListar produto = new ProdutoListar();
             produto.Show();
             this.Close();
         }

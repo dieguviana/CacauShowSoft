@@ -35,7 +35,7 @@
 
             <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
                 <TextBlock Text="Vencimento" Foreground="White" FontSize="20"/>
-                <DatePicker Name="txtVencimento" Height="30" FontSize="20"/>
+                <DatePicker Name="dtpVencimento" Height="30" FontSize="20" />
             </StackPanel>
             
             <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">

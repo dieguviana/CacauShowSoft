@@ -70,9 +70,14 @@ namespace NewAppCacauShow.Telas
             }
 
             // Vencimento - obrigatório
-            if (txtVencimento.SelectedDate.HasValue)
+            if (!string.IsNullOrWhiteSpace(dtpVencimento.Text))
             {
-                produto.DataVenc = txtVencimento.SelectedDate.Value.ToString("yyyy-MM-dd");
+                DateTime vencimentoDate;
+                if (DateTime.TryParse(dtpVencimento.Text, out vencimentoDate))
+                {
+                    produto.DataVenc = vencimentoDate.ToString("yyyy-MM-dd");
+                }
+
             }
             else
             {
@@ -122,7 +127,7 @@ namespace NewAppCacauShow.Telas
             // Limpar os campos após a inserção
             txtNome.Text = "";
             txtCodigo.Text = "";
-            txtVencimento.SelectedDate = null;
+            dtpVencimento.SelectedDate = null;
             txtValorCom.Text = "";
             txtValorVen.Text = "";
             txtDescricao.Text = "";

@@ -31,7 +31,7 @@ namespace NewAppCacauShow.Classes
                 produto.IdProduto = reader.GetInt32("id_pro");
                 produto.Nome = reader.GetString("nome_pro");
                 produto.Codigo = reader.GetInt32("codigo_pro");
-                produto.DataVenc = reader.GetString("data_venc_pro");
+                produto.DataVenc = reader.GetDateTime("data_venc_pro").ToString("dd/MM/yyyy");
                 produto.ValorVenda = reader.GetDouble("valor_venda_pro");
                 produto.ValorCompra = reader.GetDouble("valor_compra_pro");
                 produto.Descricao = reader.GetString("descricao_pro");
@@ -56,10 +56,10 @@ namespace NewAppCacauShow.Classes
                 {
                     list.Add(new Produto()
                     {
-                        IdProduto = reader.GetInt32("id_for"),
+                        IdProduto = reader.GetInt32("id_pro"),
                         Nome = reader.GetString("nome_pro"),
                         Codigo = reader.GetInt32("codigo_pro"),
-                        DataVenc = reader.GetString("data_venc_pro"),
+                        DataVenc = reader.GetDateTime("data_venc_pro").ToString("dd/MM/yyyy"),
                         ValorVenda = reader.GetDouble("valor_venda_pro"),
                         ValorCompra = reader.GetDouble("valor_compra_pro"),
                         Descricao = reader.GetString("descricao_pro")
@@ -83,7 +83,7 @@ namespace NewAppCacauShow.Classes
             try
             {
                 var query = conn.Query();
-                query.CommandText = "DELETE FROM Produto WHERE id_cli = @id";
+                query.CommandText = "DELETE FROM Produto WHERE id_pro = @id";
 
                 query.Parameters.AddWithValue("@id", produto.IdProduto);
 
@@ -143,6 +143,8 @@ namespace NewAppCacauShow.Classes
                 query.Parameters.AddWithValue("@valorCompra", produto.ValorCompra);
                 query.Parameters.AddWithValue("@valorVenda", produto.ValorVenda);
                 query.Parameters.AddWithValue("descricao", produto.Descricao);
+                query.Parameters.AddWithValue("@id", produto.IdProduto);
+
 
                 var resultado = query.ExecuteNonQuery();
 
