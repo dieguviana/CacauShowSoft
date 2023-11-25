@@ -108,9 +108,6 @@ bairro_cli varchar(100),
 municipio_cli varchar(100)
 );
 insert into Cliente values (null, 'Hilary', '234.567.890-12', '21231', '699847773844', 'udiegoviana@gmail.com', 'Rua', '13121', 'RO', 'Parque', 'ji-paraná');
-select * from cliente;
-
-delete from Cliente where id_cli = 2;
 
 create table Venda(
 id_ven int primary key auto_increment,
