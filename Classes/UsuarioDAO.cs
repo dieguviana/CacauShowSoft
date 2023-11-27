@@ -69,6 +69,7 @@ namespace NewAppCacauShow.Classes
                         Cpf = reader.GetString("cpf_usu"),
                         Rg = reader.GetString("rg_usu"),
                         Contato = reader.GetString("contato_usu"),
+                        Funcao = reader.GetString("funcao_usu"),
                         Email = reader.GetString("email_usu"),
                         Endereco = reader.GetString("endereco_usu"),
                         Cep = reader.GetString("cep_usu"),
@@ -156,8 +157,8 @@ namespace NewAppCacauShow.Classes
             {
                 var query = conn.Query();
                 query.CommandText = "UPDATE Usuario SET nome_usu = @nome, " +
-                    "cpf_usu = @cpf, rg_usu = @rg, contato_usu = @contato, email_usu = @email, endereco_usu = @endereco, cep_usu = @cep, uf_usu = @uf, " +
-                    "bairro_usu = @bairro, municipio_usu = @municipio WHERE id_usu = @id";
+           "cpf_usu = @cpf, rg_usu = @rg, contato_usu = @contato, email_usu = @email, endereco_usu = @endereco, cep_usu = @cep, uf_usu = @uf, " +
+           "bairro_usu = @bairro, municipio_usu = @municipio, funcao_usu = @funcao WHERE id_usu = @id";
 
                 query.Parameters.AddWithValue("@nome", usuario.Nome);
                 query.Parameters.AddWithValue("@cpf", usuario.Cpf);
@@ -169,7 +170,9 @@ namespace NewAppCacauShow.Classes
                 query.Parameters.AddWithValue("@uf", usuario.Uf);
                 query.Parameters.AddWithValue("@bairro", usuario.Bairro);
                 query.Parameters.AddWithValue("@municipio", usuario.Municipio);
+                query.Parameters.AddWithValue("@funcao", usuario.Funcao);  
                 query.Parameters.AddWithValue("@id", usuario.IdUsuario);
+
 
                 var resultado = query.ExecuteNonQuery();
 

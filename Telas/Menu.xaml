@@ -69,7 +69,7 @@
                         </StackPanel>
                     </Button>
                     <!-- Funcionários -->
-                    <Button Style="{StaticResource NoHoverButtonStyle}" Background="Transparent" BorderThickness="0" Click="Funcionarios_Click">
+                    <Button Style="{StaticResource NoHoverButtonStyle}" Background="Transparent" BorderThickness="0" Click="Usuarios_Click">
                         <StackPanel Orientation="Vertical" Margin="50,20,50,20">
                             <Image Source="/Icons/funcionarios.png" Width="150" Height="150"/>
                             <TextBlock Text="Funcionários" Margin="0,10,0,0" Foreground="White" FontWeight="Bold" TextAlignment="Center" FontSize="20"/>

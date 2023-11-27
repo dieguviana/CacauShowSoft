@@ -1,25 +1,25 @@
-﻿<Window x:Class="NewAppCacauShow.Telas.ClienteListar"
+﻿<Window x:Class="NewAppCacauShow.Telas.UsuarioListar"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewAppCacauShow.Telas"
         mc:Ignorable="d"
-       
-        Title="Listar Clientes" Height="720" Width="1080">
+        Title="Listar Usuários" Height="720" Width="1080">
     <Grid>
         <!-- Plano de fundo -->
         <Grid Background="#2E4053">
             <!-- Título da Tela -->
-            <TextBlock Text="Lista de Clientes" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="36" FontWeight="Bold" Foreground="White"/>
+            <TextBlock Text="Lista de Usuários" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="36" FontWeight="Bold" Foreground="White"/>
 
-            <DataGrid Name="DataGridCliente" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" AutoGenerateColumns="False" SelectionChanged="DataGridCliente_SelectionChanged" CanUserAddRows="False" FontSize="20" MaxHeight="500">
+            <DataGrid Name="DataGridUsuario" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="20" MaxHeight="500">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding IdCliente}"/>
+                    <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding IdUsuario}"/>
                     <DataGridTextColumn Header="Nome" Width="Auto" Binding="{Binding Nome}"/>
-                    <DataGridTextColumn Header="CPF" Width="Auto" Binding="{Binding CPF}"/>
+                    <DataGridTextColumn Header="CPF" Width="Auto" Binding="{Binding Cpf}"/>
                     <DataGridTextColumn Header="Contato" Width="Auto" Binding="{Binding Contato}"/>
                     <DataGridTextColumn Header="E-mail" Width="Auto" Binding="{Binding Email}"/>
+                    <DataGridTextColumn Header="Função" Width="Auto" Binding="{Binding Funcao}"/>
                     <DataGridTemplateColumn Width="Auto" Header="Ações">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -37,7 +37,7 @@
             <Button Content="Voltar ao Menu" Width="200" Height="40" Background="#2ECC71" Foreground="White" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20" Click="Voltar_Click" FontSize="20"/>
 
             <!-- Botão Cadastrar Cliente -->
-            <Button Content="Cadastrar Cliente" Width="210" Height="40" Background="#3498DB" Foreground="White" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20" Click="Cadastrar_Click" FontSize="20"/>
+            <Button Content="Cadastrar Usuario" Width="210" Height="40" Background="#3498DB" Foreground="White" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20" Click="Cadastrar_Click" FontSize="20"/>
         </Grid>
     </Grid>
 </Window>

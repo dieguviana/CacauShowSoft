@@ -433,3 +433,7 @@ C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\ProdutoCo
 C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\ProdutoListar.g.cs
 C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\ProdutoConsultar.baml
 C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\ProdutoListar.baml
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\UsuarioListar.g.cs
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\UsuarioListar.baml
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\UsuarioConsultar.g.cs
+C:\Users\thaua\OneDrive\Documentos\p.w\NewAppCacauShow\obj\Debug\Telas\UsuarioConsultar.baml

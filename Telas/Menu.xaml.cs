@@ -55,9 +55,7 @@ namespace NewAppCacauShow.Telas
             this.Close();
         }
 
-        private void Funcionarios_Click(object sender, RoutedEventArgs e)
-        {
-        }
+   
 
         private void Fornecedores_Click(object sender, RoutedEventArgs e)
         {
@@ -70,6 +68,13 @@ namespace NewAppCacauShow.Telas
         {
             Login login = new Login();
             login.Show();
+            this.Close();
+        }
+
+        private void Usuarios_Click(object sender, RoutedEventArgs e)
+        {
+            UsuarioListar usuario = new UsuarioListar();
+            usuario.Show();
             this.Close();
         }
     }

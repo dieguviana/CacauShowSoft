@@ -94,6 +94,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\Cliente.cs" />
+    <Compile Include="Classes\UsuarioDAO.cs" />
     <Compile Include="Classes\Compra.cs" />
     <Compile Include="Classes\CompraDAO.cs" />
     <Compile Include="Classes\CompraProduto.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Classes\PagamentoDAO.cs" />
     <Compile Include="Classes\Recebimento.cs" />
     <Compile Include="Classes\RecebimentoDAO.cs" />
+    <Compile Include="Classes\Usuario.cs" />
     <Compile Include="Classes\Venda.cs" />
     <Compile Include="Classes\VendaDAO.cs" />
     <Compile Include="Classes\VendaProduto.cs" />
@@ -153,6 +155,12 @@
     </Compile>
     <Compile Include="Telas\UsuarioCadastrar.xaml.cs">
       <DependentUpon>UsuarioCadastrar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\UsuarioConsultar.xaml.cs">
+      <DependentUpon>UsuarioConsultar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\UsuarioListar.xaml.cs">
+      <DependentUpon>UsuarioListar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Telas\VendaCadastrar.xaml.cs">
       <DependentUpon>VendaCadastrar.xaml</DependentUpon>
@@ -227,6 +235,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Telas\UsuarioCadastrar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Telas\UsuarioConsultar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Telas\UsuarioListar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -128,9 +128,6 @@ namespace NewAppCacauShow.Telas
             }
         }
 
-        private void txtCPF_TextChanged(object sender, TextChangedEventArgs e)
-        {
 
-        }
     }
 }
