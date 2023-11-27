@@ -5,85 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewAppCacauShow.Telas"
         mc:Ignorable="d"
-        Title="Cadastrar Usuário" Height="720" Width="1080">
-    <!--<Grid Background="#2E4053">
-        --><!-- Título da Tela --><!--
-        <TextBlock Text="Cadastrar Usuário" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" FontSize="36" FontWeight="Bold" Foreground="White"/>
-
-        --><!-- Primeira fileira --><!--
-        <StackPanel Width="950" Height="75" VerticalAlignment="Top" Margin="0,160,0,0" Orientation="Horizontal">
-            <StackPanel Margin="80,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
-                <TextBlock Text="Nome:" Foreground="White" FontSize="20"/>
-                <TextBox x:Name="txtNome" Height="30" FontSize="20"/>
-            </StackPanel>
-            <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
-                <TextBlock Text="Cpf:" Foreground="White" FontSize="20"/>
-                <TextBox x:Name="txtCPF" Height="30" FontSize="20"/>
-            </StackPanel>
-            <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
-                <TextBlock Text="RG:" Foreground="White" FontSize="20"/>
-                <TextBox x:Name="txtRG" Height="30" FontSize="20"/>
-            </StackPanel>
-
-        </StackPanel>
-
-        --><!-- Segunda fileira --><!--
-        <StackPanel Width="950" Height="75" VerticalAlignment="Top" Margin="0,280,0,0" Orientation="Horizontal">
-            <StackPanel Margin="80,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
-                <TextBlock Text="Telefone:" Foreground="White" FontSize="20"/>
-                <TextBox x:Name="txtTelefone" Height="30" FontSize="20"/>
-            </StackPanel>
-
-            <StackPanel Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="240">
-                <TextBlock Text="Endereço:" Foreground="White" FontSize="20"/>
-                <TextBox x:Name="txtEndereco" Height="30" FontSize="20"/>
-            </StackPanel>
-
-            <StackPanel Margin= "50, 0, 0, 0 " HorizontalAlignment= "Center " VerticalAlignment= "Center " Width= "240 ">
-                <TextBlock Text= "Função: " Foreground= "White " FontSize= "20 "/>
-                <TextBox x:Name="txtFunção" Height= "30 " FontSize= "20 "/>
-            </StackPanel>
-        </StackPanel>
-
-        --><!-- Terceira fileira --><!--
-        <StackPanel Width= "950 " Height= "75 " VerticalAlignment= "Top" Margin= "-225,395,355,0" Orientation= "Horizontal ">
-            <StackPanel Margin= "80, 0, 0, 0 " HorizontalAlignment= "Center " VerticalAlignment= "Center " Width= "240 "/>
-
-            <StackPanel Margin= "50, 0, 0, 0 " HorizontalAlignment= "Center " VerticalAlignment= "Center " Width= "240 ">
-                <TextBlock Text= "Data De Nascimento: " Foreground= "White " FontSize= "20 " Width="240" Height="49" RenderTransformOrigin="0.5,0.5">
-                    <TextBlock.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform Angle="-0.101"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </TextBlock.RenderTransform>
-                </TextBlock>
-            </StackPanel>
-
-            <StackPanel Margin ="50 , 0 , 0 , 0" HorizontalAlignment = "Center" VerticalAlignment = "Center" Width ="240" >
-                <TextBlock Text = "Salário R$: " Foreground = "White" FontSize ="20" />
-                <TextBox Name = "txtSalario" Height ="30" FontSize ="20 "/>
-            </StackPanel>
-        </StackPanel>
-
-        --><!-- Botões Estilizados --><!--
-        <StackPanel Margin ="10 ,620 , 0 , 0 "
-                HorizontalAlignment ="Center "
-                VerticalAlignment ="Top "
-                Orientation ="Horizontal "/>
-        <DatePicker HorizontalAlignment="Left" Margin="140,434,0,0" VerticalAlignment="Top" Height="30" Width="245"/>
-        <Button Content ="Cancelar Cadastro"
-                Margin ="50,639,830,25"
-                Click ="CancelarCadastro_Click "
-                Background ="#FF5733 "
-                Foreground ="White "
-                FontSize ="20 "/>
-        <Button Content ="Concluir Cadastro "
-                Margin ="840,634,40,30"
-                Background ="#27AE60 "
-                Foreground ="White "
-                FontSize ="20 " Click="CadastrarFornecedor_Click"/>
-    </Grid>-->
+        Title="UsuarioCadastrar" Height="450" Width="800">
+    <Grid>
+        
+    </Grid>
 </Window>
