@@ -12,7 +12,6 @@ use Soft_CacauShow;
 create table Usuario(
 id_usu int primary key auto_increment,
 nome_usu varchar (100),
-data_nasc_usu date,
 rg_usu varchar(100),
 cpf_usu varchar(100),
 email_usu varchar(150),
@@ -198,8 +197,9 @@ end if;
 end;
 $$ delimiter ;
 
-insert into Usuario values (null, 'Diego', '2000-01-01', '1', '2', 'u@g', 'Atendente', '69', 'Rua', '1', 'RO', 'Pq', 'Ji');
-insert into Login values (null, now(), 1);
+select * from usuario;
+
+insert into Usuario values (null, 'Diego', '1', '2', 'u@g', 'Atendente', '69', 'Rua', '1', 'RO', 'Pq', 'Ji');
 insert into Produto values (null, 'Trufa de caramelo, beijo e doce de leite', '123', '2024-09-21', 1, 2, '');
 insert into Produto values (null, 'Morango', '1234', '2024-09-21', 1, 4, '');
 insert into Produto values (null, 'Chocolate', '12345', '2024-09-21', 1, 6, '');
