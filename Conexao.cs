@@ -12,7 +12,7 @@ namespace NewAppCacauShow
     {
         private static string host = "localhost";
 
-        private static string porta = "3306";
+        private static string porta = "3360";
 
         private static string usuario = "root";
 

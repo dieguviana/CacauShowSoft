@@ -27,7 +27,6 @@ namespace NewAppCacauShow.Telas
             WindowState = WindowState.Maximized;
             WindowStyle = WindowStyle.SingleBorderWindow;
             InitializeComponent();
-            Closing += ClienteCadastrar_Closing;
 
             var dao = new ClienteDAO();
 
@@ -126,62 +125,11 @@ namespace NewAppCacauShow.Telas
             }
         }
 
-
         private void VoltarListar_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show("Qualquer informação registrada nessa tela será perdida. Deseja realmente voltar à lista de clientees?", "Confirmação de Cancelamento",
-            MessageBoxButton.YesNo, MessageBoxImage.Warning);
-
-            if (result == MessageBoxResult.Yes)
-            {
-                isClosingConfirmed = true; // Define a flag para true ao confirmar o fechamento
-                ClienteListar clienteListar = new ClienteListar();
-                clienteListar.Show();
-                Close(); // Fecha a janela
-            }
+            ClienteListar clienteListar = new ClienteListar();
+            clienteListar.Show();
+            this.Close();
         }
-
-        private void FechandoJanela(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (Editou == true)
-            {
-                var result = MessageBox.Show($"Algumas edições nessa tela podem ser perdidas caso continue. Deseja realmente fechar essa janela?", "Confirmação de Cancelamento",
-                    MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                try
-                {
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        ClienteListar clientees = new ClienteListar();
-                        clientees.Show();
-                    }
-                    else
-                    {
-                        e.Cancel = true;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Exceção", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-        }
-
-
-        private bool isClosingConfirmed = false;
-
-        private void ClienteCadastrar_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (!isClosingConfirmed)
-            {
-                var result = MessageBox.Show("Qualquer informação registrada nessa tela será perdida. Deseja realmente fechar essa janela?", "Confirmação de Exclusão",
-                MessageBoxButton.YesNo, MessageBoxImage.Warning);
-
-                if (result == MessageBoxResult.No)
-                {
-                    e.Cancel = true; // Cancela o evento de fechamento da janela
-                }
-            }
-        }
-
     }
 }

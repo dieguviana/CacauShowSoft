@@ -263,7 +263,6 @@ namespace NewAppCacauShow.Telas
         {
             ClienteCadastrar clienteCadastrar = new ClienteCadastrar();
             clienteCadastrar.Show();
-            this.Close();
         }
 
         private void TxtClienteCPF_TextChanged(object sender, TextChangedEventArgs e)

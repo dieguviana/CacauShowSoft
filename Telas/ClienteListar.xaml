@@ -33,11 +33,8 @@
                 </DataGrid.Columns>
             </DataGrid>
 
-            <!-- Botão Voltar -->
             <Button Content="Voltar ao Menu" Width="200" Height="40" Background="#2ECC71" Foreground="White" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20" Click="Voltar_Click" FontSize="20"/>
-
-            <!-- Botão Cadastrar Cliente -->
-            <Button Content="Cadastrar Cliente" Width="210" Height="40" Background="#3498DB" Foreground="White" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,644,20,0" Click="Cadastrar_Click" FontSize="20"/>
+            <Button Content="Cadastrar Cliente" Width="210" Height="40" Background="#3498DB" Foreground="White" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20" Click="Cadastrar_Click" FontSize="20"/>
         </Grid>
     </Grid>
 </Window>

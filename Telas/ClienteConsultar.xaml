@@ -85,15 +85,8 @@
                 HorizontalAlignment ="Center "
                 VerticalAlignment ="Top "
                 Orientation ="Horizontal ">
-            <Button Content ="Voltar à lista"
-                Width ="200 "
-                Height ="40 "
-                Margin ="30 ,10 ,10 ,10 "
-                Background ="#FF5733 "
-                Foreground ="White "
-                FontSize ="20 " Click="VoltarListar_Click"/>
+            <Button Content ="Voltar à lista" Width="200" Height="40" Margin="30 ,10 ,10 ,10" Background ="#FF5733" Foreground="White" FontSize ="20" Click="VoltarListar_Click"/>
             <Button Name="btnEditar" Content="Editar" Width="200" Height="40" Margin="30, 10, 10, 10" Background="#3498DB" Foreground="White" FontSize="20" Click="EditarCliente_Click"/>
-
         </StackPanel>
     </Grid>
 </Window>

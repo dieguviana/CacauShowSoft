@@ -67,37 +67,16 @@
         <!-- Quarta fileira -->
         <StackPanel Width= "950 " Height= "75 " VerticalAlignment= "Top" Margin= "65,430,65,0" Orientation= "Horizontal ">
             <StackPanel Margin= "80, 0, 0, 0 " HorizontalAlignment= "Center " VerticalAlignment= "Center " Width= "240 "/>
-
             <StackPanel Margin= "-240, 0, 0, 0 " HorizontalAlignment= "Center " VerticalAlignment= "Center " Width= "240 ">
                 <TextBlock Text= "UF: " Foreground= "White " FontSize= "20 "/>
                 <TextBox x:Name= "txtUF" Height ="30" FontSize ="20" />
             </StackPanel>
-
             <StackPanel Margin ="50 , 0 , 0 , 0" HorizontalAlignment = "Center" VerticalAlignment = "Center" Width ="240" />
-
         </StackPanel>
-
-        <!-- Botões Estilizados -->
-        <StackPanel Margin ="10 ,620 , 0 , 0 "
-                HorizontalAlignment ="Center "
-                VerticalAlignment ="Top "
-                Orientation ="Horizontal ">
-            <Button Content ="Voltar à lista"
-                Width ="200 "
-                Height ="40 "
-                Margin ="30 ,10 ,10 ,10 "
-                Background ="#FF5733 "
-                Foreground ="White "
-                FontSize ="20 "
-                Click="Cancelar_Click"/>
-            <Button Content ="Cadastrar Cliente"
-                Width ="200 "
-                Height ="40 "
-                Margin ="30 ,10 ,10 ,10 "
-                Background ="#27AE60 "
-                Foreground ="White "
-                FontSize ="20 " 
-                Click="CadastrarCliente_Click" />
+        
+        <StackPanel Margin="10,620,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation ="Horizontal">
+            <Button Content="Voltar" Width="200" Height="40" Margin="30,10,10,10" Background="#FF5733" Foreground="White" FontSize="20" Click="Cancelar_Click"/>
+            <Button Content="Cadastrar Cliente" Width ="200" Height ="40" Margin="30,10,10,10" Background="#27AE60" Foreground ="White" FontSize="20" Click="CadastrarCliente_Click"/>
         </StackPanel>
     </Grid>
 </Window>

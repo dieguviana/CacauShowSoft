@@ -25,7 +25,6 @@ namespace NewAppCacauShow.Telas
             WindowState = WindowState.Maximized;
             WindowStyle = WindowStyle.SingleBorderWindow;
             InitializeComponent();
-            Closing += ClienteCadastrar_Closing;
         }
 
 
@@ -84,50 +83,15 @@ namespace NewAppCacauShow.Telas
 
             MessageBox.Show("Cliente inserido com sucesso!", "Confirmação", MessageBoxButton.OK, MessageBoxImage.Information);
 
-            // Limpar os campos após a inserção
-            txtNome.Text = "";
-            txtCPF.Text = "";
-            txtContato.Text = "";
-            txtRG.Text = "";
-            txtEmail.Text = "";
-            txtEndereco.Text = "";
-            txtCEP.Text = "";
-            txtUF.Text = "";
-            txtBairro.Text = "";
-            txtMunicipio.Text = "";
+            this.Close();
         }
 
-
-        private bool isClosingConfirmed = false;
-
-        private void ClienteCadastrar_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (!isClosingConfirmed)
-            {
-                var result = MessageBox.Show("Qualquer informação registrada nessa tela será perdida. Deseja realmente fechar essa janela?", "Confirmação de Exclusão",
-                    MessageBoxButton.YesNo, MessageBoxImage.Warning);
-
-                if (result == MessageBoxResult.No)
-                {
-                    e.Cancel = true; // Cancela o evento de fechamento da janela
-                }
-            }
-        }
 
         private void Cancelar_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show("Qualquer informação registrada nessa tela será perdida. Deseja realmente voltar à lista de clientees?", "Confirmação de Cancelamento",
-                MessageBoxButton.YesNo, MessageBoxImage.Warning);
-
-            if (result == MessageBoxResult.Yes)
-            {
-                isClosingConfirmed = true; // Define a flag para true ao confirmar o fechamento
-                ClienteListar clienteListar = new ClienteListar();
-                clienteListar.Show();
-                Close(); // Fecha a janela
-            }
+            ClienteListar clienteListar = new ClienteListar();
+            clienteListar.Show();
+            this.Close();
         }
-
-
     }
 }
