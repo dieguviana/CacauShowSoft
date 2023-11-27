@@ -90,7 +90,7 @@
                 Foreground ="White "
                 FontSize ="20 "
                 Click="Cancelar_Click"/>
-            <Button Content ="Cadastrar Fornecedor "
+            <Button Content ="Cadastrar Cliente"
                 Width ="200 "
                 Height ="40 "
                 Margin ="30 ,10 ,10 ,10 "

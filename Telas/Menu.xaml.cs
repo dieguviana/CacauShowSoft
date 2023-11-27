@@ -64,17 +64,17 @@ namespace NewAppCacauShow.Telas
             this.Close();
         }
 
-        private void CancelarCadastro_Click(object sender, RoutedEventArgs e)
-        {
-            Login login = new Login();
-            login.Show();
-            this.Close();
-        }
-
         private void Usuarios_Click(object sender, RoutedEventArgs e)
         {
             UsuarioListar usuario = new UsuarioListar();
             usuario.Show();
+            this.Close();
+        }
+
+        private void Voltar_Click(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
             this.Close();
         }
     }

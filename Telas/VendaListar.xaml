@@ -14,7 +14,7 @@
 
             <DataGrid Name="DataGridVenda" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" AutoGenerateColumns="False" SelectionChanged="DataGridVendas_SelectionChanged" CanUserAddRows="False" FontSize="20" MaxHeight="500">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding IdVenda}"/>
+                    <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding IdRec}"/>
                     <DataGridTextColumn Header="Data e Hora" Width="Auto" Binding="{Binding DataHora}"/>
                     <DataGridTextColumn Header="Cliente" Width="Auto" Binding="{Binding Cliente}"/>
                     <DataGridTextColumn Header="Valor Total" Width="Auto" Binding="{Binding ValorVenda}"/>

@@ -19,5 +19,6 @@ namespace NewAppCacauShow.Classes
         public string UF { get; set; }
         public string Bairro { get; set; }
         public string Municipio { get; set; }
+        public bool DeListar = false;
     }
 }

@@ -140,43 +140,27 @@ namespace NewAppCacauShow.Telas
                 string textoSelecionado = selectedItem.Content.ToString();
                 recebimento.Forma = textoSelecionado;
 
-                // Cliente - opcional (pode ser null se não informado)
-                if (!string.IsNullOrWhiteSpace(txtClienteCPF.Text))
-                {
-                    recebimento.Cliente_cpf = txtClienteCPF.Text;
-                }
-                else
-                {
-                    recebimento.Cliente_cpf = ""; // Define como null se não informado
-                }
+                recebimento.Cliente_cpf = txtClienteCPF.Text;
 
                 var dao = new RecebimentoDAO();
-                if (dao.ClienteExiste(recebimento.Cliente_cpf))
-                {
-                    var dao2 = new VendaDAO();
-                    var vendaSelected = dao2.ultimaVenda();
-                    recebimento.Venda_fk = vendaSelected.IdVenda;
+                var dao2 = new VendaDAO();
+                var vendaSelected = dao2.ultimaVenda();
+                recebimento.Venda_fk = vendaSelected.IdVenda;
+                var dao3 = new RecebimentoDAO();
+                dao3.Insert(recebimento);
 
-                    var dao3 = new RecebimentoDAO();
-                    dao3.Insert(recebimento);
+                MessageBox.Show("Venda inserida com sucesso! O troco é de R$ " + recebimento.Troco + ".", "Confirmação", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                    MessageBox.Show("Venda inserida com sucesso! O troco é de R$ " + recebimento.Troco + ".", "Confirmação", MessageBoxButton.OK, MessageBoxImage.Information);
+                var dao4 = new VendaDAO();
+                dao4.Insert();
 
-                    var dao4 = new VendaDAO();
-                    dao4.Insert();
-
-                    // Limpe os campos
-                    txtValorVenda.Text = "";
-                    txtDesconto.Text = "";
-                    txtValorPago.Text = "";
-                    cmbForma.SelectedItem = null;
-                    txtClienteCPF.Text = "";
-                    DataGridVendaProduto.ItemsSource = null;
-                }
-                else
-                {
-                    MessageBox.Show("O cliente com o CPF especificado não existe no sistema.", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                // Limpe os campos
+                txtValorVenda.Text = "";
+                txtDesconto.Text = "";
+                txtValorPago.Text = "";
+                cmbForma.SelectedItem = null;
+                txtClienteCPF.Text = "";
+                DataGridVendaProduto.ItemsSource = null;
             }
             else
             {
@@ -229,6 +213,9 @@ namespace NewAppCacauShow.Telas
                     {
                         var dao2 = new VendaDAO();
                         dao2.Delete(vendaSelected);
+                        VendaListar vendas = new VendaListar();
+                        vendas.Show();
+                        this.Close();
                     }
                     else
                     {
@@ -239,9 +226,6 @@ namespace NewAppCacauShow.Telas
                 {
                     MessageBox.Show(ex.Message, "Exceção", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                VendaListar vendas = new VendaListar();
-                vendas.Show();
-                this.Close();
             }
         }
 
@@ -272,6 +256,92 @@ namespace NewAppCacauShow.Telas
                 {
                     MessageBox.Show(ex.Message, "Exceção", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+            }
+        }
+
+        private void CadastrarCliente_Click(object sender, RoutedEventArgs e)
+        {
+            ClienteCadastrar clienteCadastrar = new ClienteCadastrar();
+            clienteCadastrar.Show();
+            this.Close();
+        }
+
+        private void TxtClienteCPF_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string cpf2 = txtClienteCPF.Text.ToString();
+            if (cpf2.Length == 14)
+            {
+                var dao = new RecebimentoDAO();
+                if (!dao.ClienteExiste(cpf2))
+                {
+                    MessageBox.Show("O cliente com o CPF especificado não existe no sistema.", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
+                    txtClienteCPF.Text = "";
+                }
+            }
+
+            string cpf = txtClienteCPF.Text.Replace(".", "").Replace("-", "");
+
+            if (cpf.Length <= 11)
+            {
+                if (cpf.Length >= 3)
+                    cpf = cpf.Insert(3, ".");
+
+                if (cpf.Length >= 7)
+                    cpf = cpf.Insert(7, ".");
+
+                if (cpf.Length >= 11)
+                    cpf = cpf.Insert(11, "-");
+
+                txtClienteCPF.Text = cpf;
+                txtClienteCPF.SelectionStart = cpf.Length; // Mantém o cursor na posição correta
+            }
+            else
+            {
+                // Limita o texto do TextBox a 11 caracteres
+                txtClienteCPF.Text = cpf.Substring(0, 11);
+                txtClienteCPF.SelectionStart = 11;
+            }
+        }
+
+        private void txtCodigoProduto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                e.Handled = true;
+
+                var codigoProduto = Convert.ToInt32(txtCodigoProduto.Text);
+
+
+                VendaProdutoDAO vendaProduto = new VendaProdutoDAO();
+                bool produtoExiste = vendaProduto.ProdutoExiste(codigoProduto);
+
+                if (produtoExiste)
+                {
+                    txtQuantidade.Focus();
+                }
+                else
+                {
+                    MessageBox.Show("Produto não encontrado no banco de dados.");
+
+                    txtCodigoProduto.Text = "";
+                    txtCodigoProduto.Focus();
+                }
+            }
+        }
+
+        private void txtQuantidade_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                e.Handled = true; // Para evitar que o caractere de nova linha seja inserido no campo de texto
+
+                AdicionarProduto_Click(sender, e); // Chama a mesma função que o botão Add
+
+                txtCodigoProduto.Text = "";
+                txtQuantidade.Text = "";
+
+                // Definir o foco de volta para o campo txtCodigoProduto para continuar adicionando itens
+                txtCodigoProduto.Focus();
             }
         }
     }

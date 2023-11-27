@@ -106,6 +106,8 @@ uf_cli varchar(100),
 bairro_cli varchar(100),
 municipio_cli varchar(100)
 );
+
+insert into Cliente values (null, 'Não informado', '13131312312', '21231', '699847773844', 'udiegoviana@gmail.com', 'Rua', '13121', 'RO', 'Parque', 'ji-paraná');
 insert into Cliente values (null, 'Hilary', '234.567.890-12', '21231', '699847773844', 'udiegoviana@gmail.com', 'Rua', '13121', 'RO', 'Parque', 'ji-paraná');
 
 create table Venda(
@@ -150,6 +152,8 @@ set usuario_fk = (select id_usu_fk from login where (id_log = (select max(id_log
 end;
 $$ delimiter ;
 
+select * from login;
+
 #Diego Viana
 delimiter $$
 create procedure InserirVendaProduto(codigo int, quantidade double, venda_fk int)
@@ -171,13 +175,13 @@ delimiter $$
 create procedure InserirRecebimento(valorVenda double, desconto double, valorPago double, forma varchar(100), venda_fk int, cliente_cpf varchar(100))
 begin
 declare troco double;
-declare cliente_fk int;
+declare cliente_fk varchar(100);
 set troco = (-valorVenda + desconto + valorPago);
 set cliente_fk = (select id_cli from Cliente where (cpf_cli = cliente_cpf));
 if (cliente_fk is not null) then
 insert into Recebimento values (null, valorVenda, desconto, valorPago, forma, troco, venda_fk, cliente_fk);
 else
-insert into Recebimento values (null, valorVenda, desconto, valorPago, forma, troco, venda_fk, 2);
+insert into Recebimento values (null, valorVenda, desconto, valorPago, forma, troco, venda_fk, 1);
 end if;
 end;
 $$ delimiter ;
@@ -498,3 +502,5 @@ Produto, Produto_Venda, Venda
 where
 (Produto_Venda.id_ven_fk = Venda.id_ven) and
 (Produto_Venda.id_pro_fk = Produto.id_pro);*/
+
+insert into Login values (null, now(), 1);

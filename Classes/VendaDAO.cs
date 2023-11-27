@@ -27,6 +27,7 @@ namespace NewAppCacauShow.Classes
                 var query = conn.Query();
                 query.CommandText = "select " +
                 "Venda.id_ven, " +
+                "Recebimento.id_rec, " +
                 "Venda.data_hora_ven, " +
                 "Cliente.nome_cli, " +
                 "Recebimento.valor_venda_rec, " +
@@ -46,6 +47,7 @@ namespace NewAppCacauShow.Classes
                     list.Add(new Venda()
                     {
                         IdVenda = reader.GetInt32("id_ven"),
+                        IdRec = reader.GetInt32("id_rec"),
                         DataHora = reader.GetDateTime("data_hora_ven").ToString("dd/MM/yyyy HH:mm:ss"),
                         Cliente = reader.GetString("nome_cli"),
                         ValorVenda = reader.GetDouble("valor_venda_rec"),
@@ -147,14 +149,19 @@ namespace NewAppCacauShow.Classes
             query.CommandText = "Select " +
                 "Recebimento.id_rec, " +
                 "Recebimento.forma_rec, " +
-                "Cliente.cpf_cli, " +
+                "Cliente.nome_cli, " +
                 "Recebimento.valor_venda_rec, " +
                 "Recebimento.desconto_rec, " +
-                "Recebimento.valor_pago_rec " +
+                "Recebimento.valor_pago_rec, " +
+                "Venda.id_usu_fk, " +
+                "Usuario.nome_usu, " +
+                "Venda.data_hora_ven " +
+                "" +
                 "from " +
-                "Recebimento, Cliente " +
+                "Recebimento, Cliente, Usuario, Venda " +
                 "where " +
                 "(Recebimento.id_ven_fk = @id) and " +
+                "(Usuario.id_usu = Venda.id_usu_fk) and " +
                 "(Recebimento.id_cli_fk = Cliente.id_cli);";
 
             query.Parameters.AddWithValue("@id", venda.IdVenda);
@@ -163,13 +170,15 @@ namespace NewAppCacauShow.Classes
             if (reader.Read())
             {
                 venda.IdRec = reader.GetInt32("id_rec");
+                venda.Usuario = reader.GetString("nome_usu");
                 venda.Forma = reader.GetString("forma_rec");
-                venda.Cliente = reader.GetString("cpf_cli");
+                venda.Cliente = reader.GetString("nome_cli");
                 venda.ValorVenda = reader.GetDouble("valor_venda_rec");
                 venda.Desconto = reader.GetDouble("desconto_rec");
                 venda.ValorPago = reader.GetDouble("valor_pago_rec");
+                venda.DataHora = reader.GetDateTime("data_hora_ven").ToString("dd/MM/yyyy HH:mm:ss");
             }
-            
+
             return venda;
         }
     }
